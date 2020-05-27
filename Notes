@@ -7,11 +7,20 @@ Login Page
 
 Registration page for Staff
 1. Remove employee number, replace with name editField. Employee number should be auto_incremented in database.
-2. Should we consider full name for better data access?
-3. Consider first time welcome pages?
+2. Two fields for Name and Surname - also in databases.
+3. Consider first time welcome pages - pop-up hints.
+
+General interface
+1. Three dots in top right corner - drop down list:
+-dark/light mode
+-sign out of account
+-username which is employee number
+-change password settings (new screen for this)
+
+2. push notifications for ready and collected to customer device
 
 Customer interface
-1. Go straight to order page, with a settings icon at the top right corner.
+1. Go straight to order page,
 2. Current orders Tab, order history tab
 3. Can rate order from main page and from order page.
 
@@ -20,8 +29,8 @@ Staff interface
             - Order history (collected)
 2. Pressing an order should send you to an order details page where you can also update the status of the order.
 If a user has rated the collected order, we should also see this on the order details page.
+3. Plus icon activity to add more orders.
 
 Extra
-1. Settings page?
-2. Delivery options? - address, GPS tracking
+1. Delivery options? - address, GPS tracking
 
