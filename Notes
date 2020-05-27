@@ -1,0 +1,27 @@
+Checklist:
+
+Login Page
+1. Pressed 'login', but no details filled in -> update empty textfield to 'Not all details filled in".
+2. Password or username incorrect -> update same textfield with same error message.
+3. Make register a smaller text link under login button.
+
+Registration page for Staff
+1. Remove employee number, replace with name editField. Employee number should be auto_incremented in database.
+2. Should we consider full name for better data access?
+3. Consider first time welcome pages?
+
+Customer interface
+1. Go straight to order page, with a settings icon at the top right corner.
+2. Current orders Tab, order history tab
+3. Can rate order from main page and from order page.
+
+Staff interface
+1. Two tabs - Current orders (pending, uncollected)
+            - Order history (collected)
+2. Pressing an order should send you to an order details page where you can also update the status of the order.
+If a user has rated the collected order, we should also see this on the order details page.
+
+Extra
+1. Settings page?
+2. Delivery options? - address, GPS tracking
+
