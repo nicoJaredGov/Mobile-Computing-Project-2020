@@ -31,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
     private TextView mTextView;
     private EditText mUsername;
     private EditText mPassword;
+    String username;
+    String password;
+    String pos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,22 +42,37 @@ public class MainActivity extends AppCompatActivity {
         mTextView = findViewById(R.id.loginTextView);
         mUsername = findViewById(R.id.usernameInput);
         mPassword = findViewById(R.id.passwordInput);
+        username = mUsername.getText().toString();
+        password = mPassword.getText().toString();
     }
 
     public void login_button_click(View view){
-        PHPRequest loginReq = new PHPRequest("https://lamp.ms.wits.ac.za/home/s2094785/");
+        PHPRequest loginReq = new PHPRequest("https://lamp.ms.wits.ac.za/home/s2067058/");
         ContentValues cv = new ContentValues();
-        loginReq.doRequest(MainActivity.this, "orders.php", cv, new RequestHandler() {
-            @Override
-            public void processResponse(String response) {
+        //cv.put("user",username);
 
+        if (getIntent().hasExtra("userType")){
+            pos = getIntent().getExtras().getString("userType"); // 1 = customer, 2 = employee
+        }
+
+        String file;
+        if (pos.startsWith("1")) file = "user0.php";
+        else if (pos.startsWith("2")) file = "user1.php";
+        else{
+            mTextView.setText("Error with userType"+ " " + pos);
+            return;
+        }
+
+        loginReq.doRequest(MainActivity.this, "order.php", cv, new RequestHandler() {
+            @Override
+            public void processResponse(String response) throws JSONException {
+                JSONArray ja = new JSONArray(response);
+                mTextView.setText("HELLO");
             }
         });
 
-        OkHttpClient client = new OkHttpClient();
 
 
-        String username = mUsername.getText().toString();
 
     }
 }

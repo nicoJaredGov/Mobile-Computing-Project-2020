@@ -56,7 +56,11 @@ public class PHPRequest {
                     a.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            rh.processResponse(myResponse);
+                            try {
+                                rh.processResponse(myResponse);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
 
                         }
                     });

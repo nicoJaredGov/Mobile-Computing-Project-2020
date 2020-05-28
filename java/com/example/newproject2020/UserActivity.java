@@ -46,7 +46,7 @@ public class UserActivity extends AppCompatActivity implements AdapterView.OnIte
         }
         else{
             Intent i = new Intent(this,MainActivity.class);
-            i.putExtra("userType",pos); //pos: 1 - customer, 2 - employee
+            i.putExtra("userType",pos.toString()); //pos: 1 - customer, 2 - employee
             startActivity(i);
         }
     }
