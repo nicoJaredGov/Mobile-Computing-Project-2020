@@ -2,6 +2,7 @@
     <string name="app_name">New Project 2020</string>
 
     <string-array name="users">
+        <item>Select a user</item>
         <item>customer</item>
         <item>employee</item>
     </string-array>

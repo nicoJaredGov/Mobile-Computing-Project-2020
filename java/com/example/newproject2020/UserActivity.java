@@ -2,11 +2,13 @@ package com.example.newproject2020;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Spinner;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemSelectedListener;
 
@@ -16,6 +18,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+
+    TextView userTextView;
+    String text;
+    Integer pos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,16 +36,30 @@ public class UserActivity extends AppCompatActivity implements AdapterView.OnIte
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         userSpinner.setAdapter(adapter);
         userSpinner.setOnItemSelectedListener(this);
+
+         userTextView = (TextView) findViewById(R.id.userTextView);
+    }
+
+    public void user_button_click(View view){
+        if (pos == 0){
+            userTextView.setText("Please select an option");
+        }
+        else{
+            Intent i = new Intent(this,MainActivity.class);
+            i.putExtra("userType",text);
+            startActivity(i);
+        }
     }
 
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+        text = parent.getItemAtPosition(position).toString();
+        pos = position;
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-
+        userTextView.setText("Nothing was selected");
     }
 }

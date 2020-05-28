@@ -45,10 +45,10 @@ public class MainActivity extends AppCompatActivity {
         loginReq.doRequest(MainActivity.this, "https://lamp.ms.wits.ac.za/home/s2094785/orders.php", new RequestHandler() {
             @Override
             public void processResponse(String response) {
-                JSONArray passwordResponse = new JSONArray(response);
+                /*JSONArray passwordResponse = new JSONArray(response);
                 JSONObject item =  passwordResponse.getJSONObject(0);
                 String pass = item.getString("PASSWORD");
-                mTextView.setText(pass);
+                mTextView.setText(pass);*/
             }
         });
 
