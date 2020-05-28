@@ -1,2 +1,10 @@
 Shahil 2:
   - Login Interface improved
+Jared 4:
+  - Created PHPRequest class to handle requests abstractly and RequestHandler interface.
+Jared 5:
+  - Added User Activity to choose what type of user you are - spinner functionality
+  - Sends user type to Login Activity which then is able to query the correct database based on user type.
+Jared 6:
+  - Added post parameter functionality for PHPRequests. Need to create a ContentValues object and add key-value pairs to send requests to
+  a url.
