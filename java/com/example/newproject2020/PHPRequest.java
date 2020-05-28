@@ -1,6 +1,7 @@
 package com.example.newproject2020;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.os.Build;
 
 import androidx.annotation.RequiresApi;
@@ -14,16 +15,30 @@ import java.io.IOException;
 
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
 public class PHPRequest {
-    public void doRequest(final Activity a, String url, final RequestHandler rh){
+
+    String prefix;
+
+    PHPRequest(String p){
+        prefix = p;
+    }
+
+    public void doRequest(final Activity a, String file, ContentValues params, final RequestHandler rh){
         OkHttpClient client = new OkHttpClient();
 
+        FormBody.Builder builder = new FormBody.Builder();
+        for (String key:params.keySet()){
+            builder.add(key,params.getAsString(key));
+        }
+
         Request request = new Request.Builder()
-                .url(url)
+                .url(prefix+file)
+                .post(builder.build())
                 .build();
 
         client.newCall(request).enqueue(new Callback() {

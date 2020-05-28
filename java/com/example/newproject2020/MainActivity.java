@@ -4,6 +4,7 @@ package com.example.newproject2020;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -41,14 +42,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void login_button_click(View view){
-        PHPRequest loginReq = new PHPRequest();
-        loginReq.doRequest(MainActivity.this, "https://lamp.ms.wits.ac.za/home/s2094785/orders.php", new RequestHandler() {
+        PHPRequest loginReq = new PHPRequest("https://lamp.ms.wits.ac.za/home/s2094785/");
+        ContentValues cv = new ContentValues();
+        loginReq.doRequest(MainActivity.this, "orders.php", cv, new RequestHandler() {
             @Override
             public void processResponse(String response) {
-                /*JSONArray passwordResponse = new JSONArray(response);
-                JSONObject item =  passwordResponse.getJSONObject(0);
-                String pass = item.getString("PASSWORD");
-                mTextView.setText(pass);*/
+
             }
         });
 
