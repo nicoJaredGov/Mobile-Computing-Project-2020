@@ -1,7 +1,5 @@
 package com.example.newproject2020;
-//hellotest1
-//another test
-//third test
+// Shahil's url "https://lamp.ms.wits.ac.za/home/s2094785/user_list.php?user="
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -37,51 +35,27 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mTextView = findViewById(R.id.textView);
+        mTextView = findViewById(R.id.loginTextView);
         mUsername = findViewById(R.id.usernameInput);
         mPassword = findViewById(R.id.passwordInput);
     }
 
-    public void button_click(View view){
+    public void login_button_click(View view){
+        PHPRequest loginReq = new PHPRequest();
+        loginReq.doRequest(MainActivity.this, "https://lamp.ms.wits.ac.za/home/s2094785/orders.php", new RequestHandler() {
+            @Override
+            public void processResponse(String response) {
+                JSONArray passwordResponse = new JSONArray(response);
+                JSONObject item =  passwordResponse.getJSONObject(0);
+                String pass = item.getString("PASSWORD");
+                mTextView.setText(pass);
+            }
+        });
+
         OkHttpClient client = new OkHttpClient();
 
 
         String username = mUsername.getText().toString();
 
-        String url = "https://lamp.ms.wits.ac.za/home/s2094785/user_list.php?user=" + username;
-
-        Request request = new Request.Builder()
-                .url(url)
-                .build();
-
-        client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                e.printStackTrace();
-            }
-
-            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-            @Override
-            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-                if(response.isSuccessful()){
-                    final String myResponse = response.body().string();
-                    try {
-                        JSONArray passwordResponse = new JSONArray(response);
-                        JSONObject item =  passwordResponse.getJSONObject(0);
-                        String pass = item.getString("PASSWORD");
-                        mTextView.setText(pass);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-
-                    MainActivity.this.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-
-                        }
-                    });
-                }
-            }
-        });
     }
 }
