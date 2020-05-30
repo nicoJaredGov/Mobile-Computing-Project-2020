@@ -56,6 +56,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void login_button_click(View view){
         username = mUsername.getText().toString();
+        if (username.isEmpty()){
+            mTextView.setText("missing details");
+            return;
+        }
         password = mPassword.getText().toString();
         int usernameInt = Integer.parseInt(username);
 

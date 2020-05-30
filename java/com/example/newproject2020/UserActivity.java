@@ -22,11 +22,20 @@ public class UserActivity extends AppCompatActivity implements AdapterView.OnIte
     TextView userTextView;
     String text;
     Integer pos;
+    SharedPrefs sharedPref;
+    String userTypeSaved;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
+
+        String userTypeLoaded = sharedPref.loadData(this,userTypeSaved,"");
+        if (!userTypeLoaded.isEmpty()){
+            Intent i = new Intent(this,MainActivity.class);
+            i.putExtra("userType",userTypeLoaded); //pos: 1 - customer, 2 - employee
+            startActivity(i);
+        }
 
         Spinner userSpinner = (Spinner) findViewById(R.id.userSpinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
@@ -45,6 +54,7 @@ public class UserActivity extends AppCompatActivity implements AdapterView.OnIte
             userTextView.setText("Please select an option");
         }
         else{
+            sharedPref.saveData(this,userTypeSaved,pos.toString());
             Intent i = new Intent(this,MainActivity.class);
             i.putExtra("userType",pos.toString()); //pos: 1 - customer, 2 - employee
             startActivity(i);
