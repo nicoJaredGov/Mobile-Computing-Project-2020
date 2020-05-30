@@ -12,3 +12,7 @@ Jared 7:
   - login page partially done
   - still need to be able to prevent going back and getting more password attempts
   - need to consider cases where the username does not exist ( incorrect details case)
+Jared 8:
+  - implemented shared preferences class
+  - able to save user choice in the beginning forever until sign out
+  - figured out a way to save login details using shared prefs as well.
