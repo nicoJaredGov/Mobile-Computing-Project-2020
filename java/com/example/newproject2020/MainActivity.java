@@ -87,8 +87,17 @@ public class MainActivity extends AppCompatActivity {
     public void processJSON(String r) throws JSONException {
         JSONArray ja = new JSONArray(r);
         JSONObject jo = ja.getJSONObject(0);
-        testView.setText(jo.getString("PASSWORD"));
-        if (password.equals(jo.getString("PASSWORD"))){
+
+        String pass;
+        if (pos.startsWith("1")) pass = "PASSWORD";
+        else if (pos.startsWith("2")) pass = "EMP_PASSWORD";
+        else{
+            testView.setText("Error");
+            return;
+        }
+
+        testView.setText(jo.getString(pass));
+        if (password.equals(jo.getString(pass))){
             mTextView.setText("Correct!");
             //next activity
         }
