@@ -30,12 +30,12 @@ public class UserActivity extends AppCompatActivity implements AdapterView.OnIte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
 
-        String userTypeLoaded = sharedPref.loadData(this,userTypeSaved,"");
+        /*String userTypeLoaded = sharedPref.loadData(this,userTypeSaved,"");
         if (!userTypeLoaded.isEmpty()){
             Intent i = new Intent(this,MainActivity.class);
             i.putExtra("userType",userTypeLoaded); //pos: 1 - customer, 2 - employee
             startActivity(i);
-        }
+        }*/
 
         Spinner userSpinner = (Spinner) findViewById(R.id.userSpinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
