@@ -8,3 +8,7 @@ Jared 5:
 Jared 6:
   - Added post parameter functionality for PHPRequests. Need to create a ContentValues object and add key-value pairs to send requests to
   a url.
+Jared 7:
+  - login page partially done
+  - still need to be able to prevent going back and getting more password attempts
+  - need to consider cases where the username does not exist ( incorrect details case)
