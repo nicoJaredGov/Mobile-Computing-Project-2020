@@ -16,3 +16,7 @@ Jared 8:
   - implemented shared preferences class
   - able to save user choice in the beginning forever until sign out
   - figured out a way to save login details using shared prefs as well.
+Shahil 3:
+  - Added Customer Activity, which is the main customer interface
+  - Navigation drawer for Customer Activity partially complete
+  - Need to create a way to change from Login Activity to Customer Activity
