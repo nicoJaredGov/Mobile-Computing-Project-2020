@@ -4,8 +4,16 @@
     <group android:checkableBehavior="single">
 
         <item
+            android:id="@+id/nav_theme"
+            android:title="Night mode"
+            android:icon="@drawable/ic_night_mode"/>
+        <item
+            android:id="@+id/nav_settings"
+            android:title="Settings"
+            android:icon="@drawable/ic_settings"/>
+        <item
             android:id="@+id/nav_logout"
-            android:title="Logout"
+            android:title="Log Out"
             android:icon="@drawable/ic_reply"/>
 
     </group>
