@@ -30,6 +30,7 @@ public class EmployeeRegistrationActivity extends AppCompatActivity {
     ImageView backButton;
     Button nextButton;
     TextView registerTitleText;
+    TextView empRegTextView;
 
     RegSharedPrefs regSharedPref;
     EditText nameField, numField, passwordField, confirmField;
@@ -44,6 +45,7 @@ public class EmployeeRegistrationActivity extends AppCompatActivity {
         backButton = findViewById(R.id.registration_back_button);
         nextButton = findViewById(R.id.nextBtn);
         registerTitleText = findViewById(R.id.register_title_text);
+        empRegTextView = findViewById(R.id.empRegTextView);
         nameField = findViewById(R.id.nameEditText);
         numField = findViewById(R.id.empNumEditText);
         passwordField = findViewById(R.id.passwordEditText);
@@ -56,6 +58,15 @@ public class EmployeeRegistrationActivity extends AppCompatActivity {
         employeeNum = numField.getText().toString();
         password = passwordField.getText().toString();
         confirmPassword = confirmField.getText().toString();
+
+        if(name.isEmpty() || employeeNum.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()){
+            empRegTextView.setText("Fill in all details");
+            return;
+        }
+        if(!password.equals(confirmPassword)){
+            empRegTextView.setText("Confirmed password not matching");
+            return;
+        }
 
         regSharedPref.saveData(this,name," ",password,employeeNum);
         Intent intent = new Intent(getApplicationContext(), TestActivity.class);

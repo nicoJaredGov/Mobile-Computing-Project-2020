@@ -119,10 +119,10 @@
                     app:boxStrokeColor="#000000"
                     app:boxStrokeWidthFocused="2dp"
                     app:hintTextColor="#000000"
-                    app:startIconDrawable="@drawable/ic_password_white"
-                    app:startIconTint="#000000"
                     app:passwordToggleEnabled="true"
-                    app:passwordToggleTint="#000000">
+                    app:passwordToggleTint="#000000"
+                    app:startIconDrawable="@drawable/ic_password_white"
+                    app:startIconTint="#000000">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/confirmEditText"
@@ -143,10 +143,16 @@
                 android:layout_marginTop="20dp"
                 android:background="#000000"
                 android:elevation="5dp"
+                android:onClick="callRegisterNextScreen"
                 android:text="next"
                 android:textColor="@color/white"
-                android:transitionName="transition_register_next_button"
-                android:onClick="callRegisterNextScreen"/>
+                android:transitionName="transition_register_next_button" />
+
+            <TextView
+                android:id="@+id/empRegTextView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="bottom|center"></TextView>
 
 
         </LinearLayout>
