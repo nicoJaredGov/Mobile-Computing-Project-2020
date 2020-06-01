@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="30dp"
+    android:background="@color/white"
     tools:context="com.example.newproject2020.CustomerRegistrationActivity">
 
     <LinearLayout
@@ -72,7 +73,7 @@
                 android:background="#000000"
                 android:elevation="5dp"
                 android:text="next"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/white"
                 android:transitionName="transition_register_next_button"
                 android:onClick="callRegisterNextScreen"/>
 
