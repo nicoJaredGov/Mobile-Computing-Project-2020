@@ -22,3 +22,9 @@ Shahil 3:
   - Need to create a way to change from Login Activity to Customer Activity
 Shahil 4:
   - Added Settings and Night Mode to navigation drawer
+Shahil 5:
+  - Added customer registration screen (only the UI)
+  - Rebuilt login screen UI using material design but the app crashes whenever it starts MainActivity
+Shahil 6:
+  - Reverted to original login screen
+  - App no longer crashes when MainActivity starts
