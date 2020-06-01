@@ -20,3 +20,5 @@ Shahil 3:
   - Added Customer Activity, which is the main customer interface
   - Navigation drawer for Customer Activity partially complete
   - Need to create a way to change from Login Activity to Customer Activity
+Shahil 4:
+  - Added Settings and Night Mode to navigation drawer
