@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:padding="30dp"
     android:background="@color/white"
-    tools:context="com.example.newproject2020.Customer.CustomerRegistrationActivity">
+    tools:context="com.example.newproject2020.LoginActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -34,81 +34,92 @@
             android:textSize="40sp"
             android:transitionName="transition_register_title_text" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_marginTop="40dp"
-                android:id="@+id/UsernameInput"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/UsernameInput"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:hint="Enter username"
+            android:textColorHint="#000000"
+            app:boxStrokeColor="#000000"
+            app:boxStrokeWidthFocused="2dp"
+            app:hintTextColor="#000000"
+            app:startIconDrawable="@drawable/ic_profile_white"
+            app:startIconTint="#000000">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/usernameInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter username"
-                android:textColorHint="#000000"
-                app:boxStrokeColor="#000000"
-                app:boxStrokeWidthFocused="2dp"
-                app:hintTextColor="#000000"
-                app:startIconDrawable="@drawable/ic_profile_white"
-                app:startIconTint="#000000">
+                android:inputType="number">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textEmailAddress">
+            </com.google.android.material.textfield.TextInputEditText>
 
-                </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
 
-            </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/registrationPasswordInput"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter password"
+            android:textColorHint="#000000"
+            app:boxStrokeColor="#000000"
+            app:boxStrokeWidthFocused="2dp"
+            app:hintTextColor="#000000"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="#000000"
+            app:startIconDrawable="@drawable/ic_password_white"
+            app:startIconTint="#000000">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/registrationPasswordInput"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/passwordInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter password"
-                android:textColorHint="#000000"
-                app:boxStrokeColor="#000000"
-                app:boxStrokeWidthFocused="2dp"
-                app:hintTextColor="#000000"
-                app:passwordToggleEnabled="true"
-                app:passwordToggleTint="#000000"
-                app:startIconDrawable="@drawable/ic_password_white"
-                app:startIconTint="#000000">
+                android:inputType="textPassword">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPassword">
+            </com.google.android.material.textfield.TextInputEditText>
 
-                </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
 
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <Button
-                android:id="@+id/register_next_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:background="#000000"
-                android:elevation="5dp"
-                android:text="next"
-                android:textColor="@color/white"
-                android:transitionName="transition_register_next_button"
-                android:onClick="callRegisterNextScreen"/>
+        <TextView
+            android:id="@+id/mTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Messages" />
 
         <Button
-            android:id="@+id/register_next_button"
+            android:id="@+id/nextBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="#000000"
+            android:elevation="5dp"
+            android:onClick="nextOnClick"
+            android:text="next"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/registerBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:background="#00000000"
             android:elevation="5dp"
+            android:onClick="registerOnClick"
             android:text="register"
             android:textColor="#000000"
-            android:transitionName="transition_register_next_button"
-            android:onClick="callRegisterNextScreen"/>
+            android:transitionName="transition_register_next_button" />
 
+        <TextView
+            android:id="@+id/testView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="test" />
 
-        </LinearLayout>
 
     </LinearLayout>
 
-
-</ScrollView>
+</LinearLayout>
