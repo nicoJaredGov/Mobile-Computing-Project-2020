@@ -28,3 +28,11 @@ Shahil 5:
 Shahil 6:
   - Reverted to original login screen
   - App no longer crashes when MainActivity starts
+Jared 9:
+  - Changed User Activity UI a little.
+  - Implemented custom UI for login screen and adjusted backend.
+  - Joined registration activities to login screen REGISTER button.
+  - Changed ScrollViews in register screens and login screen to Linear Layouts.
+  - Added Confirm Password field to register screens.
+  - Created a class for register shared preferences. Saved register details to shared preferences.
+  - Dealt with missing detail error and password mismatch error in register screens.
