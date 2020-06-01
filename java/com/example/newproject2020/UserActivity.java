@@ -9,13 +9,8 @@ import android.widget.Spinner;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.AdapterView.OnItemSelectedListener;
 
 import com.example.project2020.R;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class UserActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -55,7 +50,7 @@ public class UserActivity extends AppCompatActivity implements AdapterView.OnIte
         }
         else{
             sharedPref.saveData(this,userTypeSaved,pos.toString());
-            Intent i = new Intent(this,MainActivity.class);
+            Intent i = new Intent(this, LoginActivity.class);
             i.putExtra("userType",pos.toString()); //pos: 1 - customer, 2 - employee
             startActivity(i);
         }

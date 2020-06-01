@@ -14,7 +14,7 @@
         <activity android:name="com.example.newproject2020.CustomerRegisterSecondActivity"></activity>
         <activity android:name="com.example.newproject2020.CustomerRegistrationActivity" />
         <activity android:name="com.example.newproject2020.CustomerActivity" />
-        <activity android:name="com.example.newproject2020.MainActivity" />
+        <activity android:name="com.example.newproject2020.LoginActivity" />
         <activity android:name="com.example.newproject2020.UserActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,11 +1,9 @@
 package com.example.newproject2020;
 // Shahil's url "https://lamp.ms.wits.ac.za/home/s2094785/user_list.php?user="
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,20 +12,11 @@ import android.widget.TextView;
 
 import com.example.project2020.R;
 
-import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
-
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
-
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     TextView testView;
 
@@ -51,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
         passwordCounter = 3; //counts down password attempts - only 3 allowed
 
-        testView = findViewById(R.id.testView);
+        testView = findViewById(R.id.testView); //remove
     }
 
     public void login_button_click(View view){
@@ -79,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        loginReq.doRequest(MainActivity.this, file, cv, new RequestHandler() {
+        loginReq.doRequest(LoginActivity.this, file, cv, new RequestHandler() {
             @Override
             public void processResponse(String response) throws JSONException {
                 processJSON(response);
