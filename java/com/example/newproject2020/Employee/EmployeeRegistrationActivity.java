@@ -1,4 +1,4 @@
-package com.example.newproject2020;
+package com.example.newproject2020.Employee;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,9 +11,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.newproject2020.RegistrationSecondActivity;
 import com.example.project2020.R;
 
-public class CustomerRegisterSecondActivity extends AppCompatActivity {
+public class EmployeeRegistrationActivity extends AppCompatActivity {
 
     //Variables
     ImageView backButton;
@@ -23,7 +24,7 @@ public class CustomerRegisterSecondActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register_second);
+        setContentView(R.layout.activity_employee_registration);
 
         //Hooks
         backButton = findViewById(R.id.registration_back_button);
@@ -32,7 +33,7 @@ public class CustomerRegisterSecondActivity extends AppCompatActivity {
     }
 
     public void callRegisterNextScreen(View view) {
-        Intent intent = new Intent(getApplicationContext(), CustomerRegisterSecondActivity.class);
+        Intent intent = new Intent(getApplicationContext(), RegistrationSecondActivity.class);
 
         //Add Transition
         Pair[] pairs = new Pair[3];
@@ -42,7 +43,7 @@ public class CustomerRegisterSecondActivity extends AppCompatActivity {
         pairs[2] = new Pair<View, String>(registerTitleText, "transition_register_title_text");
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(CustomerRegisterSecondActivity.this, pairs);
+            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(EmployeeRegistrationActivity.this, pairs);
             startActivity(intent, options.toBundle());
         } else {
             startActivity(intent);

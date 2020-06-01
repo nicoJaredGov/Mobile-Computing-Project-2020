@@ -41,7 +41,7 @@
             android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/fullNameInput"
+                android:id="@+id/RegistrationUsernameInput"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -50,7 +50,7 @@
                 app:boxStrokeColor="#000000"
                 app:boxStrokeWidthFocused="2dp"
                 app:hintTextColor="#000000"
-                app:startIconDrawable="@drawable/ic_profile_white"
+                app:startIconDrawable="@drawable/ic_edit_black"
                 app:startIconTint="#000000">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -63,22 +63,22 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/RegistrationEmailInput"
+                android:id="@+id/fullNameInput"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter email"
+                android:hint="Enter employee number"
                 android:textColorHint="#000000"
                 app:boxStrokeColor="#000000"
                 app:boxStrokeWidthFocused="2dp"
                 app:hintTextColor="#000000"
-                app:startIconDrawable="@drawable/ic_mail_outline_black"
+                app:startIconDrawable="@drawable/ic_profile_white"
                 app:startIconTint="#000000">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textEmailAddress">
+                    android:inputType="text">
 
                 </com.google.android.material.textfield.TextInputEditText>
 

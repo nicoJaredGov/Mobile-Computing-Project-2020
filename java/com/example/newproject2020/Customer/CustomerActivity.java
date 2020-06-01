@@ -1,4 +1,4 @@
-package com.example.newproject2020;
+package com.example.newproject2020.Customer;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.example.project2020.R;
 
-public class CustomerRegistrationActivity extends AppCompatActivity {
+public class RegistrationSecondActivity extends AppCompatActivity {
 
     //Variables
     ImageView backButton;
@@ -23,7 +23,7 @@ public class CustomerRegistrationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_customer_registration);
+        setContentView(R.layout.activity_register_second);
 
         //Hooks
         backButton = findViewById(R.id.registration_back_button);
@@ -32,7 +32,7 @@ public class CustomerRegistrationActivity extends AppCompatActivity {
     }
 
     public void callRegisterNextScreen(View view) {
-        Intent intent = new Intent(getApplicationContext(), CustomerRegisterSecondActivity.class);
+        Intent intent = new Intent(getApplicationContext(), RegistrationSecondActivity.class);
 
         //Add Transition
         Pair[] pairs = new Pair[3];
@@ -42,11 +42,10 @@ public class CustomerRegistrationActivity extends AppCompatActivity {
         pairs[2] = new Pair<View, String>(registerTitleText, "transition_register_title_text");
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(CustomerRegistrationActivity.this, pairs);
+            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(RegistrationSecondActivity.this, pairs);
             startActivity(intent, options.toBundle());
         } else {
             startActivity(intent);
         }
     }
-
 }
