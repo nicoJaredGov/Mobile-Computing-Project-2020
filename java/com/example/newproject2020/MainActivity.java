@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         mTextView = findViewById(R.id.loginTextView);
         mUsername = findViewById(R.id.usernameInput);
         mPassword = findViewById(R.id.passwordInput);
-        loginBtn = (Button) findViewById(R.id.LoginBtn);
+        loginBtn = findViewById(R.id.LoginBtn);
 
         passwordCounter = 3; //counts down password attempts - only 3 allowed
 
@@ -110,8 +110,9 @@ public class MainActivity extends AppCompatActivity {
             if (passwordCounter == 0){
                 loginBtn.setEnabled(false);
             }
-            mTextView.setText("You have "+passwordCounter.toString() + " attempts left.");
-            return;
+
+            String passwordCounterOutput = "You have "+passwordCounter.toString() + " attempts left.";
+            mTextView.setText(passwordCounterOutput);
         }
 
     }
