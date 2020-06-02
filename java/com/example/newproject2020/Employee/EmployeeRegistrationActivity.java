@@ -3,6 +3,7 @@ package com.example.newproject2020.Employee;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActivityOptions;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,9 +15,13 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.newproject2020.PHPRequest;
 import com.example.newproject2020.RegSharedPrefs;
+import com.example.newproject2020.RequestHandler;
 import com.example.newproject2020.TestActivity;
 import com.example.project2020.R;
+
+import org.json.JSONException;
 
 public class EmployeeRegistrationActivity extends AppCompatActivity {
 
@@ -35,6 +40,7 @@ public class EmployeeRegistrationActivity extends AppCompatActivity {
     RegSharedPrefs regSharedPref;
     EditText nameField, numField, passwordField, confirmField;
     String name, employeeNum, password, confirmPassword;
+    String firstName, lastName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +74,24 @@ public class EmployeeRegistrationActivity extends AppCompatActivity {
             return;
         }
 
+        splitName(name);
+
+        PHPRequest customerRegReq = new PHPRequest("https://lamp.ms.wits.ac.za/home/s2067058/");
+        ContentValues cv = new ContentValues();
+        cv.put("fname",firstName);
+        cv.put("lname",lastName);
+        cv.put("password",password);
+
+        customerRegReq.doRequest(this, "empReg.php", cv, new RequestHandler() {
+            @Override
+            public void processResponse(String response) throws JSONException {
+                if (!response.equals("TRUE")){
+                    empRegTextView.setText(response);
+                    return;
+                }
+            }
+        });
+
         regSharedPref.saveData(this,name," ",password,employeeNum);
         Intent intent = new Intent(getApplicationContext(), TestActivity.class);
 
@@ -84,6 +108,13 @@ public class EmployeeRegistrationActivity extends AppCompatActivity {
         } else {
             startActivity(intent);
         }
+    }
+
+    public void splitName(String name) {
+        String[] splitName = name.split(" ", 2);
+        firstName = splitName[0];
+        if (splitName.length == 1) lastName = "N/A";
+        else lastName = splitName[1];;
     }
 
 }
