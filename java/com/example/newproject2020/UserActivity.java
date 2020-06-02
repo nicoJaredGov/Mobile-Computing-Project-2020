@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,6 +15,7 @@ import com.example.project2020.R;
 
 public class UserActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
+    ImageView logo;
     TextView userTextView;
     String text;
     Integer pos;

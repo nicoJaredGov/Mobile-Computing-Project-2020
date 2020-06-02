@@ -4,12 +4,15 @@ package com.example.newproject2020;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.newproject2020.Customer.CustomerRegistrationActivity;
+import com.example.newproject2020.Employee.EmployeeRegistrationActivity;
 import com.example.project2020.R;
 
 import org.json.JSONArray;
@@ -23,7 +26,9 @@ public class LoginActivity extends AppCompatActivity {
     private TextView mTextView;
     private EditText mUsername;
     private EditText mPassword;
-    Button loginBtn;
+    Button nextBtn;
+    Button registerBtn;
+
     String username;
     String password;
     String pos;
@@ -32,21 +37,25 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        mTextView = findViewById(R.id.loginTextView);
+        setContentView(R.layout.activity_login);
+        mTextView = findViewById(R.id.mTextView);
         mUsername = findViewById(R.id.usernameInput);
         mPassword = findViewById(R.id.passwordInput);
-        loginBtn = findViewById(R.id.LoginBtn);
+        nextBtn = findViewById(R.id.nextBtn);
 
         passwordCounter = 3; //counts down password attempts - only 3 allowed
+
+        if (getIntent().hasExtra("userType")){
+            pos = getIntent().getExtras().getString("userType"); // 1 = customer, 2 = employee
+        }
 
         testView = findViewById(R.id.testView); //remove
     }
 
-    public void login_button_click(View view){
+    public void nextOnClick(View view){
         username = mUsername.getText().toString();
         if (username.isEmpty()){
-            mTextView.setText("missing details");
+            mTextView.setText("Username missing");
             return;
         }
         password = mPassword.getText().toString();
@@ -55,10 +64,6 @@ public class LoginActivity extends AppCompatActivity {
         PHPRequest loginReq = new PHPRequest("https://lamp.ms.wits.ac.za/home/s2067058/");
         ContentValues cv = new ContentValues();
         cv.put("user",usernameInt);
-
-        if (getIntent().hasExtra("userType")){
-            pos = getIntent().getExtras().getString("userType"); // 1 = customer, 2 = employee
-        }
 
         String file;
         if (pos.startsWith("1")) file = "user0.php";
@@ -75,6 +80,21 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void registerOnClick(View view){
+        if (pos.startsWith("1")){
+            Intent i = new Intent(this, CustomerRegistrationActivity.class);
+            startActivity(i);
+        }
+        else if (pos.startsWith("2")){
+            Intent i = new Intent(this, EmployeeRegistrationActivity.class);
+            startActivity(i);
+        }
+        else{
+            mTextView.setText("Error with registration path"+ " " + pos);
+            return;
+        }
     }
 
     public void processJSON(String r) throws JSONException {
@@ -97,12 +117,17 @@ public class LoginActivity extends AppCompatActivity {
         else{
             passwordCounter--;
             if (passwordCounter == 0){
-                loginBtn.setEnabled(false);
+                nextBtn.setEnabled(false);
             }
 
             String passwordCounterOutput = "You have "+passwordCounter.toString() + " attempts left.";
             mTextView.setText(passwordCounterOutput);
         }
 
+    }
+
+    public void login_back_btn_click(View view) {
+        Intent intent = new Intent(this, UserActivity.class);
+        startActivity(intent);
     }
 }

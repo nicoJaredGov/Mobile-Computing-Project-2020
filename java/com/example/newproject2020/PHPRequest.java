@@ -24,7 +24,7 @@ public class PHPRequest {
 
     String prefix;
 
-    PHPRequest(String p){
+    public PHPRequest(String p){
         prefix = p;
     }
 
