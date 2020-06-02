@@ -36,3 +36,7 @@ Jared 9:
   - Added Confirm Password field to register screens.
   - Created a class for register shared preferences. Saved register details to shared preferences.
   - Dealt with missing detail error and password mismatch error in register screens.
+Jared 10:
+  - Function created to split name into first and last names.
+  - Registration details now update sql tables.
+  - Still got issues with getting auto_incremented ID back for customers. Working on it.
