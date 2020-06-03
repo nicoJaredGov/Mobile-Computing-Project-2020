@@ -40,3 +40,6 @@ Jared 10:
   - Function created to split name into first and last names.
   - Registration details now update sql tables.
   - Still got issues with getting auto_incremented ID back for customers. Working on it.
+ Shahil 8.1:
+  - Added customer main activity and customer settings activity
+  - Added functionality to back buttons
