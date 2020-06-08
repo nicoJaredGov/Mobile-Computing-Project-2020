@@ -36,19 +36,16 @@ Jared 9:
   - Added Confirm Password field to register screens.
   - Created a class for register shared preferences. Saved register details to shared preferences.
   - Dealt with missing detail error and password mismatch error in register screens.
+Shahil 8.1:
+  - Added customer main activity and customer settings activity
+  - Added functionality to back buttons
 Jared 10:
   - Function created to split name into first and last names.
   - Registration details now update sql tables.
   - Still got issues with getting auto_incremented ID back for customers. Working on it.
-<<<<<<< HEAD
   10.1:
   - Registration fixes.
   10.2:
   - Added error where username not found in database.
   - Changed php file user0 and loginActivity to let email be the username.
   - Changed database CUSTOMERS CUSTOMER_EMAIL to varchar(40).
-=======
- Shahil 8.1:
-  - Added customer main activity and customer settings activity
-  - Added functionality to back buttons
->>>>>>> origin/shahil-branch
