@@ -41,12 +41,17 @@
             android:layout_marginTop="40dp"
             android:orientation="vertical">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/fullNameInput"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter full name"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/FirstNameInput"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:hint="First name"
                 android:textColorHint="#000000"
                 app:boxStrokeColor="#000000"
                 app:boxStrokeWidthFocused="2dp"
@@ -55,7 +60,7 @@
                 app:startIconTint="#000000">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/nameEditText"
+                    android:id="@+id/FirstNameEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text">
@@ -63,6 +68,32 @@
                 </com.google.android.material.textfield.TextInputEditText>
 
             </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/LastNameInput"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="175dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Surname"
+                    android:textColorHint="#000000"
+                    app:boxStrokeColor="#000000"
+                    app:boxStrokeWidthFocused="2dp"
+                    app:hintTextColor="#000000"
+                    app:startIconDrawable="@drawable/ic_profile_white"
+                    app:startIconTint="#000000"
+                    android:layout_marginLeft="5dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/LastNameEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text">
+
+                    </com.google.android.material.textfield.TextInputEditText>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/RegistrationEmailInput"

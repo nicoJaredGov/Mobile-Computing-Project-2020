@@ -39,8 +39,8 @@ public class EmployeeRegistrationActivity extends AppCompatActivity {
     TextView empRegTextView;
 
     RegSharedPrefs regSharedPref;
-    EditText nameField, numField, passwordField, confirmField;
-    String name, employeeNum, password, confirmPassword;
+    EditText firstNameField, lastNameField, numField, passwordField, confirmField;
+    String employeeNum, password, confirmPassword;
     String firstName, lastName;
 
     @Override
@@ -53,7 +53,8 @@ public class EmployeeRegistrationActivity extends AppCompatActivity {
         nextButton = findViewById(R.id.nextBtn);
         registerTitleText = findViewById(R.id.register_title_text);
         empRegTextView = findViewById(R.id.empRegTextView);
-        nameField = findViewById(R.id.nameEditText);
+        firstNameField = findViewById(R.id.FirstNameEditText);
+        lastNameField = findViewById(R.id.LastNameEditText);
         numField = findViewById(R.id.empNumEditText);
         passwordField = findViewById(R.id.passwordEditText);
         confirmField = findViewById(R.id.confirmEditText);
@@ -66,12 +67,13 @@ public class EmployeeRegistrationActivity extends AppCompatActivity {
     }
 
     public void callRegisterNextScreen(View view) {
-        name = nameField.getText().toString();
+        firstName = firstNameField.getText().toString();
+        lastName = lastNameField.getText().toString();
         employeeNum = numField.getText().toString();
         password = passwordField.getText().toString();
         confirmPassword = confirmField.getText().toString();
 
-        if(name.isEmpty() || employeeNum.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()){
+        if(firstName.isEmpty() || lastName.isEmpty() || employeeNum.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()){
             empRegTextView.setText("Fill in all details");
             return;
         }
@@ -80,9 +82,9 @@ public class EmployeeRegistrationActivity extends AppCompatActivity {
             return;
         }
 
-        splitName(name);
+        //splitName(name);
 
-        PHPRequest customerRegReq = new PHPRequest("https://lamp.ms.wits.ac.za/home/s2067058/");
+        PHPRequest customerRegReq = new PHPRequest("https://lamp.ms.wits.ac.za/home/s2094785/");
         ContentValues cv = new ContentValues();
         cv.put("fname",firstName);
         cv.put("lname",lastName);
@@ -98,7 +100,7 @@ public class EmployeeRegistrationActivity extends AppCompatActivity {
             }
         });
 
-        regSharedPref.saveData(this,name," ",password,employeeNum);
+        regSharedPref.saveData(this,firstName," ",password,employeeNum);
         Intent intent = new Intent(getApplicationContext(), TestActivity.class);
 
         //Add Transition
@@ -118,12 +120,12 @@ public class EmployeeRegistrationActivity extends AppCompatActivity {
         }
     }
 
-    public void splitName(String name) {
+    /*public void splitName(String name) {
         String[] splitName = name.split(" ", 2);
         firstName = splitName[0];
         if (splitName.length == 1) lastName = "N/A";
         else lastName = splitName[1];;
-    }
+    }*/
 
     public void emp_reg_back_btn_click(View view) {
         Intent intent = new Intent(this, LoginActivity.class);

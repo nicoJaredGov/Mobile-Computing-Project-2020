@@ -65,7 +65,7 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-        PHPRequest loginReq = new PHPRequest("https://lamp.ms.wits.ac.za/home/s2067058/");
+        PHPRequest loginReq = new PHPRequest("https://lamp.ms.wits.ac.za/home/s2094785/");
         ContentValues cvLogin = new ContentValues();
         cvLogin.put("user",username);
 

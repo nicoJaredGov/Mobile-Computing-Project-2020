@@ -35,9 +35,8 @@ public class CustomerRegistrationActivity extends AppCompatActivity {
     TextView cusRegTextView;
 
     RegSharedPrefs regSharedPref;
-    EditText nameField, emailField, passwordField, confirmField;
-    String name, email, password, confirmPassword, idNum;
-    String firstName, lastName;
+    EditText firstNameField, lastNameField, emailField, passwordField, confirmField;
+    String firstName, lastName, email, password, confirmPassword, idNum;
     Boolean responseBool;
 
     @Override
@@ -50,7 +49,8 @@ public class CustomerRegistrationActivity extends AppCompatActivity {
         nextButton = findViewById(R.id.nextBtn);
         registerTitleText = findViewById(R.id.register_title_text);
         cusRegTextView = findViewById(R.id.customerRegTextView);
-        nameField = findViewById(R.id.nameEditText);
+        firstNameField = findViewById(R.id.FirstNameEditText);
+        lastNameField = findViewById(R.id.LastNameEditText);
         emailField = findViewById(R.id.emailEditText);
         passwordField = findViewById(R.id.passwordEditText);
         confirmField = findViewById(R.id.confirmEditText);
@@ -58,12 +58,13 @@ public class CustomerRegistrationActivity extends AppCompatActivity {
     }
 
     public void callRegisterNextScreen(View view) throws InterruptedException {
-        name = nameField.getText().toString();
+        firstName = firstNameField.getText().toString();
+        lastName = lastNameField.getText().toString();
         email = emailField.getText().toString();
         password = passwordField.getText().toString();
         confirmPassword = confirmField.getText().toString();
 
-        if(name.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()){
+        if(firstName.isEmpty() || lastName.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()){
             cusRegTextView.setText("Fill in all details");
             return;
         }
@@ -72,9 +73,9 @@ public class CustomerRegistrationActivity extends AppCompatActivity {
             return;
         }
 
-        splitName(name);
+        //splitName(name);
 
-        PHPRequest customerRegReq = new PHPRequest("https://lamp.ms.wits.ac.za/home/s2067058/");
+        PHPRequest customerRegReq = new PHPRequest("https://lamp.ms.wits.ac.za/home/s2094785/");
         ContentValues cv = new ContentValues();
         cv.put("email",email);
         cv.put("fname",firstName);
@@ -91,7 +92,7 @@ public class CustomerRegistrationActivity extends AppCompatActivity {
             }
         });
 
-        regSharedPref.saveData(CustomerRegistrationActivity.this,name,email,password,idNum);
+        regSharedPref.saveData(CustomerRegistrationActivity.this,firstName,email,password,idNum);
         Intent intent = new Intent(this, TestActivity.class); //Intent to customer activity
 
         //Add Transition
@@ -111,12 +112,12 @@ public class CustomerRegistrationActivity extends AppCompatActivity {
         }
     }
 
-    public void splitName(String name) {
+    /*public void splitName(String name) {
         String[] splitName = name.split(" ", 2);
         firstName = splitName[0];
         if (splitName.length == 1) lastName = "N/A";
         else lastName = splitName[1];;
-    }
+    }*/
 
     public void processIdResponse(String r) throws JSONException {
         JSONArray ja = new JSONArray(r);
