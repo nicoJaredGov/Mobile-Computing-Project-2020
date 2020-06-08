@@ -1,7 +1,7 @@
 <?php
-$username = "s2067058";
-$password = "abc2067058";
-$database = "d2067058";
+$username = "";
+$password = "";
+$database = "";
 $link = mysqli_connect("127.0.0.1", $username, $password, $database);
  
 // Check connection
@@ -9,11 +9,10 @@ if($link === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }
 
-$fname = $_REQUEST["fname"];
-$lname = $_REQUEST["lname"];
-$password = $_REQUEST["password"];
+$custID = $_REQUEST["custID"];
+$empID = $_REQUEST["empID"];
 
-$sql = "INSERT INTO EMPLOYEES (EMP_FNAME, EMP_LNAME, EMP_PASSWORD) VALUES ('$fname', '$lname', '$password')";
+$sql = "INSERT INTO ORDERS (ORDER_STATUS, CUSTOMER_ID, EMPLOYEE_ID) VALUES ('Pending', '$custID', '$empID')";
 
 if(mysqli_query($link, $sql)){
     echo "TRUE";

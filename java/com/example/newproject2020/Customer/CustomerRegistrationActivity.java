@@ -104,8 +104,10 @@ public class CustomerRegistrationActivity extends AppCompatActivity {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
             ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(CustomerRegistrationActivity.this, pairs);
             startActivity(intent, options.toBundle());
+            finish();
         } else {
             startActivity(intent);
+            finish();
         }
     }
 
@@ -121,5 +123,10 @@ public class CustomerRegistrationActivity extends AppCompatActivity {
         JSONObject jo = ja.getJSONObject(0);
         idNum = jo.getString("CUSTOMER_ID");
         cusRegTextView.setText(idNum);
+    }
+
+    public void customer_registration_back_btn_click(View view) {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
     }
 }

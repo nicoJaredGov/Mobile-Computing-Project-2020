@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.newproject2020.LoginActivity;
 import com.example.newproject2020.PHPRequest;
 import com.example.newproject2020.RegSharedPrefs;
 import com.example.newproject2020.RequestHandler;
@@ -57,6 +58,11 @@ public class EmployeeRegistrationActivity extends AppCompatActivity {
         passwordField = findViewById(R.id.passwordEditText);
         confirmField = findViewById(R.id.confirmEditText);
 
+    }
+
+    public void customer_registration_back_btn_click(View view) {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
     }
 
     public void callRegisterNextScreen(View view) {
@@ -105,8 +111,10 @@ public class EmployeeRegistrationActivity extends AppCompatActivity {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
             ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(EmployeeRegistrationActivity.this, pairs);
             startActivity(intent, options.toBundle());
+            finish();
         } else {
             startActivity(intent);
+            finish();
         }
     }
 
@@ -117,4 +125,8 @@ public class EmployeeRegistrationActivity extends AppCompatActivity {
         else lastName = splitName[1];;
     }
 
+    public void emp_reg_back_btn_click(View view) {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
 }

@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.newproject2020.Customer.CustomerRegistrationActivity;
@@ -130,5 +131,10 @@ public class LoginActivity extends AppCompatActivity {
             mTextView.setText(passwordCounterOutput);
         }
 
+    }
+
+    public void goBack(View view) {
+        Intent intent = new Intent(this, UserActivity.class);
+        startActivity(intent);
     }
 }

@@ -1,21 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <group android:checkableBehavior="single">
+    <item
+        android:id="@+id/menu_settings"
+        android:icon="@drawable/ic_settings"
+        android:title="Settings"
+        app:showAsAction="ifRoom" />
 
-        <item
-            android:id="@+id/nav_theme"
-            android:title="Night mode"
-            android:icon="@drawable/ic_night_mode"/>
-        <item
-            android:id="@+id/nav_settings"
-            android:title="Settings"
-            android:icon="@drawable/ic_settings"/>
-        <item
-            android:id="@+id/nav_logout"
-            android:title="Log Out"
-            android:icon="@drawable/ic_reply"/>
+    <item
+        android:id="@+id/menu_logout"
+        android:icon="@drawable/ic_reply"
+        android:title="Log Out"
+        app:showAsAction="never" />
 
-    </group>
 
 </menu>

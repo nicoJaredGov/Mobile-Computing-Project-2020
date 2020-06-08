@@ -1,7 +1,7 @@
 <?php
-$username = "s2067058";
-$password = "abc2067058";
-$database = "d2067058";
+$username = "";
+$password = "";
+$database = "";
 $link = mysqli_connect("127.0.0.1", $username, $password, $database);
  
 // Check connection
