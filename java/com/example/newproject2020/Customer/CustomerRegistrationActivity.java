@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActivityOptions;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Pair;
@@ -12,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.newproject2020.LoginActivity;
 import com.example.newproject2020.PHPRequest;
@@ -34,8 +36,9 @@ public class CustomerRegistrationActivity extends AppCompatActivity {
 
     RegSharedPrefs regSharedPref;
     EditText nameField, emailField, passwordField, confirmField;
-    String name, email, password, confirmPassword;
+    String name, email, password, confirmPassword, idNum;
     String firstName, lastName;
+    Boolean responseBool;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +57,9 @@ public class CustomerRegistrationActivity extends AppCompatActivity {
 
     }
 
-    public void callRegisterNextScreen(View view) {
+    public void callRegisterNextScreen(View view) throws InterruptedException {
+        responseBool = false;
+        cusRegTextView.setText("");
         name = nameField.getText().toString();
         email = emailField.getText().toString();
         password = passwordField.getText().toString();
@@ -80,23 +85,15 @@ public class CustomerRegistrationActivity extends AppCompatActivity {
         customerRegReq.doRequest(this, "custReg.php", cv, new RequestHandler() {
             @Override
             public void processResponse(String response) throws JSONException {
-                if (!response.equals("TRUE")){
+                if (!response.equals("TRUE")) {
                     cusRegTextView.setText(response);
                     return;
                 }
             }
         });
 
-        ContentValues cv1 = new ContentValues();
-        customerRegReq.doRequest(this, "reqID.php", cv1, new RequestHandler() {
-            @Override
-            public void processResponse(String response) throws JSONException {
-                processIdResponse(response);
-            }
-        });
-
-        regSharedPref.saveData(CustomerRegistrationActivity.this,name,email,password,"1");
-        /*Intent intent = new Intent(this, TestActivity.class); //Intent to customer activity
+        regSharedPref.saveData(CustomerRegistrationActivity.this,name,email,password,idNum);
+        Intent intent = new Intent(this, TestActivity.class); //Intent to customer activity
 
         //Add Transition
         Pair[] pairs = new Pair[3];
@@ -110,7 +107,7 @@ public class CustomerRegistrationActivity extends AppCompatActivity {
             startActivity(intent, options.toBundle());
         } else {
             startActivity(intent);
-        }*/
+        }
     }
 
     public void splitName(String name) {
@@ -123,7 +120,8 @@ public class CustomerRegistrationActivity extends AppCompatActivity {
     public void processIdResponse(String r) throws JSONException {
         JSONArray ja = new JSONArray(r);
         JSONObject jo = ja.getJSONObject(0);
-        cusRegTextView.setText(r);
+        idNum = jo.getString("CUSTOMER_ID");
+        cusRegTextView.setText(idNum);
     }
 
     public void customer_registration_back_btn_click(View view) {
