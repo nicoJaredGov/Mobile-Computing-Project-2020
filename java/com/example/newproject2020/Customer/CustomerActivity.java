@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -15,10 +16,12 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.newproject2020.UserActivity;
 import com.example.project2020.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
@@ -32,6 +35,9 @@ public class CustomerActivity extends AppCompatActivity {
 
     private Customer1Fragment fragment1;
     private Customer2Fragment fragment2;
+
+    private FloatingActionButton addOrderButton;
+    private TextView testview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +59,9 @@ public class CustomerActivity extends AppCompatActivity {
         viewPagerAdapter.addFragment(fragment1, "Ongoing");
         viewPagerAdapter.addFragment(fragment2, "History");
         viewPager.setAdapter(viewPagerAdapter);
+
+        addOrderButton = findViewById(R.id.customerFAB);
+        testview = findViewById(R.id.TestViewFAB);
     }
 
     @Override
@@ -90,16 +99,20 @@ public class CustomerActivity extends AppCompatActivity {
 
     }
 
-    private class ViewPagerAdapter extends FragmentPagerAdapter {
+    public void customer_add_order_button(View view) {
+        testview.setText("clicked");
+    }
+
+    private static class ViewPagerAdapter extends FragmentPagerAdapter {
 
         private List<Fragment> fragments = new ArrayList<>();
         private List<String> fragmentTitle = new ArrayList<>();
 
-        public ViewPagerAdapter(@NonNull FragmentManager fm, int behavior) {
+        ViewPagerAdapter(@NonNull FragmentManager fm, int behavior) {
             super(fm, behavior);
         }
 
-        public void addFragment(Fragment fragment, String title) {
+        void addFragment(Fragment fragment, String title) {
             fragments.add(fragment);
             fragmentTitle.add(title);
         }
@@ -121,4 +134,5 @@ public class CustomerActivity extends AppCompatActivity {
             return fragmentTitle.get(position);
         }
     }
+
 }
