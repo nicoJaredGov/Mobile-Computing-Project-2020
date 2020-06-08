@@ -1,6 +1,6 @@
 <?php
 $username = "s2067058";
-$password = "";
+$password = "abc2067058";
 $database = "d2067058";
 $link = mysqli_connect("127.0.0.1", $username, $password, $database);
  
@@ -13,7 +13,7 @@ $fname = $_REQUEST["fname"];
 $lname = $_REQUEST["lname"];
 $password = $_REQUEST["password"];
 
-$sql = "INSERT INTO EMPLOYEES (FNAME, LNAME, PASSWORD) VALUES ('$fname', '$lname', '$password'");
+$sql = "INSERT INTO EMPLOYEES (FNAME, LNAME, PASSWORD) VALUES ('$fname', '$lname', '$password')";
 
 if(mysqli_query($link, $sql)){
     echo "TRUE";

@@ -1,11 +1,11 @@
 <?php
 $username = "s2067058";
-$password = "";
+$password = "abc2067058";
 $database = "d2067058";
 $link = mysqli_connect("127.0.0.1", $username, $password, $database);
 $output = array();
 
-if ($result = mysqli_query($link,"SELECT CUSTOMER_ID AS LastID FROM CUSTOMERS WHERE CUSTOMER_ID = @@Identity")){
+if ($result = mysqli_query($link,"SELECT * FROM CUSTOMERS ORDER BY CUSTOMER_ID DESC LIMIT 1")){
 	while ($row=$result->fetch_assoc()){
 		$output[] = $row;
 	}
