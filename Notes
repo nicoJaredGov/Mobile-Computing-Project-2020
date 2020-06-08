@@ -1,12 +1,12 @@
 Checklist:
 
 Login Page
-1. Pressed 'login', but no details filled in -> update empty textfield to 'Not all details filled in".
-2. Password or username incorrect -> update same textfield with same error message.
-3. Make register a smaller text link under login button.
+y1. Pressed 'login', but no details filled in -> update empty textfield to 'Not all details filled in".
+y2. Password or username incorrect -> update same textfield with same error message.
+y3. Make register a smaller text link under login button.
 
 Registration page for Staff
-1. Remove employee number, replace with name editField. Employee number should be auto_incremented in database.
+y1. Remove employee number, replace with name editField. Employee number should be auto_incremented in database.
 2. Two fields for Name and Surname - also in databases.
 3. Consider first time welcome pages - pop-up hints.
 

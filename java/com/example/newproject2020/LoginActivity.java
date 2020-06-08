@@ -31,9 +31,7 @@ public class LoginActivity extends AppCompatActivity {
     Button nextBtn;
     Button registerBtn;
 
-    String username;
-    String password;
-    String pos;
+    String username, password, pos;
     Integer passwordCounter;
 
     @Override
@@ -61,11 +59,14 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
         password = mPassword.getText().toString();
-        int usernameInt = Integer.parseInt(username);
+        if (password.isEmpty()){
+            mTextView.setText("Password missing");
+            return;
+        }
 
         PHPRequest loginReq = new PHPRequest("https://lamp.ms.wits.ac.za/home/s2067058/");
-        ContentValues cv = new ContentValues();
-        cv.put("user",usernameInt);
+        ContentValues cvLogin = new ContentValues();
+        cvLogin.put("user",username);
 
         String file;
         if (pos.startsWith("1")) file = "user0.php";
@@ -75,13 +76,12 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-        loginReq.doRequest(LoginActivity.this, file, cv, new RequestHandler() {
+        loginReq.doRequest(LoginActivity.this, file, cvLogin, new RequestHandler() {
             @Override
             public void processResponse(String response) throws JSONException {
-                processJSON(response);
+                    processJSON(response);
             }
         });
-
     }
 
     public void registerOnClick(View view){
@@ -100,6 +100,10 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void processJSON(String r) throws JSONException {
+        if(r.equals("[]")){
+            mTextView.setText("Username invalid");
+            return;
+        }
         JSONArray ja = new JSONArray(r);
         JSONObject jo = ja.getJSONObject(0);
 

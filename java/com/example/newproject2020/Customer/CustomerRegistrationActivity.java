@@ -58,8 +58,6 @@ public class CustomerRegistrationActivity extends AppCompatActivity {
     }
 
     public void callRegisterNextScreen(View view) throws InterruptedException {
-        responseBool = false;
-        cusRegTextView.setText("");
         name = nameField.getText().toString();
         email = emailField.getText().toString();
         password = passwordField.getText().toString();
@@ -78,6 +76,7 @@ public class CustomerRegistrationActivity extends AppCompatActivity {
 
         PHPRequest customerRegReq = new PHPRequest("https://lamp.ms.wits.ac.za/home/s2067058/");
         ContentValues cv = new ContentValues();
+        cv.put("email",email);
         cv.put("fname",firstName);
         cv.put("lname",lastName);
         cv.put("password",password);
