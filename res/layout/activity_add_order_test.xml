@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.newproject2020.AddOrderTestActivity">
+
+    <LinearLayout
+        android:id="@+id/order_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/custInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="customer ID"
+            android:inputType="number"/>
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/empInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="employee ID"
+            android:inputType="number"/>
+
+        <Button
+            android:id="@+id/AddOrderButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:onClick="onClick_add_order"
+            android:text="Add Order" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/order_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Test text" />
+
+    </LinearLayout>
+</LinearLayout>

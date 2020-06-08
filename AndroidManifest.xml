@@ -11,14 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name="com.example.newproject2020.TestActivity"></activity>
+        <activity android:name="com.example.newproject2020.UserActivity"></activity>
+        <activity android:name="com.example.newproject2020.TestActivity" />
         <activity android:name="com.example.newproject2020.Customer.CustomerRegistrationActivity" />
         <activity android:name="com.example.newproject2020.Employee.EmployeeRegistrationActivity" />
         <activity android:name="com.example.newproject2020.Customer.CustomerActivity" />
         <activity android:name="com.example.newproject2020.LoginActivity" />
-        <activity android:name="com.example.newproject2020.UserActivity">
-
+        <activity android:name="com.example.newproject2020.AddOrderTestActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

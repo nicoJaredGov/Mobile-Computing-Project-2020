@@ -63,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
         password = mPassword.getText().toString();
         int usernameInt = Integer.parseInt(username);
 
-        PHPRequest loginReq = new PHPRequest("https://lamp.ms.wits.ac.za/home/s2067058/");
+        PHPRequest loginReq = new PHPRequest("https://lamp.ms.wits.ac.za/home/s2094785/");
         ContentValues cv = new ContentValues();
         cv.put("user",usernameInt);
 

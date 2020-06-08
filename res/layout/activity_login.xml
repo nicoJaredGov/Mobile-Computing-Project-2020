@@ -41,7 +41,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:hint="Enter username"
+            android:hint="Enter username/email"
             android:textColorHint="#000000"
             app:boxStrokeColor="#000000"
             app:boxStrokeWidthFocused="2dp"
@@ -105,11 +105,13 @@
             android:id="@+id/registerBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
             android:onClick="registerOnClick"
             android:text="register"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:transitionName="transition_register_next_button"
-            app:backgroundTint="@color/black" />
+            app:backgroundTint="#00FFFFFF"
+            app:elevation="0dp" />
 
         <TextView
             android:id="@+id/testView"
