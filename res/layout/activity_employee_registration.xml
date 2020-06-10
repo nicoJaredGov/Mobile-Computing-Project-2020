@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:padding="30dp"
     android:background="@color/white"
-    tools:context="com.example.newproject2020.Employee.EmployeeRegistrationActivity">
+    tools:context="com.example.newproject2020.employee.EmployeeRegistrationActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

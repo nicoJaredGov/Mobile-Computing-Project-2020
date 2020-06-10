@@ -12,14 +12,27 @@ if($link === false){
 $fname = $_REQUEST["fname"];
 $lname = $_REQUEST["lname"];
 $password = $_REQUEST["password"];
+$employeeNum = $_REQUEST["employeeNum"];
 
-$sql = "INSERT INTO EMPLOYEES (EMP_FNAME, EMP_LNAME, EMP_PASSWORD) VALUES ('$fname', '$lname', '$password')";
+$sql1 = "SELECT COUNT(*) AS RESULT FROM EMPLOYEES WHERE EMPLOYEE_ID = '$employeeNum'";
+$check = mysqli_query($link, $sql1);
+if($check){
+    $check_count = mysqli_fetch_array($check);
+    if($check_count['RESULT'] == '1'){
+	echo "This username is already registered.";
+    } else{
+	$sql2 = "INSERT INTO EMPLOYEES (EMP_FNAME, EMP_LNAME, EMP_PASSWORD) VALUES ('$fname', '$lname', '$password')";
+	if(mysqli_query($link, $sql2)){
+    		echo "TRUE";
+	} else{
+    		echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+	}
+    }
 
-if(mysqli_query($link, $sql)){
-    echo "TRUE";
 } else{
     echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
 }
+
  
 mysqli_close($link);
 ?>

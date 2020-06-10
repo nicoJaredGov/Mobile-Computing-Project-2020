@@ -1,4 +1,4 @@
-package com.example.newproject2020.Customer;
+package com.example.newproject2020.customer;
 
 import androidx.appcompat.app.AppCompatActivity;
 

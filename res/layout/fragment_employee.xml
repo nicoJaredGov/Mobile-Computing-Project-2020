@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.newproject2020.customer.CustomerActivity">
+    tools:context="com.example.newproject2020.employee.EmployeeActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -14,22 +14,35 @@
         app:liftOnScroll="true">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/CustomerToolbar"
+            android:id="@+id/EmployeeToolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize" />
 
         <com.google.android.material.tabs.TabLayout
-            android:id="@+id/customer_tab_layout"
+            android:id="@+id/employee_tab_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white">
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Current Orders"/>
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="All Orders"/>
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Order History"/>
+
 
         </com.google.android.material.tabs.TabLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.viewpager.widget.ViewPager
-        android:id="@+id/customer_view_pager"
+        android:id="@+id/employee_view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />

@@ -1,14 +1,10 @@
-package com.example.newproject2020.Employee;
+package com.example.newproject2020.employee;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.ActivityOptions;
 import android.content.ContentValues;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,7 +15,6 @@ import com.example.newproject2020.LoginActivity;
 import com.example.newproject2020.PHPRequest;
 import com.example.newproject2020.RegSharedPrefs;
 import com.example.newproject2020.RequestHandler;
-import com.example.newproject2020.TestActivity;
 import com.example.project2020.R;
 
 import org.json.JSONException;
@@ -67,6 +62,7 @@ public class EmployeeRegistrationActivity extends AppCompatActivity {
     }
 
     public void callRegisterNextScreen(View view) {
+        empRegTextView.setText("");
         firstName = firstNameField.getText().toString();
         lastName = lastNameField.getText().toString();
         employeeNum = numField.getText().toString();
@@ -84,24 +80,25 @@ public class EmployeeRegistrationActivity extends AppCompatActivity {
 
         //splitName(name);
 
-        PHPRequest customerRegReq = new PHPRequest("https://lamp.ms.wits.ac.za/home/s2094785/");
+        PHPRequest empRegReq = new PHPRequest("https://lamp.ms.wits.ac.za/home/s2067058/");
         ContentValues cv = new ContentValues();
         cv.put("fname",firstName);
         cv.put("lname",lastName);
         cv.put("password",password);
+        cv.put("employeeNum",employeeNum);
 
-        customerRegReq.doRequest(this, "empReg.php", cv, new RequestHandler() {
+        empRegReq.doRequest(this, "empReg.php", cv, new RequestHandler() {
             @Override
             public void processResponse(String response) throws JSONException {
-                if (!response.equals("TRUE")){
+                if (response.equals("TRUE")){
                     empRegTextView.setText(response);
                     return;
                 }
             }
         });
 
-        regSharedPref.saveData(this,firstName," ",password,employeeNum);
-        Intent intent = new Intent(getApplicationContext(), TestActivity.class);
+        regSharedPref.saveData(this,firstName,lastName," ",password,employeeNum);
+        /*Intent intent = new Intent(getApplicationContext(), TestActivity.class);
 
         //Add Transition
         Pair[] pairs = new Pair[3];
@@ -117,7 +114,7 @@ public class EmployeeRegistrationActivity extends AppCompatActivity {
         } else {
             startActivity(intent);
             finish();
-        }
+        }*/
     }
 
     /*public void splitName(String name) {

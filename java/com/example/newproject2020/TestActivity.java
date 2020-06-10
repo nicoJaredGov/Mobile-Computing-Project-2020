@@ -15,12 +15,13 @@ import com.example.project2020.R;
 public class TestActivity extends AppCompatActivity {
 
     public static final String SHARED_PREFS = "regSharedPrefs";
-    public static final String FULL_NAME = "fullName";
+    public static final String FNAME = "firstName";
+    public static final String LNAME = "lastName";
     public static final String EMAIL = "email";
     public static final String PASSWORD = "password";
     public static final String ID_NUM = "userID";
     SharedPrefs sharedPrefs;
-    String name, email, password, num;
+    String firstName, lastName, email, password, num;
     TextView t;
     Button b;
 
@@ -32,13 +33,14 @@ public class TestActivity extends AppCompatActivity {
         b = findViewById(R.id.button);
 
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
-        name = sharedPreferences.getString(FULL_NAME," ");
+        firstName = sharedPreferences.getString(FNAME," ");
+        lastName = sharedPreferences.getString(LNAME," ");
         email = sharedPreferences.getString(EMAIL," ");
         password = sharedPreferences.getString(PASSWORD," ");
         num = sharedPreferences.getString(ID_NUM," ");
 
 
-        t.setText(name + " : "+email+ " : "+password+ " : "+num);
+        t.setText(firstName+ " : " +lastName + " : "+email+ " : "+password+ " : "+num);
 
     }
 

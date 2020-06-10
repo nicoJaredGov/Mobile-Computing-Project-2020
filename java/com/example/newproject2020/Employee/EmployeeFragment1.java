@@ -1,4 +1,4 @@
-package com.example.newproject2020.Customer;
+package com.example.newproject2020.employee;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.newproject2020.customer.Customer1Fragment;
 import com.example.project2020.R;
 
 /**
@@ -14,7 +15,7 @@ import com.example.project2020.R;
  * Use the {@link Customer1Fragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Customer1Fragment extends Fragment {
+public class EmployeeFragment1 extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -24,7 +25,7 @@ public class Customer1Fragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public Customer1Fragment() {
+    public EmployeeFragment1() {
         // Required empty public constructor
     }
 

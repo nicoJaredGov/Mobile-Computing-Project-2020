@@ -3,19 +3,17 @@ package com.example.newproject2020;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.ContentValues;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.newproject2020.Customer.CustomerRegistrationActivity;
-import com.example.newproject2020.Employee.EmployeeRegistrationActivity;
+import com.example.newproject2020.customer.CustomerActivity;
+import com.example.newproject2020.customer.CustomerRegistrationActivity;
+import com.example.newproject2020.employee.EmployeeRegistrationActivity;
 import com.example.project2020.R;
 
 import org.json.JSONArray;
@@ -65,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-        PHPRequest loginReq = new PHPRequest("https://lamp.ms.wits.ac.za/home/s2094785/");
+        PHPRequest loginReq = new PHPRequest("https://lamp.ms.wits.ac.za/home/s2067058/");
         ContentValues cvLogin = new ContentValues();
         cvLogin.put("user",username);
 
@@ -119,7 +117,18 @@ public class LoginActivity extends AppCompatActivity {
         testView.setText(jo.getString(pass));
         if (password.equals(jo.getString(pass))){
             mTextView.setText("Correct!");
-            //next activity
+            if (pos.startsWith("1")){
+                Intent intent = new Intent(this, CustomerActivity.class);
+                startActivity(intent);
+            }
+            else if (pos.startsWith("2")){
+                //employee Activity
+                testView.setText("Correct but not ready yet;)");
+            }
+            else {
+                testView.setText("Error with application.");
+                return;
+            }
         }
         else{
             passwordCounter--;
