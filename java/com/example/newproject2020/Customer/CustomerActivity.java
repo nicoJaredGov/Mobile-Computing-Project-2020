@@ -61,7 +61,7 @@ public class CustomerActivity extends AppCompatActivity {
         viewPager.setAdapter(viewPagerAdapter);
 
         addOrderButton = findViewById(R.id.customerFAB);
-        testview = findViewById(R.id.TestViewFAB);
+        testview = findViewById(R.id.customerFAB);
     }
 
     @Override
