@@ -2,9 +2,11 @@ package com.example.newproject2020.employee;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActivityOptions;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,6 +17,7 @@ import com.example.newproject2020.CustomerLoginActivity;
 import com.example.newproject2020.PHPRequest;
 import com.example.newproject2020.RegSharedPrefs;
 import com.example.newproject2020.RequestHandler;
+import com.example.newproject2020.TestActivity;
 import com.example.project2020.R;
 
 public class EmployeeRegistrationActivity extends AppCompatActivity {
@@ -89,7 +92,7 @@ public class EmployeeRegistrationActivity extends AppCompatActivity {
         });
 
         regSharedPref.saveData(this,firstName,lastName,employeeEmail,password,"",restaurant);
-        /*Intent intent = new Intent(getApplicationContext(), TestActivity.class);
+        Intent intent = new Intent(getApplicationContext(), EmployeeActivity.class);
 
         //Add Transition
         Pair[] pairs = new Pair[3];
@@ -105,7 +108,7 @@ public class EmployeeRegistrationActivity extends AppCompatActivity {
         } else {
             startActivity(intent);
             finish();
-        }*/
+        }
     }
 
     /*public void splitName(String name) {
