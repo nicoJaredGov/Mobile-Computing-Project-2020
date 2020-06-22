@@ -20,7 +20,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class LoginActivity extends AppCompatActivity {
+public class CustomerLoginActivity extends AppCompatActivity {
 
     TextView testView;
 
@@ -36,17 +36,13 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_customer_login);
         mTextView = findViewById(R.id.mTextView);
         mUsername = findViewById(R.id.usernameInput);
         mPassword = findViewById(R.id.passwordInput);
         nextBtn = findViewById(R.id.nextBtn);
 
         passwordCounter = 3; //counts down password attempts - only 3 allowed
-
-        if (getIntent().hasExtra("userType")){
-            pos = getIntent().getExtras().getString("userType"); // 1 = customer, 2 = employee
-        }
 
         testView = findViewById(R.id.testView); //remove
     }
@@ -67,15 +63,7 @@ public class LoginActivity extends AppCompatActivity {
         ContentValues cvLogin = new ContentValues();
         cvLogin.put("user",username);
 
-        String file;
-        if (pos.startsWith("1")) file = "user0.php";
-        else if (pos.startsWith("2")) file = "user1.php";
-        else{
-            mTextView.setText("Error with userType"+ " " + pos);
-            return;
-        }
-
-        loginReq.doRequest(LoginActivity.this, file, cvLogin, new RequestHandler() {
+        loginReq.doRequest(CustomerLoginActivity.this, "user0.php", cvLogin, new RequestHandler() {
             @Override
             public void processResponse(String response) throws JSONException {
                     processJSON(response);
@@ -84,18 +72,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void registerOnClick(View view){
-        if (pos.startsWith("1")){
-            Intent i = new Intent(this, CustomerRegistrationActivity.class);
-            startActivity(i);
-        }
-        else if (pos.startsWith("2")){
-            Intent i = new Intent(this, EmployeeRegistrationActivity.class);
-            startActivity(i);
-        }
-        else{
-            mTextView.setText("Error with registration path"+ " " + pos);
-            return;
-        }
+        Intent i = new Intent(this, CustomerRegistrationActivity.class);
+        startActivity(i);
     }
 
     public void processJSON(String r) throws JSONException {
@@ -106,29 +84,11 @@ public class LoginActivity extends AppCompatActivity {
         JSONArray ja = new JSONArray(r);
         JSONObject jo = ja.getJSONObject(0);
 
-        String pass;
-        if (pos.startsWith("1")) pass = "PASSWORD";
-        else if (pos.startsWith("2")) pass = "EMP_PASSWORD";
-        else{
-            testView.setText("Error");
-            return;
-        }
 
-        testView.setText(jo.getString(pass));
-        if (password.equals(jo.getString(pass))){
-            mTextView.setText("Correct!");
-            if (pos.startsWith("1")){
-                Intent intent = new Intent(this, CustomerActivity.class);
-                startActivity(intent);
-            }
-            else if (pos.startsWith("2")){
-                //employee Activity
-                testView.setText("Correct but not ready yet;)");
-            }
-            else {
-                testView.setText("Error with application.");
-                return;
-            }
+        testView.setText(jo.getString("PASSWORD"));
+        if (password.equals(jo.getString("PASSWORD"))){
+            Intent intent = new Intent(this, CustomerActivity.class);
+            startActivity(intent);
         }
         else{
             passwordCounter--;

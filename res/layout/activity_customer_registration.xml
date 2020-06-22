@@ -184,7 +184,7 @@
                 android:id="@+id/customerRegTextView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="bottom|center"></TextView>
+                android:gravity="bottom|center" />
 
 
         </LinearLayout>

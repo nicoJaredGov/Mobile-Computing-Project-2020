@@ -16,10 +16,6 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.newproject2020.UserActivity;
-import com.example.newproject2020.customer.Customer1Fragment;
-import com.example.newproject2020.customer.Customer2Fragment;
-import com.example.newproject2020.customer.CustomerActivity;
-import com.example.newproject2020.customer.CustomerSettingsActivity;
 import com.example.project2020.R;
 import com.google.android.material.tabs.TabLayout;
 
@@ -39,7 +35,7 @@ public class EmployeeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_employee);
+        setContentView(R.layout.activity_employee);
 
         toolbar = findViewById(R.id.EmployeeToolbar);
         setSupportActionBar(toolbar);

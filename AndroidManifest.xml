@@ -13,14 +13,15 @@
         android:theme="@style/AppTheme">
         <activity
             android:name="com.example.newproject2020.employee.EmployeeSettingsActivity"
-            android:label="@string/title_activity_employee_settings"></activity>
+            android:label="@string/title_activity_employee_settings" />
         <activity android:name="com.example.newproject2020.TestActivity" />
         <activity android:name="com.example.newproject2020.customer.CustomerRegistrationActivity" />
         <activity android:name="com.example.newproject2020.employee.EmployeeRegistrationActivity" />
         <activity android:name="com.example.newproject2020.customer.CustomerActivity" />
-        <activity android:name="com.example.newproject2020.UserActivity" />
-        <activity android:name="com.example.newproject2020.LoginActivity" />
-        <activity android:name="com.example.newproject2020.employee.EmployeeActivity">
+        <activity android:name="com.example.newproject2020.employee.EmployeeActivity" />
+        <activity android:name="com.example.newproject2020.CustomerLoginActivity" />
+        <activity android:name="com.example.newproject2020.EmployeeLoginActivity"/>
+        <activity android:name="com.example.newproject2020.UserActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -2,6 +2,8 @@ package com.example.newproject2020;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.ContentValues;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,8 +14,8 @@ import com.example.project2020.R;
 
 public class AddOrderTestActivity extends AppCompatActivity {
 
-    EditText customerInput;
-    EditText employeeInput;
+    EditText customerNameInput, customerEmailInput;
+    String custName, custEmail;
     Button mButton;
     TextView mTextView;
 
@@ -22,16 +24,29 @@ public class AddOrderTestActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_order_test);
 
-        customerInput = findViewById(R.id.custInput);
-        employeeInput = findViewById(R.id.empInput);
+        customerNameInput = findViewById(R.id.custNameInput);
+        customerEmailInput = findViewById(R.id.custEmailInput);
         mButton = findViewById(R.id.AddOrderButton);
         mTextView = findViewById(R.id.order_text_view);
     }
 
-    public void onClick_add_order(View order_view) {
-        String empID = employeeInput.getText().toString();
-        String custID = customerInput.getText().toString();
+    /*public void onClick_add_order(View order_view) {
+        custName = customerNameInput.getText().toString();
+        custEmail = customerNameInput.getText().toString();
 
-        new addOrder(this,custID,empID);
-    }
+        if(custName.isEmpty()) custName = "N/A";
+        if(custEmail.isEmpty()){
+            mTextView.setText("Customer email is missing");
+            return;
+        }
+
+
+
+        PHPRequest orderReq = new PHPRequest("https://lamp.ms.wits.ac.za/home/s2067058/");
+        ContentValues cv = new ContentValues();
+        cv.put("customer",custName);
+        cv.put("email",custEmail);
+        cv.put("")
+    }*/
+
 }

@@ -9,18 +9,21 @@ import static org.json.JSONObject.NULL;
 
 public class addOrder {
 
-    String customer_name;
-    String employee_number;
+    private String customerFirstName;
+    private String customerEmail;
+    private String employeeNumber;
     boolean confirmOrder;
 
-    public addOrder(Activity activity, String cust, String empNum) {
-        customer_name = cust;
-        employee_number = empNum;
+    public addOrder(Activity activity, String custName, String custEmail, String empNum) {
+        customerFirstName = custName;
+        customerEmail = custEmail;
+        employeeNumber = empNum;
 
         PHPRequest orderReq = new PHPRequest("https://lamp.ms.wits.ac.za/home/s2094785/");
         ContentValues cv = new ContentValues();
-        cv.put("customer",customer_name);
-        cv.put("employee",employee_number);
+        cv.put("customer",customerFirstName);
+        cv.put("email",custEmail);
+        cv.put("employee",employeeNumber);
 
         String file = "addOrder.php";
 

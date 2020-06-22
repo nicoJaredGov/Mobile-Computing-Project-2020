@@ -13,7 +13,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.newproject2020.LoginActivity;
+import com.example.newproject2020.CustomerLoginActivity;
 import com.example.newproject2020.PHPRequest;
 import com.example.newproject2020.RegSharedPrefs;
 import com.example.newproject2020.RequestHandler;
@@ -33,7 +33,7 @@ public class CustomerRegistrationActivity extends AppCompatActivity {
 
     RegSharedPrefs regSharedPref;
     EditText firstNameField, lastNameField, emailField, passwordField, confirmField;
-    String firstName, lastName, email, password, confirmPassword, idNum;
+    String firstName, lastName, email, password, confirmPassword, idNum, restaurant;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,7 +89,7 @@ public class CustomerRegistrationActivity extends AppCompatActivity {
             }
         });
 
-        regSharedPref.saveData(CustomerRegistrationActivity.this,firstName,lastName,email,password,idNum);
+        regSharedPref.saveData(CustomerRegistrationActivity.this,firstName,lastName,email,password,idNum,restaurant);
         Intent intent = new Intent(this, CustomerActivity.class); //Intent to customer activity
 
         //Add Transition
@@ -124,7 +124,7 @@ public class CustomerRegistrationActivity extends AppCompatActivity {
     }
 
     public void customer_registration_back_btn_click(View view) {
-        Intent intent = new Intent(this, LoginActivity.class);
+        Intent intent = new Intent(this, CustomerLoginActivity.class);
         startActivity(intent);
     }
 }

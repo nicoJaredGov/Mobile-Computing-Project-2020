@@ -2,6 +2,7 @@ package com.example.newproject2020;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +12,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.example.newproject2020.customer.CustomerActivity;
+import com.example.newproject2020.employee.EmployeeActivity;
 import com.example.project2020.R;
 
 public class UserActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
@@ -29,9 +32,15 @@ public class UserActivity extends AppCompatActivity implements AdapterView.OnIte
 
         /*String userTypeLoaded = sharedPref.loadData(this,userTypeSaved,"");
         if (!userTypeLoaded.isEmpty()){
-            Intent i = new Intent(this,MainActivity.class);
-            i.putExtra("userType",userTypeLoaded); //pos: 1 - customer, 2 - employee
+            Intent i;
+            if (userTypeLoaded == "1") {
+                i = new Intent(this, CustomerActivity.class);
+            }
+            else{
+                i = new Intent(this, EmployeeActivity.class);
+            }
             startActivity(i);
+            finish();
         }*/
 
         Spinner userSpinner = (Spinner) findViewById(R.id.userSpinner);
@@ -52,8 +61,13 @@ public class UserActivity extends AppCompatActivity implements AdapterView.OnIte
         }
         else{
             sharedPref.saveData(this,userTypeSaved,pos.toString());
-            Intent i = new Intent(this, LoginActivity.class);
-            i.putExtra("userType",pos.toString()); //pos: 1 - customer, 2 - employee
+            Intent i;
+            if (pos == 1) i = new Intent(this, CustomerLoginActivity.class);
+            else if (pos == 2) i = new Intent(this,EmployeeLoginActivity.class);
+            else{
+                userTextView.setText("Error with application. Try again.");
+                return;
+            }
             startActivity(i);
         }
     }

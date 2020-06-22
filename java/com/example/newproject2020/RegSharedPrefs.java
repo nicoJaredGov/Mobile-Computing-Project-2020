@@ -12,8 +12,9 @@ public class RegSharedPrefs {
     public static final String EMAIL = "email";
     public static final String PASSWORD = "password";
     public static final String ID_NUM = "userID";
+    public static final String RESTAURANT = "restaurant";
 
-    public static void saveData(Context c, String fName, String lName, String email, String password, String idNum){
+    public static void saveData(Context c, String fName, String lName, String email, String password, String idNum, String rest){
         SharedPreferences sharedPreferences = c.getSharedPreferences(SHARED_PREFS,Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(FNAME,fName);
@@ -21,6 +22,7 @@ public class RegSharedPrefs {
         editor.putString(EMAIL,email);
         editor.putString(PASSWORD,password);
         editor.putString(ID_NUM,idNum);
+        editor.putString(RESTAURANT,rest);
         editor.apply();
     }
 
@@ -47,6 +49,11 @@ public class RegSharedPrefs {
     public static String getIdNum(Context c, String defaultValue){
         SharedPreferences sharedPreferences = c.getSharedPreferences(SHARED_PREFS,Context.MODE_PRIVATE);
         return sharedPreferences.getString(ID_NUM,defaultValue);
+    }
+
+    public static String getRestaurant(Context c, String defaultValue){
+        SharedPreferences sharedPreferences = c.getSharedPreferences(SHARED_PREFS,Context.MODE_PRIVATE);
+        return sharedPreferences.getString(RESTAURANT,defaultValue);
     }
 
 }
