@@ -4,10 +4,18 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.newproject2020.Order;
+import com.example.newproject2020.OrderAdapter;
 import com.example.project2020.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -17,6 +25,12 @@ import com.example.project2020.R;
 public class Customer1Fragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
+    RecyclerView recyclerView;
+    OrderAdapter adapter;
+
+    List<Order> orderList;
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -52,6 +66,15 @@ public class Customer1Fragment extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+
+            orderList = new ArrayList<>();
+            recyclerView = (RecyclerView) findViewById(R.id.RecyclerViewCust1);
+            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+            orderList.add(new Order(1, "Customer 1", "Employee 1", "00:00", "Restaurant 1"));
+            orderList.add(new Order(2, "Customer 2", "Employee 2", "00:00", "Restaurant 2"));
+            adapter = new OrderAdapter(this,  orderList);
+            recyclerView.setAdapter(adapter);
         }
     }
 
@@ -61,4 +84,5 @@ public class Customer1Fragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_customer1, container, false);
     }
+
 }
