@@ -6,7 +6,7 @@ $link = mysqli_connect("127.0.0.1", $username, $password, $database);
 $output = array();
 
 $user = $_REQUEST["user"];
-if ($result = mysqli_query($link,"SELECT EMPLOYEE_ID, EMP_PASSWORD from EMPLOYEES where EMP_EMAIL='$user'")){
+if ($result = mysqli_query($link,"SELECT * from EMPLOYEES where EMP_EMAIL='$user'")){
         while ($row=$result->fetch_assoc()){
                 $output[] = $row;
         }

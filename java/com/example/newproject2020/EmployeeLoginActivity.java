@@ -31,6 +31,9 @@ public class EmployeeLoginActivity extends AppCompatActivity {
 
     String username, password;
     Integer passwordCounter;
+    RegSharedPrefs regSharedPrefs;
+    String firstName,lastName,employeeEmail,restaurant;
+    int idNum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,7 +88,14 @@ public class EmployeeLoginActivity extends AppCompatActivity {
 
         testView.setText(jo.getString("EMP_PASSWORD"));
         if (password.equals(jo.getString("EMP_PASSWORD"))){
-            mTextView.setText("Correct!");
+            //mTextView.setText("Correct!");
+            firstName = jo.getString("EMP_FNAME");
+            lastName = jo.getString("EMP_LNAME");
+            employeeEmail = jo.getString("EMP_EMAIL");
+            restaurant = jo.getString("RESTAURANT_NAME");
+            idNum = jo.getInt("EMPLOYEE_ID");
+            regSharedPrefs.saveData(this,firstName,lastName,employeeEmail,password,idNum,restaurant);
+
             Intent intent = new Intent(this, EmployeeActivity.class);
             startActivity(intent);
         }

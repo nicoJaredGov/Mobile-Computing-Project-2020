@@ -33,7 +33,8 @@ public class CustomerRegistrationActivity extends AppCompatActivity {
 
     RegSharedPrefs regSharedPref;
     EditText firstNameField, lastNameField, emailField, passwordField, confirmField;
-    String firstName, lastName, email, password, confirmPassword, idNum, restaurant;
+    String firstName, lastName, email, password, confirmPassword, restaurant;
+    int idNum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,7 +120,7 @@ public class CustomerRegistrationActivity extends AppCompatActivity {
     public void processIdResponse(String r) throws JSONException {
         JSONArray ja = new JSONArray(r);
         JSONObject jo = ja.getJSONObject(0);
-        idNum = jo.getString("CUSTOMER_ID");
+        idNum = jo.getInt("CUSTOMER_ID");
         cusRegTextView.setText(idNum);
     }
 

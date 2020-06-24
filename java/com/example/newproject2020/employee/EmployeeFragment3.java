@@ -6,13 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
-
-import com.example.newproject2020.customer.Customer1Fragment;
 import com.example.project2020.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link Customer1Fragment#newInstance} factory method to
+ * Use the {@link EmployeeFragment3#newInstance} factory method to
  * create an instance of this fragment.
  */
 public class EmployeeFragment3 extends Fragment {
@@ -38,8 +36,8 @@ public class EmployeeFragment3 extends Fragment {
      * @return A new instance of fragment Customer1Fragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static Customer1Fragment newInstance(String param1, String param2) {
-        Customer1Fragment fragment = new Customer1Fragment();
+    public static EmployeeFragment3 newInstance(String param1, String param2) {
+        EmployeeFragment3 fragment = new EmployeeFragment3();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -60,6 +58,6 @@ public class EmployeeFragment3 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_customer1, container, false);
+        return inflater.inflate(R.layout.fragment_employee3, container, false);
     }
 }

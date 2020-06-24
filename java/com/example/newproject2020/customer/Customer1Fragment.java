@@ -1,21 +1,21 @@
 package com.example.newproject2020.customer;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.newproject2020.Order;
-import com.example.newproject2020.OrderAdapter;
+import com.example.newproject2020.orders.Order;
+import com.example.newproject2020.orders.OrderAdapter;
 import com.example.project2020.R;
 
-import java.util.ArrayList;
 import java.util.List;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -60,21 +60,22 @@ public class Customer1Fragment extends Fragment {
         return fragment;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
+            /*mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
 
             orderList = new ArrayList<>();
-            recyclerView = (RecyclerView) findViewById(R.id.RecyclerViewCust1);
-            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+            recyclerView = (RecyclerView) recyclerView.findViewById();
+            recyclerView.setLayoutManager(new LinearLayoutManager());
 
-            orderList.add(new Order(1, "Customer 1", "Employee 1", "00:00", "Restaurant 1"));
-            orderList.add(new Order(2, "Customer 2", "Employee 2", "00:00", "Restaurant 2"));
+            orderList.add(new Order(1, "Customer 1", "Employee 1",  "Restaurant 1"));
+            orderList.add(new Order(2, "Customer 2", "Employee 2",  "Restaurant 2"));
             adapter = new OrderAdapter(this,  orderList);
-            recyclerView.setAdapter(adapter);
+            recyclerView.setAdapter(adapter);*/
         }
     }
 

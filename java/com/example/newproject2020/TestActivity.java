@@ -14,14 +14,8 @@ import com.example.project2020.R;
 
 public class TestActivity extends AppCompatActivity {
 
-    public static final String SHARED_PREFS = "regSharedPrefs";
-    public static final String FNAME = "firstName";
-    public static final String LNAME = "lastName";
-    public static final String EMAIL = "email";
-    public static final String PASSWORD = "password";
-    public static final String ID_NUM = "userID";
-    SharedPrefs sharedPrefs;
-    String firstName, lastName, email, password, num;
+    String firstName,lastName,email,password,restaurant;
+    int num;
     TextView t;
     Button b;
 
@@ -32,15 +26,16 @@ public class TestActivity extends AppCompatActivity {
         t = findViewById(R.id.textView);
         b = findViewById(R.id.button);
 
-        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
-        firstName = sharedPreferences.getString(FNAME," ");
-        lastName = sharedPreferences.getString(LNAME," ");
-        email = sharedPreferences.getString(EMAIL," ");
-        password = sharedPreferences.getString(PASSWORD," ");
-        num = sharedPreferences.getString(ID_NUM," ");
+        SharedPreferences sharedPreferences = getSharedPreferences(RegSharedPrefs.SHARED_PREFS, Context.MODE_PRIVATE);
+        firstName = sharedPreferences.getString(RegSharedPrefs.FNAME," ");
+        lastName = sharedPreferences.getString(RegSharedPrefs.LNAME," ");
+        email = sharedPreferences.getString(RegSharedPrefs.EMAIL," ");
+        password = sharedPreferences.getString(RegSharedPrefs.PASSWORD," ");
+        num = sharedPreferences.getInt(RegSharedPrefs.ID_NUM,0);
+        restaurant = sharedPreferences.getString(RegSharedPrefs.RESTAURANT,"");
 
 
-        t.setText(firstName+ " : " +lastName + " : "+email+ " : "+password+ " : "+num);
+        t.setText(firstName+ " : " +lastName + " : "+email+ " : "+password+ " : "+num + " : " +restaurant);
 
     }
 

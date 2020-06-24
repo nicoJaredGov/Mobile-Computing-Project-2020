@@ -11,9 +11,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.newproject2020.PHPRequest;
+import com.example.newproject2020.RequestHandler;
+import com.example.newproject2020.UserActivity;
 import com.example.newproject2020.customer.CustomerActivity;
 import com.example.newproject2020.customer.CustomerRegistrationActivity;
-import com.example.newproject2020.employee.EmployeeRegistrationActivity;
 import com.example.project2020.R;
 
 import org.json.JSONArray;
@@ -30,8 +32,11 @@ public class CustomerLoginActivity extends AppCompatActivity {
     Button nextBtn;
     Button registerBtn;
 
-    String username, password, pos;
+    String username, password;
     Integer passwordCounter;
+    RegSharedPrefs regSharedPrefs;
+    String firstName, lastName, customerEmail;
+    int idNum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +92,12 @@ public class CustomerLoginActivity extends AppCompatActivity {
 
         testView.setText(jo.getString("PASSWORD"));
         if (password.equals(jo.getString("PASSWORD"))){
+            firstName = jo.getString("FNAME");
+            lastName = jo.getString("LNAME");
+            customerEmail = jo.getString("CUSTOMER_EMAIL");
+            idNum = jo.getInt("CUSTOMER_ID");
+            regSharedPrefs.saveData(this,firstName,lastName,customerEmail,password,idNum,"");
+
             Intent intent = new Intent(this, CustomerActivity.class);
             startActivity(intent);
         }

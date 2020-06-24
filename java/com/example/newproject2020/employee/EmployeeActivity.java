@@ -52,8 +52,9 @@ public class EmployeeActivity extends AppCompatActivity {
         EmployeeActivity.ViewPagerAdapter viewPagerAdapter = new EmployeeActivity.ViewPagerAdapter(getSupportFragmentManager(), 0);
         viewPagerAdapter.addFragment(fragment1, "Current Orders");
         viewPagerAdapter.addFragment(fragment2, "All Orders");
-        viewPagerAdapter.addFragment(fragment3,"Order History");
+        viewPagerAdapter.addFragment(fragment3, "Order History");
         viewPager.setAdapter(viewPagerAdapter);
+
     }
 
     @Override

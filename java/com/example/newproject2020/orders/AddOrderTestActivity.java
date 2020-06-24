@@ -1,4 +1,4 @@
-package com.example.newproject2020;
+package com.example.newproject2020.orders;
 
 import androidx.appcompat.app.AppCompatActivity;
 

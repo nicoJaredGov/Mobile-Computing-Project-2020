@@ -19,7 +19,7 @@ $check = mysqli_query($link, $sql1);
 if($check){
     $check_count = mysqli_fetch_array($check);
     if($check_count['RESULT'] != '0'){
-	echo "This username is already registered.";
+	echo "This email is already registered.";
     } else{
 	$sql2 = "INSERT INTO CUSTOMERS (CUSTOMER_EMAIL,FNAME, LNAME, PASSWORD) VALUES ('$email','$fname', '$lname', '$password')";
 	if(mysqli_query($link, $sql2)){

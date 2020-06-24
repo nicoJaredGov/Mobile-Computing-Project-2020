@@ -91,7 +91,7 @@ public class EmployeeRegistrationActivity extends AppCompatActivity {
             }
         });
 
-        regSharedPref.saveData(this,firstName,lastName,employeeEmail,password,"",restaurant);
+        regSharedPref.saveData(this,firstName,lastName,employeeEmail,password,0,restaurant);
         Intent intent = new Intent(getApplicationContext(), EmployeeActivity.class);
 
         //Add Transition
