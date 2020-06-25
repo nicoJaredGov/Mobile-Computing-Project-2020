@@ -1,7 +1,6 @@
 package com.example.newproject2020.orders;
 
 import android.content.Context;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,12 +13,12 @@ import com.example.project2020.R;
 
 import java.util.List;
 
-public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHolder> {
+public class OrderAdapterCustHistory extends RecyclerView.Adapter<OrderAdapterCustHistory.OrderViewHolder> {
 
     private List<Order> orderList;
     private Context context;
 
-    public OrderAdapter(Context context,List<Order> orderList) {
+    public OrderAdapterCustHistory(Context context, List<Order> orderList) {
         this.orderList = orderList;
         this.context = context;
     }
@@ -27,12 +26,12 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
     @NonNull
     @Override
     public OrderViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-             View view = LayoutInflater.from(context).inflate(R.layout.cardview_emp_currorder,null);
-             return new OrderViewHolder(view);
+        View view = LayoutInflater.from(context).inflate(R.layout.cardview_customer_history,null);
+        return new OrderViewHolder(view);
     }
 
     public void onBindViewHolder(@NonNull OrderViewHolder holder, int position ) {
-                holder.bindHolder(position);
+        holder.bindHolder(position);
 
     }
 
@@ -43,22 +42,22 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
 
     class OrderViewHolder extends RecyclerView.ViewHolder {
 
-        TextView orderNumber, custName, orderTime, orderStatus; //empName
+        TextView orderNumber, orderTime, empName, restaurantName;
 
         public OrderViewHolder(@NonNull View itemView) {
             super(itemView);
             orderNumber = itemView.findViewById(R.id.TextViewOrderNumber);
-            custName = itemView.findViewById(R.id.TextViewCustomerName);
-            //empName = itemView.findViewById(R.id.TextViewEmployeeName);
+            empName = itemView.findViewById(R.id.TextViewEmployeeName);
             orderTime = itemView.findViewById(R.id.TextViewOrderTime);
-            orderStatus = itemView.findViewById(R.id.TextViewStatus);
+            restaurantName = itemView.findViewById(R.id.TextViewRestaurant);
         }
 
         public void bindHolder(int position){
             orderNumber.setText(String.valueOf(orderList.get(position).getOrderNumber()));
-            custName.setText(orderList.get(position).getCustomer());
-            orderTime.setText(String.valueOf(orderList.get(position).getTimeCreated()));
-            orderStatus.setText(orderList.get(position).getStatus());
+            empName.setText(orderList.get(position).getEmployee());
+            orderTime.setText(String.valueOf(orderList.get(position).getTimeCollected()));
+            restaurantName.setText(orderList.get(position).getRestaurant());
         }
     }
+
 }

@@ -1,7 +1,6 @@
 package com.example.newproject2020.orders;
 
 import android.content.Context;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,12 +13,12 @@ import com.example.project2020.R;
 
 import java.util.List;
 
-public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHolder> {
+public class OrderAdapterAllOrders extends RecyclerView.Adapter<OrderAdapterAllOrders.OrderViewHolder> {
 
     private List<Order> orderList;
     private Context context;
 
-    public OrderAdapter(Context context,List<Order> orderList) {
+    public OrderAdapterAllOrders(Context context, List<Order> orderList) {
         this.orderList = orderList;
         this.context = context;
     }
@@ -27,7 +26,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
     @NonNull
     @Override
     public OrderViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-             View view = LayoutInflater.from(context).inflate(R.layout.cardview_emp_currorder,null);
+             View view = LayoutInflater.from(context).inflate(R.layout.cardview_emp_allorder,null);
              return new OrderViewHolder(view);
     }
 
@@ -42,7 +41,6 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
     }
 
     class OrderViewHolder extends RecyclerView.ViewHolder {
-
         TextView orderNumber, custName, orderTime, orderStatus; //empName
 
         public OrderViewHolder(@NonNull View itemView) {
@@ -61,4 +59,6 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
             orderStatus.setText(orderList.get(position).getStatus());
         }
     }
+
+
 }

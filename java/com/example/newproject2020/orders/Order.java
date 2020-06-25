@@ -17,17 +17,19 @@ public class Order {
     private int orderNumber;
     private String customerEmail;
     private String employeeEmail;
-    private String time;
+    private String timeCreated;
+    private String timeCollected;
     private String restaurant;
     private int rating = 0;
     private String status = "pending";
 
-    public Order(int orderNumber, String time, String customer, String employee, String restaurant, int rate, String stat) {
+    public Order(int orderNumber, String timeCreated, String timeCollected, String customer, String employee, String restaurant, int rate, String stat) {
         this.orderNumber = orderNumber;
         this.customerEmail = customer;
         this.employeeEmail = employee;
         this.restaurant = restaurant;
-        this.time = time;
+        this.timeCreated = timeCreated;
+        this.timeCollected = timeCollected;
         this.rating = rate;
         this.status = stat;
 
@@ -48,9 +50,15 @@ public class Order {
         return employeeEmail;
     }
 
-    public String getTime() {
-        return time;
+    public String getTimeCreated() {
+        return timeCreated;
     }
+
+    public String getTimeCollected() {
+        return timeCollected;
+    }
+
+    public void setTimeCollected(String t){timeCollected = t;}
 
     public int getRating() {
         return rating;

@@ -53,23 +53,6 @@
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center">
-
-                <com.google.android.material.button.MaterialButton
-                android:id="@+id/updateBtn"
-                android:layout_width="150dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="2dp"
-                android:background="#000000"
-                android:onClick="user_button_click"
-                android:text="UPDATE"
-                android:textColor="@color/white" />
-
-            </LinearLayout>
-
         </LinearLayout>
 
 

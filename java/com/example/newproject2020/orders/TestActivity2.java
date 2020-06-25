@@ -1,4 +1,4 @@
-package com.example.newproject2020.orders;
+/*package com.example.newproject2020.orders;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -55,36 +55,12 @@ public class TestActivity2 extends AppCompatActivity {
         request.doRequest(this, "fetchOrders.php", cv, new RequestHandler() {
             @Override
             public void processResponse(String response) throws JSONException {
-                ArrayList<Order> orderArrayList = processJSON(response);
 
-                recyclerView = findViewById(R.id.RecyclerView);
-                recyclerView.setHasFixedSize(true);
-                layoutManager = new LinearLayoutManager(TestActivity2.this);
-                adapter = new OrderAdapter(orderArrayList);
-                recyclerView.setLayoutManager(layoutManager);
-                recyclerView.setAdapter(adapter);
             }
         });
     }
 
     public ArrayList<Order> processJSON(String response) throws JSONException {
-        ArrayList<Order> orders = new ArrayList<>();
-        JSONArray ja = new JSONArray(response);
-
-        for(int i=0; i<ja.length(); i++){
-
-            JSONObject jo = ja.getJSONObject(i);
-            orders.add(new Order(jo.getInt("ORDER_ID"),
-                    jo.getString("TIME_CREATED"),
-                    jo.getString("FNAME") + " " + jo.getString("LNAME"),
-                    employeeName,
-                    restaurant,
-                    Integer.parseInt(jo.getString("RATING")),
-                    jo.getString("ORDER_STATUS")));
-
-        }
-
-        return  orders;
-    }
-
 }
+}
+ */

@@ -1,7 +1,6 @@
 package com.example.newproject2020.orders;
 
 import android.content.Context;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,12 +13,12 @@ import com.example.project2020.R;
 
 import java.util.List;
 
-public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHolder> {
+public class OrderAdapterEmpHistory extends RecyclerView.Adapter<OrderAdapterEmpHistory.OrderViewHolder> {
 
     private List<Order> orderList;
     private Context context;
 
-    public OrderAdapter(Context context,List<Order> orderList) {
+    public OrderAdapterEmpHistory(Context context, List<Order> orderList) {
         this.orderList = orderList;
         this.context = context;
     }
@@ -27,12 +26,12 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
     @NonNull
     @Override
     public OrderViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-             View view = LayoutInflater.from(context).inflate(R.layout.cardview_emp_currorder,null);
-             return new OrderViewHolder(view);
+        View view = LayoutInflater.from(context).inflate(R.layout.cardview_emp_history, null);
+        return new OrderViewHolder(view);
     }
 
-    public void onBindViewHolder(@NonNull OrderViewHolder holder, int position ) {
-                holder.bindHolder(position);
+    public void onBindViewHolder(@NonNull OrderViewHolder holder, int position) {
+        holder.bindHolder(position);
 
     }
 
@@ -54,7 +53,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
             orderStatus = itemView.findViewById(R.id.TextViewStatus);
         }
 
-        public void bindHolder(int position){
+        public void bindHolder(int position) {
             orderNumber.setText(String.valueOf(orderList.get(position).getOrderNumber()));
             custName.setText(orderList.get(position).getCustomer());
             orderTime.setText(String.valueOf(orderList.get(position).getTimeCreated()));

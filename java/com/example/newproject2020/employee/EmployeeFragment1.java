@@ -39,10 +39,6 @@ public class EmployeeFragment1 extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
-    public void loadOrders(){
-
-    }
-
     public ArrayList<Order> processJSON(String response) throws JSONException {
         ArrayList<Order> orders = new ArrayList<>();
         JSONArray ja = new JSONArray(response);
@@ -52,6 +48,7 @@ public class EmployeeFragment1 extends Fragment {
             JSONObject jo = ja.getJSONObject(i);
             orders.add(new Order(jo.getInt("ORDER_ID"),
                     jo.getString("TIME_CREATED"),
+                    jo.getString("TIME_COLLECTED"),
                     jo.getString("FNAME") + " " + jo.getString("LNAME"),
                     employeeName,
                     restaurant,
@@ -78,6 +75,7 @@ public class EmployeeFragment1 extends Fragment {
         PHPRequest request = new PHPRequest("https://lamp.ms.wits.ac.za/home/s2067058/");
         ContentValues cv = new ContentValues();
         cv.put("empEmail",employeeEmail);
+        cv.put("restaurant",restaurant);
         cv.put("choice",1);
 
         request.doRequest(this.getActivity(), "fetchOrders.php", cv, new RequestHandler() {
@@ -88,7 +86,7 @@ public class EmployeeFragment1 extends Fragment {
                 recyclerView = listItemsView.findViewById(R.id.RecyclerViewEmp1);
                 recyclerView.setHasFixedSize(true);
                 layoutManager = new LinearLayoutManager(getContext());
-                adapter = new OrderAdapter(orderArrayList);
+                adapter = new OrderAdapter(getContext(),orderArrayList);
                 recyclerView.setLayoutManager(layoutManager);
                 recyclerView.setAdapter(adapter);
             }

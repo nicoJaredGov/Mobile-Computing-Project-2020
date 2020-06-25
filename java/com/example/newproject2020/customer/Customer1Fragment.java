@@ -1,89 +1,96 @@
 package com.example.newproject2020.customer;
 
-import android.os.Build;
+import android.content.ContentValues;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.newproject2020.orders.Order;
 import com.example.newproject2020.orders.OrderAdapter;
+import com.example.newproject2020.PHPRequest;
+import com.example.newproject2020.RegSharedPrefs;
+import com.example.newproject2020.RequestHandler;
+import com.example.newproject2020.orders.OrderAdapterCustOrders;
+import com.example.newproject2020.orders.OrderAdapterEmpHistory;
 import com.example.project2020.R;
 
-import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
+import java.util.ArrayList;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Customer1Fragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class Customer1Fragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 
+    SharedPreferences sharedPreferences;
+    String customerEmail, customerName;
     RecyclerView recyclerView;
-    OrderAdapter adapter;
+    RecyclerView.LayoutManager layoutManager;
+    OrderAdapterCustOrders adapter;
+    View listItemsView;
 
-    List<Order> orderList;
-
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public Customer1Fragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Customer1Fragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static Customer1Fragment newInstance(String param1, String param2) {
-        Customer1Fragment fragment = new Customer1Fragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            /*mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+    }
 
-            orderList = new ArrayList<>();
-            recyclerView = (RecyclerView) recyclerView.findViewById();
-            recyclerView.setLayoutManager(new LinearLayoutManager());
+    public ArrayList<Order> processJSON(String response) throws JSONException {
+        ArrayList<Order> orders = new ArrayList<>();
+        JSONArray ja = new JSONArray(response);
 
-            orderList.add(new Order(1, "Customer 1", "Employee 1",  "Restaurant 1"));
-            orderList.add(new Order(2, "Customer 2", "Employee 2",  "Restaurant 2"));
-            adapter = new OrderAdapter(this,  orderList);
-            recyclerView.setAdapter(adapter);*/
+        for(int i=0; i<ja.length(); i++){
+            JSONObject jo = ja.getJSONObject(i);
+            orders.add(new Order(jo.getInt("ORDER_ID"),
+                    jo.getString("TIME_CREATED"),
+                    jo.getString("TIME_COLLECTED"),
+                    customerName,
+                    jo.getString("EMP_FNAME")+" "+jo.getString("EMP_LNAME"),
+                    jo.getString("RESTAURANT_NAME"),
+                    Integer.parseInt(jo.getString("RATING")),
+                    jo.getString("ORDER_STATUS")));
         }
+
+        return  orders;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_customer1, container, false);
-    }
+        listItemsView = inflater.inflate(R.layout.fragment_customer1, container, false);
 
+        sharedPreferences = getActivity().getSharedPreferences(RegSharedPrefs.SHARED_PREFS, Context.MODE_PRIVATE);
+        customerEmail = sharedPreferences.getString(RegSharedPrefs.EMAIL, "");
+        customerName = sharedPreferences.getString(RegSharedPrefs.FNAME, "")
+                + sharedPreferences.getString(RegSharedPrefs.LNAME, "");
+
+        PHPRequest request = new PHPRequest("https://lamp.ms.wits.ac.za/home/s2067058/");
+        ContentValues cv = new ContentValues();
+        cv.put("customerEmail",customerEmail);
+        cv.put("choice",1);
+
+        request.doRequest(this.getActivity(), "fetchOrdersCustomer.php", cv, new RequestHandler() {
+            @Override
+            public void processResponse(String response) throws JSONException {
+                ArrayList<Order> orderArrayList = processJSON(response);
+
+                recyclerView = listItemsView.findViewById(R.id.RecyclerViewCus);
+                recyclerView.setHasFixedSize(true);
+                layoutManager = new LinearLayoutManager(getContext());
+                adapter = new OrderAdapterCustOrders(getContext(),orderArrayList);
+                recyclerView.setLayoutManager(layoutManager);
+                recyclerView.setAdapter(adapter);
+            }
+        });
+
+
+        return listItemsView;
+    }
 }

@@ -1,14 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/cardview_dark_background"
     tools:context="com.example.newproject2020.customer.Customer1Fragment"
     android:padding="20dp">
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/customerFAB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="30dp"
+        android:src="@drawable/ic_add"
+        app:backgroundTint="#FFFFFF"
+        app:elevation="10dp"
+        app:rippleColor="#000000"
+        android:onClick="customer_add_order_button"
+        tools:ignore="OnClick" />
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/RecyclerViewCust1"
+        tools:listitem="@layout/cardview_customer_order"
+        android:id="@+id/RecyclerViewCus"
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
@@ -24,19 +39,7 @@
         app:layout_constraintStart_toStartOf="parent"
         android:theme="@style/ThemeOverlay.MaterialComponents.Dark">
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/customerFAB"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="30dp"
-            android:src="@drawable/ic_add"
-            app:backgroundTint="@color/white"
-            app:elevation="10dp"
-            app:rippleColor="#000000"
-            android:onClick="customer_add_order_button"
-            tools:ignore="OnClick" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
