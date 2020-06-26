@@ -1,72 +1,66 @@
-package com.example.newproject2020.customer;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.viewpager.widget.ViewPager;
+package com.example.newproject2020.employee;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import com.example.newproject2020.UserActivity;
 import com.example.project2020.R;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CustomerActivity extends AppCompatActivity {
+public class EmployeeActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
     private ViewPager viewPager;
     private TabLayout tabLayout;
 
-    private Customer1Fragment fragment1;
-    private Customer2Fragment fragment2;
-
-    private FloatingActionButton addOrderButton;
-    private TextView testview;
+    private EmployeeFragment1 fragment1;
+    private EmployeeFragment2 fragment2;
+    private EmployeeFragment3 fragment3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_customer);
+        setContentView(R.layout.activity_employee);
 
-        toolbar = findViewById(R.id.CustomerToolbar);
+        toolbar = findViewById(R.id.EmployeeToolbar);
         setSupportActionBar(toolbar);
 
-        viewPager = findViewById(R.id.customer_view_pager);
-        tabLayout = findViewById(R.id.customer_tab_layout);
+        viewPager = findViewById(R.id.employee_view_pager);
+        tabLayout = findViewById(R.id.employee_tab_layout);
 
-        fragment1 = new Customer1Fragment();
-        fragment2 = new Customer2Fragment();
+        fragment1 = new EmployeeFragment1();
+        fragment2 = new EmployeeFragment2();
+        fragment3 = new EmployeeFragment3();
 
         tabLayout.setupWithViewPager(viewPager);
 
-        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), 0);
-        viewPagerAdapter.addFragment(fragment1, "Ongoing");
-        viewPagerAdapter.addFragment(fragment2, "History");
+        EmployeeActivity.ViewPagerAdapter viewPagerAdapter = new EmployeeActivity.ViewPagerAdapter(getSupportFragmentManager(), 0);
+        viewPagerAdapter.addFragment(fragment1, "Current Orders");
+        viewPagerAdapter.addFragment(fragment2, "All Orders");
+        viewPagerAdapter.addFragment(fragment3, "Order History");
         viewPager.setAdapter(viewPagerAdapter);
 
-        addOrderButton = findViewById(R.id.customerFAB);
-        testview = findViewById(R.id.customerFAB);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
-        getMenuInflater().inflate(R.menu.customer_menu, menu);
+        getMenuInflater().inflate(R.menu.employee_menu, menu);
         return true;
     }
 
@@ -85,7 +79,7 @@ public class CustomerActivity extends AppCompatActivity {
     }
 
     public void openSettingsActivity() {
-        Intent intent = new Intent(this, CustomerSettingsActivity.class);
+        Intent intent = new Intent(this, EmployeeSettingsActivity.class);
         startActivity(intent);
     }
 
@@ -98,20 +92,16 @@ public class CustomerActivity extends AppCompatActivity {
 
     }
 
-    public void customer_add_order_button(View view) {
-        testview.setText("clicked");
-    }
-
-    private static class ViewPagerAdapter extends FragmentPagerAdapter {
+    private class ViewPagerAdapter extends FragmentPagerAdapter {
 
         private List<Fragment> fragments = new ArrayList<>();
         private List<String> fragmentTitle = new ArrayList<>();
 
-        ViewPagerAdapter(@NonNull FragmentManager fm, int behavior) {
+        public ViewPagerAdapter(@NonNull FragmentManager fm, int behavior) {
             super(fm, behavior);
         }
 
-        void addFragment(Fragment fragment, String title) {
+        public void addFragment(Fragment fragment, String title) {
             fragments.add(fragment);
             fragmentTitle.add(title);
         }
@@ -133,5 +123,4 @@ public class CustomerActivity extends AppCompatActivity {
             return fragmentTitle.get(position);
         }
     }
-
 }

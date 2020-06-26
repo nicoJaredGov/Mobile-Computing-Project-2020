@@ -16,18 +16,18 @@ import java.util.List;
 
 public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHolder> {
 
-    private Context mContext;
+    private Context mCtx;
     private List<Order> orderList;
 
-    public OrderAdapter(Customer1Fragment mContext, List<Order> orderList) {
-        this.mContext = mContext;
+    public OrderAdapter(Context mContext, List<Order> orderList) {
+        this.mCtx = mContext;
         this.orderList = orderList;
     }
 
     @NonNull
     @Override
     public OrderViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(mContext);
+        LayoutInflater inflater = LayoutInflater.from(mCtx);
         View view = inflater.inflate(R.layout.fragment_customer1, null);
         return new OrderViewHolder(view);
     }

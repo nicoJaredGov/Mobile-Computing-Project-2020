@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:padding="30dp"
     android:background="@color/white"
-    tools:context="com.example.newproject2020.Customer.CustomerRegistrationActivity">
+    tools:context="com.example.newproject2020.customer.CustomerRegistrationActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,9 +18,9 @@
             android:id="@+id/registration_back_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="customer_registration_back_btn_click"
             android:padding="5dp"
             android:src="@drawable/ic_back_button_black"
-            android:onClick="customer_registration_back_btn_click"
             android:transitionName="transition_registration_back_button" />
 
         <TextView
@@ -47,41 +47,41 @@
                 android:orientation="horizontal">
 
                 <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/FirstNameInput"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="170dp"
-                android:layout_height="wrap_content"
-                android:hint="First name"
-                android:textColorHint="#000000"
-                app:boxStrokeColor="#000000"
-                app:boxStrokeWidthFocused="2dp"
-                app:hintTextColor="#000000"
-                app:startIconDrawable="@drawable/ic_profile_white"
-                app:startIconTint="#000000">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/FirstNameEditText"
-                    android:layout_width="match_parent"
+                    android:id="@+id/FirstNameInput"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="170dp"
                     android:layout_height="wrap_content"
-                    android:inputType="text">
+                    android:hint="First name"
+                    android:textColorHint="#000000"
+                    app:boxStrokeColor="#000000"
+                    app:boxStrokeWidthFocused="2dp"
+                    app:hintTextColor="#000000"
+                    app:startIconDrawable="@drawable/ic_profile_white"
+                    app:startIconTint="#000000">
 
-                </com.google.android.material.textfield.TextInputEditText>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/FirstNameEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    </com.google.android.material.textfield.TextInputEditText>
+
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/LastNameInput"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="175dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
                     android:hint="Surname"
                     android:textColorHint="#000000"
                     app:boxStrokeColor="#000000"
                     app:boxStrokeWidthFocused="2dp"
                     app:hintTextColor="#000000"
                     app:startIconDrawable="@drawable/ic_profile_white"
-                    app:startIconTint="#000000"
-                    android:layout_marginLeft="5dp">
+                    app:startIconTint="#000000">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/LastNameEditText"
@@ -151,10 +151,10 @@
                     app:boxStrokeColor="#000000"
                     app:boxStrokeWidthFocused="2dp"
                     app:hintTextColor="#000000"
-                    app:startIconDrawable="@drawable/ic_password_white"
-                    app:startIconTint="#000000"
                     app:passwordToggleEnabled="true"
-                    app:passwordToggleTint="#000000">
+                    app:passwordToggleTint="#000000"
+                    app:startIconDrawable="@drawable/ic_password_white"
+                    app:startIconTint="#000000">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/confirmEditText"
@@ -175,16 +175,16 @@
                 android:layout_marginTop="20dp"
                 android:backgroundTint="@color/black"
                 android:elevation="5dp"
+                android:onClick="callRegisterNextScreen"
                 android:text="next"
                 android:textColor="@color/white"
-                android:transitionName="transition_register_next_button"
-                android:onClick="callRegisterNextScreen"/>
+                android:transitionName="transition_register_next_button" />
 
             <TextView
                 android:id="@+id/customerRegTextView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="bottom|center"></TextView>
+                android:gravity="bottom|center" />
 
 
         </LinearLayout>

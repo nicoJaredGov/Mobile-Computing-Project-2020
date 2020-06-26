@@ -1,12 +1,10 @@
-package com.example.newproject2020.Employee;
+package com.example.newproject2020.employee;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActivityOptions;
 import android.content.ContentValues;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Pair;
 import android.view.View;
@@ -15,22 +13,14 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.newproject2020.LoginActivity;
+import com.example.newproject2020.CustomerLoginActivity;
 import com.example.newproject2020.PHPRequest;
 import com.example.newproject2020.RegSharedPrefs;
 import com.example.newproject2020.RequestHandler;
 import com.example.newproject2020.TestActivity;
 import com.example.project2020.R;
 
-import org.json.JSONException;
-
 public class EmployeeRegistrationActivity extends AppCompatActivity {
-
-    //Shared Preferences
-    public static final String SHARED_PREFS = "empSharedPrefs";
-    public static final String FULL_NAME = "fullName";
-    public static final String PASSWORD = "password";
-    public static final String ID_NUM = "userID";
 
     //Variables
     ImageView backButton;
@@ -39,8 +29,8 @@ public class EmployeeRegistrationActivity extends AppCompatActivity {
     TextView empRegTextView;
 
     RegSharedPrefs regSharedPref;
-    EditText firstNameField, lastNameField, numField, passwordField, confirmField;
-    String employeeNum, password, confirmPassword;
+    EditText firstNameField, lastNameField, empEmailField, passwordField, confirmField, restaurantField;
+    String employeeEmail, password, confirmPassword, restaurant;
     String firstName, lastName;
 
     @Override
@@ -53,27 +43,26 @@ public class EmployeeRegistrationActivity extends AppCompatActivity {
         nextButton = findViewById(R.id.nextBtn);
         registerTitleText = findViewById(R.id.register_title_text);
         empRegTextView = findViewById(R.id.empRegTextView);
+
         firstNameField = findViewById(R.id.FirstNameEditText);
         lastNameField = findViewById(R.id.LastNameEditText);
-        numField = findViewById(R.id.empNumEditText);
+        empEmailField = findViewById(R.id.empEmailEditText);
         passwordField = findViewById(R.id.passwordEditText);
         confirmField = findViewById(R.id.confirmEditText);
+        restaurantField = findViewById(R.id.restaurantEditText);
 
-    }
-
-    public void customer_registration_back_btn_click(View view) {
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
     }
 
     public void callRegisterNextScreen(View view) {
+        empRegTextView.setText("");
         firstName = firstNameField.getText().toString();
         lastName = lastNameField.getText().toString();
-        employeeNum = numField.getText().toString();
+        employeeEmail = empEmailField.getText().toString();
         password = passwordField.getText().toString();
         confirmPassword = confirmField.getText().toString();
+        restaurant = restaurantField.getText().toString();
 
-        if(firstName.isEmpty() || lastName.isEmpty() || employeeNum.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()){
+        if(firstName.isEmpty() || lastName.isEmpty() || employeeEmail.isEmpty() || password.isEmpty() || confirmPassword.isEmpty() || restaurant.isEmpty()){
             empRegTextView.setText("Fill in all details");
             return;
         }
@@ -84,15 +73,17 @@ public class EmployeeRegistrationActivity extends AppCompatActivity {
 
         //splitName(name);
 
-        PHPRequest customerRegReq = new PHPRequest("https://lamp.ms.wits.ac.za/home/s2094785/");
+        PHPRequest empRegReq = new PHPRequest("https://lamp.ms.wits.ac.za/home/s2067058/");
         ContentValues cv = new ContentValues();
         cv.put("fname",firstName);
         cv.put("lname",lastName);
         cv.put("password",password);
+        cv.put("employeeEmail",employeeEmail);
+        cv.put("restaurant",restaurant);
 
-        customerRegReq.doRequest(this, "empReg.php", cv, new RequestHandler() {
+        empRegReq.doRequest(this, "empReg.php", cv, new RequestHandler() {
             @Override
-            public void processResponse(String response) throws JSONException {
+            public void processResponse(String response) {
                 if (!response.equals("TRUE")){
                     empRegTextView.setText(response);
                     return;
@@ -100,8 +91,8 @@ public class EmployeeRegistrationActivity extends AppCompatActivity {
             }
         });
 
-        regSharedPref.saveData(this,firstName," ",password,employeeNum);
-        Intent intent = new Intent(getApplicationContext(), TestActivity.class);
+        regSharedPref.saveData(this,firstName,lastName,employeeEmail,password,0,restaurant);
+        Intent intent = new Intent(getApplicationContext(), EmployeeActivity.class);
 
         //Add Transition
         Pair[] pairs = new Pair[3];
@@ -128,7 +119,7 @@ public class EmployeeRegistrationActivity extends AppCompatActivity {
     }*/
 
     public void emp_reg_back_btn_click(View view) {
-        Intent intent = new Intent(this, LoginActivity.class);
+        Intent intent = new Intent(this, CustomerLoginActivity.class);
         startActivity(intent);
     }
 }

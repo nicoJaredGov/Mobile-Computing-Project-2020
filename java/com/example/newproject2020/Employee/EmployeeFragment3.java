@@ -1,4 +1,4 @@
-package com.example.newproject2020.customer;
+package com.example.newproject2020.employee;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -17,7 +17,6 @@ import com.example.newproject2020.orders.OrderAdapter;
 import com.example.newproject2020.PHPRequest;
 import com.example.newproject2020.RegSharedPrefs;
 import com.example.newproject2020.RequestHandler;
-import com.example.newproject2020.orders.OrderAdapterCustOrders;
 import com.example.newproject2020.orders.OrderAdapterEmpHistory;
 import com.example.project2020.R;
 
@@ -27,13 +26,13 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class Customer1Fragment extends Fragment {
+public class EmployeeFragment3 extends Fragment {
 
     SharedPreferences sharedPreferences;
-    String customerEmail, customerName;
+    String employeeEmail, employeeName, restaurant;
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
-    OrderAdapterCustOrders adapter;
+    OrderAdapterEmpHistory adapter;
     View listItemsView;
 
     @Override
@@ -46,15 +45,17 @@ public class Customer1Fragment extends Fragment {
         JSONArray ja = new JSONArray(response);
 
         for(int i=0; i<ja.length(); i++){
+
             JSONObject jo = ja.getJSONObject(i);
             orders.add(new Order(jo.getInt("ORDER_ID"),
                     jo.getString("TIME_CREATED"),
                     jo.getString("TIME_COLLECTED"),
-                    customerName,
-                    jo.getString("EMP_FNAME")+" "+jo.getString("EMP_LNAME"),
-                    jo.getString("RESTAURANT_NAME"),
+                    jo.getString("FNAME") + " " + jo.getString("LNAME"),
+                    employeeName,
+                    restaurant,
                     Integer.parseInt(jo.getString("RATING")),
                     jo.getString("ORDER_STATUS")));
+
         }
 
         return  orders;
@@ -64,27 +65,29 @@ public class Customer1Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        listItemsView = inflater.inflate(R.layout.fragment_customer1, container, false);
+        listItemsView = inflater.inflate(R.layout.fragment_employee3, container, false);
 
         sharedPreferences = getActivity().getSharedPreferences(RegSharedPrefs.SHARED_PREFS, Context.MODE_PRIVATE);
-        customerEmail = sharedPreferences.getString(RegSharedPrefs.EMAIL, "");
-        customerName = sharedPreferences.getString(RegSharedPrefs.FNAME, "")
+        employeeEmail = sharedPreferences.getString(RegSharedPrefs.EMAIL, "");
+        employeeName = sharedPreferences.getString(RegSharedPrefs.FNAME, "")
                 + sharedPreferences.getString(RegSharedPrefs.LNAME, "");
+        restaurant = sharedPreferences.getString(RegSharedPrefs.RESTAURANT, "");
 
         PHPRequest request = new PHPRequest("https://lamp.ms.wits.ac.za/home/s2067058/");
         ContentValues cv = new ContentValues();
-        cv.put("customerEmail",customerEmail);
-        cv.put("choice",1);
+        cv.put("empEmail",employeeEmail);
+        cv.put("restaurant",restaurant);
+        cv.put("choice",3);
 
-        request.doRequest(this.getActivity(), "fetchOrdersCustomer.php", cv, new RequestHandler() {
+        request.doRequest(this.getActivity(), "fetchOrders.php", cv, new RequestHandler() {
             @Override
             public void processResponse(String response) throws JSONException {
                 ArrayList<Order> orderArrayList = processJSON(response);
 
-                recyclerView = listItemsView.findViewById(R.id.RecyclerViewCus);
+                recyclerView = listItemsView.findViewById(R.id.RecyclerViewEmp1);
                 recyclerView.setHasFixedSize(true);
                 layoutManager = new LinearLayoutManager(getContext());
-                adapter = new OrderAdapterCustOrders(getContext(),orderArrayList);
+                adapter = new OrderAdapterEmpHistory(getContext(),orderArrayList);
                 recyclerView.setLayoutManager(layoutManager);
                 recyclerView.setAdapter(adapter);
             }

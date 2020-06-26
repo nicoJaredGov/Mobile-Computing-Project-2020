@@ -1,10 +1,9 @@
-package com.example.newproject2020.Customer;
+package com.example.newproject2020.customer;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActivityOptions;
 import android.content.ContentValues;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Pair;
@@ -13,13 +12,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.newproject2020.LoginActivity;
+import com.example.newproject2020.CustomerLoginActivity;
 import com.example.newproject2020.PHPRequest;
 import com.example.newproject2020.RegSharedPrefs;
 import com.example.newproject2020.RequestHandler;
-import com.example.newproject2020.TestActivity;
 import com.example.project2020.R;
 
 import org.json.JSONArray;
@@ -36,8 +33,8 @@ public class CustomerRegistrationActivity extends AppCompatActivity {
 
     RegSharedPrefs regSharedPref;
     EditText firstNameField, lastNameField, emailField, passwordField, confirmField;
-    String firstName, lastName, email, password, confirmPassword, idNum;
-    Boolean responseBool;
+    String firstName, lastName, email, password, confirmPassword, restaurant;
+    int idNum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +55,7 @@ public class CustomerRegistrationActivity extends AppCompatActivity {
     }
 
     public void callRegisterNextScreen(View view) throws InterruptedException {
+        cusRegTextView.setText("");
         firstName = firstNameField.getText().toString();
         lastName = lastNameField.getText().toString();
         email = emailField.getText().toString();
@@ -75,7 +73,7 @@ public class CustomerRegistrationActivity extends AppCompatActivity {
 
         //splitName(name);
 
-        PHPRequest customerRegReq = new PHPRequest("https://lamp.ms.wits.ac.za/home/s2094785/");
+        PHPRequest customerRegReq = new PHPRequest("https://lamp.ms.wits.ac.za/home/s2067058/");
         ContentValues cv = new ContentValues();
         cv.put("email",email);
         cv.put("fname",firstName);
@@ -92,8 +90,8 @@ public class CustomerRegistrationActivity extends AppCompatActivity {
             }
         });
 
-        regSharedPref.saveData(CustomerRegistrationActivity.this,firstName,email,password,idNum);
-        Intent intent = new Intent(this, TestActivity.class); //Intent to customer activity
+        regSharedPref.saveData(CustomerRegistrationActivity.this,firstName,lastName,email,password,idNum,restaurant);
+        Intent intent = new Intent(this, CustomerActivity.class); //Intent to customer activity
 
         //Add Transition
         Pair[] pairs = new Pair[3];
@@ -122,12 +120,12 @@ public class CustomerRegistrationActivity extends AppCompatActivity {
     public void processIdResponse(String r) throws JSONException {
         JSONArray ja = new JSONArray(r);
         JSONObject jo = ja.getJSONObject(0);
-        idNum = jo.getString("CUSTOMER_ID");
+        idNum = jo.getInt("CUSTOMER_ID");
         cusRegTextView.setText(idNum);
     }
 
     public void customer_registration_back_btn_click(View view) {
-        Intent intent = new Intent(this, LoginActivity.class);
+        Intent intent = new Intent(this, CustomerLoginActivity.class);
         startActivity(intent);
     }
 }

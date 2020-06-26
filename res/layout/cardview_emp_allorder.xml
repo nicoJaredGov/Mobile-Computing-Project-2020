@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -8,13 +7,15 @@
         android:id="@+id/CardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp">
+        android:padding="10dp"
+        android:layout_marginBottom="4dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="10dp">
+            android:padding="10dp"
+            >
 
             <TextView
                 android:id="@+id/TextViewOrderNumber"
@@ -35,15 +36,6 @@
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
 
             <TextView
-                android:id="@+id/TextViewEmployeeName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
-                android:text="Employee name"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
-
-            <TextView
                 android:id="@+id/TextViewOrderTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -52,22 +44,30 @@
                 android:text="Time"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
 
+            <TextView
+                android:id="@+id/TextViewStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:text="Status"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center">
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_thumb_up"
-                    android:layout_marginRight="10dp"/>
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_thumb_down"
-                    android:layout_marginLeft="10dp"/>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/addBtn"
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="2dp"
+                    android:background="#000000"
+                    android:onClick="user_button_click"
+                    android:text="add"
+                    android:textColor="@color/white" />
 
             </LinearLayout>
 

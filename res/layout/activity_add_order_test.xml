@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.newproject2020.AddOrderTestActivity">
+    tools:context="com.example.newproject2020.orders.AddOrderTestActivity">
 
     <LinearLayout
         android:id="@+id/order_view"
@@ -14,18 +14,18 @@
         android:padding="20dp">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/custInput"
+            android:id="@+id/custEmailInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="customer ID"
+            android:hint="Customer Email"
             android:inputType="number"/>
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/empInput"
+            android:id="@+id/custNameInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:hint="employee ID"
+            android:hint="Customer Name"
             android:inputType="number"/>
 
         <Button
