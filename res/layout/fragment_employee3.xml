@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/cardview_dark_background"
-    tools:context="com.example.newproject2020.employee.EmployeeFragment3">
+    tools:context="com.example.newproject2020.employee.EmployeeFragment3"
+    android:padding="20dp">
 
     <androidx.recyclerview.widget.RecyclerView
+        tools:listitem="@layout/cardview_emp_history"
         android:id="@+id/RecyclerViewEmp1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="20dp"
-        tools:listitem="@layout/cardview_emp_history">
+        android:layout_height="match_parent" >
 
 
     </androidx.recyclerview.widget.RecyclerView>
@@ -21,82 +21,12 @@
         android:id="@+id/containerLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/ThemeOverlay.MaterialComponents.Dark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        android:theme="@style/ThemeOverlay.MaterialComponents.Dark">
 
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:background="@color/white"
-        android:orientation="vertical">
-
-        <ProgressBar
-            android:id="@+id/ratingBar"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="10dp"
-            android:progress="79"
-            android:progressTint="@color/black" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="20dp">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginRight="10dp"
-                android:src="@drawable/ic_thumb_up" />
-
-            <TextView
-                android:id="@+id/ratingUpvotesText"
-                android:layout_width="30dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginRight="80dp"
-                android:text="183"
-                android:textColor="@color/black" />
-
-            <TextView
-                android:id="@+id/ratingPercent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="79%"
-                android:textColor="@color/black"
-                android:textSize="25sp" />
-
-            <TextView
-                android:id="@+id/ratingDownvotesText"
-                android:layout_width="30dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="80dp"
-                android:gravity="end"
-                android:text="47"
-                android:textColor="@color/black" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="10dp"
-                android:src="@drawable/ic_thumb_down" />
-
-        </LinearLayout>
-
-    </LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

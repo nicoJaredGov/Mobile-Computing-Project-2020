@@ -45,7 +45,7 @@ public class AddOrderCustomerActivity extends AppCompatActivity {
     ListView restaurantList;
     ImageView backButton;
     EditText searchBar;
-    MyAdapter adapter;
+    ArrayAdapter adapter;
     String restaurantChoice;
     int customerId;
 
@@ -68,7 +68,7 @@ public class AddOrderCustomerActivity extends AppCompatActivity {
         });
     }
 
-    public void populateRestaurants(String r) throws JSONException {
+   public void populateRestaurants(String r) throws JSONException {
         JSONArray ja = new JSONArray(r);
         final ArrayList<String> restaurantName = new ArrayList<>();
         for(int i=0; i<ja.length(); i++){
@@ -76,15 +76,8 @@ public class AddOrderCustomerActivity extends AppCompatActivity {
             restaurantName.add(jo.getString("RESTAURANT_NAME"));
         }
 
-        adapter = new MyAdapter(this, restaurantName);
+        adapter = new ArrayAdapter(this,R.layout.restaurant,restaurantName);
         restaurantList.setAdapter(adapter);
-
-        restaurantList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                searchBar.setText(restaurantName.get(position));
-            }
-        });
 
         searchBar.addTextChangedListener(new TextWatcher() {
             @Override
@@ -101,6 +94,13 @@ public class AddOrderCustomerActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
             }
         });
+
+       restaurantList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+           @Override
+           public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+               searchBar.setText(restaurantName.get(position));
+           }
+       });
 
     }
 
@@ -139,10 +139,9 @@ public class AddOrderCustomerActivity extends AppCompatActivity {
         finish();
     }
 
-    public class MyAdapter extends ArrayAdapter<String> implements Filterable {
+    /*public class MyAdapter extends ArrayAdapter<String> implements Filterable {
 
         ArrayList<String> restaurantNames;
-        ArrayList<String> filterArray;
 
         public MyAdapter(Context c, ArrayList<String> restaurant) {
             super(c, 0, restaurant);
@@ -163,6 +162,6 @@ public class AddOrderCustomerActivity extends AppCompatActivity {
             return convertView;
         }
 
-    }
+    }*/
 
 }
