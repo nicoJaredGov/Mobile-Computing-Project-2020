@@ -71,7 +71,17 @@ public class EmployeeFragment3 extends Fragment {
 
             if(rating==1){upvotes++;}
             else if(rating==-1){downvotes++;}
+            else if(upvotes == 0 && downvotes == 0){
+                upvotes = 5;
+                downvotes = 2;
+            }
         }
+
+        upvotesTextView.setText(upvotes);
+        downvotesTextView.setText(downvotes);
+        double percentRating = upvotes/(upvotes+downvotes)*100;
+        String percentage = percentRating + "%";
+        overallRating.setText(percentage);
 
         return orders;
     }
@@ -104,12 +114,6 @@ public class EmployeeFragment3 extends Fragment {
             @Override
             public void processResponse(String response) throws JSONException {
                 ArrayList<Order> orderArrayList = processJSON(response);
-
-                upvotesTextView.setText(upvotes);
-                downvotesTextView.setText(downvotes);
-                double percentRating = upvotes/(upvotes+downvotes)*100;
-                String percentage = percentRating + "%";
-                overallRating.setText(percentage);
 
                 recyclerView = listItemsView.findViewById(R.id.RecyclerViewEmp1);
                 recyclerView.setHasFixedSize(true);
