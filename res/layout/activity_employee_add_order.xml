@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.newproject2020.orders.AddOrderTestActivity">
+    tools:context="com.example.newproject2020.orders.AddOrderEmployeeActivity">
+
 
     <LinearLayout
         android:id="@+id/order_view"
@@ -13,20 +14,38 @@
         android:orientation="vertical"
         android:padding="20dp">
 
+        <ImageView
+            android:id="@+id/r_back_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="backOnClick"
+            android:padding="5dp"
+            android:src="@drawable/ic_back_button_black"
+            android:transitionName="transition_registration_back_button" />
+
+        <TextView
+            android:id="@+id/login_title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:text="create order"
+            android:textAllCaps="true"
+            android:textColor="#000000"
+            android:textSize="40sp"
+            android:transitionName="transition_register_title_text" />
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/custEmailInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Customer Email"
-            android:inputType="number"/>
+            android:hint="Customer Email" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/custNameInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:hint="Customer Name"
-            android:inputType="number"/>
+            android:hint="Customer Name" />
 
         <Button
             android:id="@+id/AddOrderButton"
@@ -34,7 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:onClick="onClick_add_order"
-            android:text="Add Order" />
+            android:text= "create Order" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/order_text_view"

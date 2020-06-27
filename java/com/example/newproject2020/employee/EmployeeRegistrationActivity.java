@@ -20,6 +20,10 @@ import com.example.newproject2020.RequestHandler;
 import com.example.newproject2020.TestActivity;
 import com.example.project2020.R;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class EmployeeRegistrationActivity extends AppCompatActivity {
 
     //Variables
@@ -71,8 +75,6 @@ public class EmployeeRegistrationActivity extends AppCompatActivity {
             return;
         }
 
-        //splitName(name);
-
         PHPRequest empRegReq = new PHPRequest("https://lamp.ms.wits.ac.za/home/s2067058/");
         ContentValues cv = new ContentValues();
         cv.put("fname",firstName);
@@ -83,32 +85,25 @@ public class EmployeeRegistrationActivity extends AppCompatActivity {
 
         empRegReq.doRequest(this, "empReg.php", cv, new RequestHandler() {
             @Override
-            public void processResponse(String response) {
-                if (!response.equals("TRUE")){
-                    empRegTextView.setText(response);
-                    return;
+            public void processResponse(String response) throws JSONException {
+                if(response.equals("FALSE")){
+                    empRegTextView.setText("This email is already registered.");
+                } else {
+                    processJSON(response);
                 }
             }
         });
 
-        regSharedPref.saveData(this,firstName,lastName,employeeEmail,password,0,restaurant);
+    }
+
+    public void processJSON(String response) throws JSONException {
+        JSONArray ja = new JSONArray(response);
+        JSONObject jo = ja.getJSONObject(0);
+        regSharedPref.saveData(this,firstName,lastName,employeeEmail,jo.getString("EMP_PASSWORD"),jo.getInt("EMPLOYEE_ID"),restaurant);
+
         Intent intent = new Intent(getApplicationContext(), EmployeeActivity.class);
-
-        //Add Transition
-        Pair[] pairs = new Pair[3];
-
-        pairs[0] = new Pair<View, String>(backButton, "transition_registration_back_button");
-        pairs[1] = new Pair<View, String>(nextButton, "transition_register_next_button");
-        pairs[2] = new Pair<View, String>(registerTitleText, "transition_register_title_text");
-
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(EmployeeRegistrationActivity.this, pairs);
-            startActivity(intent, options.toBundle());
-            finish();
-        } else {
-            startActivity(intent);
-            finish();
-        }
+        startActivity(intent);
+        finish();
     }
 
     /*public void splitName(String name) {

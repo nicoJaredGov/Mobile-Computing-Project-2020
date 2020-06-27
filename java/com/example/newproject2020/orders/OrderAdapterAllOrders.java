@@ -41,7 +41,7 @@ public class OrderAdapterAllOrders extends RecyclerView.Adapter<OrderAdapterAllO
     }
 
     class OrderViewHolder extends RecyclerView.ViewHolder {
-        TextView orderNumber, custName, orderTime, orderStatus; //empName
+        TextView orderNumber, custName, orderTime; //empName
 
         public OrderViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -49,14 +49,12 @@ public class OrderAdapterAllOrders extends RecyclerView.Adapter<OrderAdapterAllO
             custName = itemView.findViewById(R.id.TextViewCustomerName);
             //empName = itemView.findViewById(R.id.TextViewEmployeeName);
             orderTime = itemView.findViewById(R.id.TextViewOrderTime);
-            orderStatus = itemView.findViewById(R.id.TextViewStatus);
         }
 
         public void bindHolder(int position){
             orderNumber.setText(String.valueOf(orderList.get(position).getOrderNumber()));
             custName.setText(orderList.get(position).getCustomer());
             orderTime.setText(String.valueOf(orderList.get(position).getTimeCreated()));
-            orderStatus.setText(orderList.get(position).getStatus());
         }
     }
 

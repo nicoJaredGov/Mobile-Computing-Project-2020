@@ -28,7 +28,8 @@ import java.util.ArrayList;
 public class EmployeeFragment1 extends Fragment {
 
     SharedPreferences sharedPreferences;
-    String employeeEmail, employeeName, restaurant;
+    String employeeName, restaurant;
+    int employeeId;
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
     OrderAdapter adapter;
@@ -67,14 +68,14 @@ public class EmployeeFragment1 extends Fragment {
         listItemsView = inflater.inflate(R.layout.fragment_employee1, container, false);
 
         sharedPreferences = getActivity().getSharedPreferences(RegSharedPrefs.SHARED_PREFS, Context.MODE_PRIVATE);
-        employeeEmail = sharedPreferences.getString(RegSharedPrefs.EMAIL, "");
+        employeeId = sharedPreferences.getInt(RegSharedPrefs.ID_NUM,0);
         employeeName = sharedPreferences.getString(RegSharedPrefs.FNAME, "")
                 + sharedPreferences.getString(RegSharedPrefs.LNAME, "");
         restaurant = sharedPreferences.getString(RegSharedPrefs.RESTAURANT, "");
 
         PHPRequest request = new PHPRequest("https://lamp.ms.wits.ac.za/home/s2067058/");
         ContentValues cv = new ContentValues();
-        cv.put("empEmail",employeeEmail);
+        cv.put("empId",employeeId);
         cv.put("restaurant",restaurant);
         cv.put("choice",1);
 

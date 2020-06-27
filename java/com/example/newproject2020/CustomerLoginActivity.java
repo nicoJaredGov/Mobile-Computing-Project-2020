@@ -1,5 +1,4 @@
 package com.example.newproject2020;
-// Shahil's url "https://lamp.ms.wits.ac.za/home/s2094785/user_list.php?user="
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -24,8 +23,6 @@ import org.json.JSONObject;
 
 public class CustomerLoginActivity extends AppCompatActivity {
 
-    TextView testView;
-
     private TextView mTextView;
     private EditText mUsername;
     private EditText mPassword;
@@ -48,8 +45,6 @@ public class CustomerLoginActivity extends AppCompatActivity {
         nextBtn = findViewById(R.id.nextBtn);
 
         passwordCounter = 3; //counts down password attempts - only 3 allowed
-
-        testView = findViewById(R.id.testView); //remove
     }
 
     public void nextOnClick(View view){
@@ -67,6 +62,7 @@ public class CustomerLoginActivity extends AppCompatActivity {
         PHPRequest loginReq = new PHPRequest("https://lamp.ms.wits.ac.za/home/s2067058/");
         ContentValues cvLogin = new ContentValues();
         cvLogin.put("user",username);
+        cvLogin.put("password",password);
 
         loginReq.doRequest(CustomerLoginActivity.this, "user0.php", cvLogin, new RequestHandler() {
             @Override
@@ -82,33 +78,32 @@ public class CustomerLoginActivity extends AppCompatActivity {
     }
 
     public void processJSON(String r) throws JSONException {
-        if(r.equals("[]")){
+        if(r.equals("NULL")) {
             mTextView.setText("Username invalid");
             return;
-        }
-        JSONArray ja = new JSONArray(r);
-        JSONObject jo = ja.getJSONObject(0);
+        } else if(r.equals("WRONG")) {
+            passwordCounter--;
+            if (passwordCounter == 0) {
+                nextBtn.setEnabled(false);
+            }
+            String passwordCounterOutput = "You have " + passwordCounter.toString() + " attempts left.";
+            mTextView.setText(passwordCounterOutput);
+            return;
+        } else {
+            JSONArray ja = new JSONArray(r);
+            JSONObject jo = ja.getJSONObject(0);
 
-
-        testView.setText(jo.getString("PASSWORD"));
-        if (password.equals(jo.getString("PASSWORD"))){
             firstName = jo.getString("FNAME");
             lastName = jo.getString("LNAME");
             customerEmail = jo.getString("CUSTOMER_EMAIL");
             idNum = jo.getInt("CUSTOMER_ID");
+            password = jo.getString("PASSWORD");
             regSharedPrefs.saveData(this,firstName,lastName,customerEmail,password,idNum,"");
 
             Intent intent = new Intent(this, CustomerActivity.class);
             startActivity(intent);
-        }
-        else{
-            passwordCounter--;
-            if (passwordCounter == 0){
-                nextBtn.setEnabled(false);
-            }
+            finish();
 
-            String passwordCounterOutput = "You have "+passwordCounter.toString() + " attempts left.";
-            mTextView.setText(passwordCounterOutput);
         }
 
     }

@@ -17,6 +17,7 @@ import com.example.newproject2020.CustomerLoginActivity;
 import com.example.newproject2020.PHPRequest;
 import com.example.newproject2020.RegSharedPrefs;
 import com.example.newproject2020.RequestHandler;
+import com.example.newproject2020.TestActivity;
 import com.example.project2020.R;
 
 import org.json.JSONArray;
@@ -83,31 +84,14 @@ public class CustomerRegistrationActivity extends AppCompatActivity {
         customerRegReq.doRequest(this, "custReg.php", cv, new RequestHandler() {
             @Override
             public void processResponse(String response) throws JSONException {
-                if (!response.equals("TRUE")) {
-                    cusRegTextView.setText(response);
-                    return;
+                if(response.equals("FALSE")){
+                    cusRegTextView.setText("This email is already registered.");
+                } else {
+                    processIdResponse(response);
                 }
             }
         });
 
-        regSharedPref.saveData(CustomerRegistrationActivity.this,firstName,lastName,email,password,idNum,restaurant);
-        Intent intent = new Intent(this, CustomerActivity.class); //Intent to customer activity
-
-        //Add Transition
-        Pair[] pairs = new Pair[3];
-
-        pairs[0] = new Pair<View, String>(backButton, "transition_registration_back_button");
-        pairs[1] = new Pair<View, String>(nextButton, "transition_register_next_button");
-        pairs[2] = new Pair<View, String>(registerTitleText, "transition_register_title_text");
-
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(CustomerRegistrationActivity.this, pairs);
-            startActivity(intent, options.toBundle());
-            finish();
-        } else {
-            startActivity(intent);
-            finish();
-        }
     }
 
     /*public void splitName(String name) {
@@ -121,7 +105,11 @@ public class CustomerRegistrationActivity extends AppCompatActivity {
         JSONArray ja = new JSONArray(r);
         JSONObject jo = ja.getJSONObject(0);
         idNum = jo.getInt("CUSTOMER_ID");
-        cusRegTextView.setText(idNum);
+        password = jo.getString("PASSWORD");
+        regSharedPref.saveData(this,firstName,lastName,email,password,idNum,restaurant);
+        Intent intent = new Intent(this, CustomerActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     public void customer_registration_back_btn_click(View view) {

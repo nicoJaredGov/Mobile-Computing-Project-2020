@@ -31,7 +31,8 @@ import java.util.ArrayList;
 public class Customer2Fragment extends Fragment {
 
     SharedPreferences sharedPreferences;
-    String customerEmail, customerName;
+    String customerName;
+    int customerId;
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
     OrderAdapterCustHistory adapter;
@@ -68,13 +69,13 @@ public class Customer2Fragment extends Fragment {
         listItemsView = inflater.inflate(R.layout.fragment_customer2, container, false);
 
         sharedPreferences = getActivity().getSharedPreferences(RegSharedPrefs.SHARED_PREFS, Context.MODE_PRIVATE);
-        customerEmail = sharedPreferences.getString(RegSharedPrefs.EMAIL, "");
+        customerId = sharedPreferences.getInt(RegSharedPrefs.ID_NUM,0);
         customerName = sharedPreferences.getString(RegSharedPrefs.FNAME, "")
                 + sharedPreferences.getString(RegSharedPrefs.LNAME, "");
 
         PHPRequest request = new PHPRequest("https://lamp.ms.wits.ac.za/home/s2067058/");
         ContentValues cv = new ContentValues();
-        cv.put("customerEmail",customerEmail);
+        cv.put("customerId",customerId);
         cv.put("choice",2);
 
         request.doRequest(this.getActivity(), "fetchOrdersCustomer.php", cv, new RequestHandler() {
