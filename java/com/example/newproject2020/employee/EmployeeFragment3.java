@@ -50,9 +50,8 @@ public class EmployeeFragment3 extends Fragment {
     public ArrayList<Order> processJSON(String response) throws JSONException {
         ArrayList<Order> orders = new ArrayList<>();
         JSONArray ja = new JSONArray(response);
-        int upvotes = 0;
-        int downvotes = 0;
-        int average = 0;
+        double upvotes = 0;
+        double downvotes = 0;
         int rating;
 
         for (int i = 0; i < ja.length(); i++) {
@@ -69,19 +68,23 @@ public class EmployeeFragment3 extends Fragment {
 
             rating = Integer.parseInt((jo.getString("RATING")));
 
-            if(rating==1){upvotes++;}
-            else if(rating==-1){downvotes++;}
-            else if(upvotes == 0 && downvotes == 0){
-                upvotes = 5;
-                downvotes = 2;
+            if (rating == 1) {
+                upvotes++;
+            } else if (rating == -1) {
+                downvotes++;
             }
         }
 
-        upvotesTextView.setText(upvotes);
-        downvotesTextView.setText(downvotes);
-        double percentRating = upvotes/(upvotes+downvotes)*100;
-        String percentage = percentRating + "%";
-        overallRating.setText(percentage);
+        upvotesTextView.setText(String.valueOf((int) upvotes));
+        downvotesTextView.setText(String.valueOf((int) downvotes));
+        double percentRating;
+        if (upvotes == 0 && downvotes == 0) {
+            percentRating = 0;
+        } else {
+            percentRating = upvotes / (upvotes + downvotes) * 100;
+        }
+        overallRating.setText((int) percentRating + "%");
+        ratingBar.setProgress((int) percentRating);
 
         return orders;
     }
