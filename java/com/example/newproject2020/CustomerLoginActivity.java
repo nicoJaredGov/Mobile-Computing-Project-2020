@@ -1,5 +1,6 @@
 package com.example.newproject2020;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
@@ -36,9 +37,11 @@ public class CustomerLoginActivity extends AppCompatActivity {
     String username, password;
     Integer passwordCounter;
     RegSharedPrefs regSharedPrefs;
+    SharedPrefs sharedPref;
     String firstName, lastName, customerEmail;
     int idNum;
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,7 +95,6 @@ public class CustomerLoginActivity extends AppCompatActivity {
     public void processJSON(String r) throws JSONException {
         if(r.equals("NULL")) {
             mTextView.setText("Username invalid");
-            return;
         } else if(r.equals("WRONG")) {
             passwordCounter--;
             if (passwordCounter == 0) {
@@ -100,7 +102,6 @@ public class CustomerLoginActivity extends AppCompatActivity {
             }
             String passwordCounterOutput = "You have " + passwordCounter.toString() + " attempts left.";
             mTextView.setText(passwordCounterOutput);
-            return;
         } else {
             JSONArray ja = new JSONArray(r);
             JSONObject jo = ja.getJSONObject(0);
@@ -111,6 +112,7 @@ public class CustomerLoginActivity extends AppCompatActivity {
             idNum = jo.getInt("CUSTOMER_ID");
             password = jo.getString("PASSWORD");
             regSharedPrefs.saveData(this,firstName,lastName,customerEmail,password,idNum,"");
+            sharedPref.saveData(this,"1",true);
 
             Intent intent = new Intent(this, CustomerActivity.class);
             startActivity(intent);
@@ -120,7 +122,6 @@ public class CustomerLoginActivity extends AppCompatActivity {
     }
 
     public void goBack(View view) {
-        Intent intent = new Intent(this, UserActivity.class);
-        startActivity(intent);
+        onBackPressed();
     }
 }

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
@@ -22,7 +24,6 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.example.newproject2020.RegSharedPrefs;
 import com.example.newproject2020.SharedPrefs;
-import com.example.newproject2020.TestActivity;
 import com.example.newproject2020.UserActivity;
 import com.example.project2020.R;
 import com.google.android.material.tabs.TabLayout;
@@ -40,28 +41,38 @@ public class EmployeeActivity extends AppCompatActivity {
     private EmployeeFragment2 fragment2;
     private EmployeeFragment3 fragment3;
 
+    Handler handler = new Handler();
+    Runnable refresh;
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_employee);
 
-        toolbar = findViewById(R.id.EmployeeToolbar);
-        setSupportActionBar(toolbar);
+        refresh = new Runnable() {
+            public void run() {
+                toolbar = findViewById(R.id.EmployeeToolbar);
+                setSupportActionBar(toolbar);
 
-        viewPager = findViewById(R.id.employee_view_pager);
-        tabLayout = findViewById(R.id.employee_tab_layout);
+                viewPager = findViewById(R.id.employee_view_pager);
+                tabLayout = findViewById(R.id.employee_tab_layout);
 
-        fragment1 = new EmployeeFragment1();
-        fragment2 = new EmployeeFragment2();
-        fragment3 = new EmployeeFragment3();
+                fragment1 = new EmployeeFragment1();
+                fragment2 = new EmployeeFragment2();
+                fragment3 = new EmployeeFragment3();
 
-        tabLayout.setupWithViewPager(viewPager);
+                tabLayout.setupWithViewPager(viewPager);
 
-        EmployeeActivity.ViewPagerAdapter viewPagerAdapter = new EmployeeActivity.ViewPagerAdapter(getSupportFragmentManager(), 0);
-        viewPagerAdapter.addFragment(fragment1, "Current Orders");
-        viewPagerAdapter.addFragment(fragment2, "All Orders");
-        viewPagerAdapter.addFragment(fragment3, "Order History");
-        viewPager.setAdapter(viewPagerAdapter);
+                EmployeeActivity.ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), 0);
+                viewPagerAdapter.addFragment(fragment1, "Current");
+                viewPagerAdapter.addFragment(fragment2, "All");
+                viewPagerAdapter.addFragment(fragment3, "History");
+                viewPager.setAdapter(viewPagerAdapter);
+                handler.postDelayed(refresh, 120000);
+            }
+        };
+        handler.post(refresh);
 
         Window window = this.getWindow();
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -83,20 +94,12 @@ public class EmployeeActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.menu_settings:
-                openSettingsActivity();
-                return true;
             case R.id.menu_logout:
                 openLogoutActivity();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }
-
-    public void openSettingsActivity() {
-        Intent intent = new Intent(this, EmployeeSettingsActivity.class);
-        startActivity(intent);
     }
 
     public void openLogoutActivity() {
@@ -109,20 +112,16 @@ public class EmployeeActivity extends AppCompatActivity {
         finish();
     }
 
-    public void customer_change_account_settings_btn_click(View view) {
-
-    }
-
-    private class ViewPagerAdapter extends FragmentPagerAdapter {
+    private static class ViewPagerAdapter extends FragmentPagerAdapter {
 
         private List<Fragment> fragments = new ArrayList<>();
         private List<String> fragmentTitle = new ArrayList<>();
 
-        public ViewPagerAdapter(@NonNull FragmentManager fm, int behavior) {
+        ViewPagerAdapter(@NonNull FragmentManager fm, int behavior) {
             super(fm, behavior);
         }
 
-        public void addFragment(Fragment fragment, String title) {
+        void addFragment(Fragment fragment, String title) {
             fragments.add(fragment);
             fragmentTitle.add(title);
         }

@@ -4,6 +4,10 @@ import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +16,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.content.res.AppCompatResources;
+import androidx.core.content.ContextCompat;
+import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.newproject2020.PHPRequest;
@@ -70,11 +77,20 @@ public class OrderAdapterCustHistory extends RecyclerView.Adapter<OrderAdapterCu
             orderTime.setText(String.valueOf(orderList.get(position).getTimeCollected()));
             restaurantName.setText(orderList.get(position).getRestaurant());
 
+            switch (orderList.get(position).getRating()){
+                case 1:
+                    thumbsUp.setColorFilter(context.getResources().getColor(R.color.lightBlue));
+                    break;
+                case -1:
+                    thumbsDown.setColorFilter(context.getResources().getColor(R.color.lightBlue));
+            }
+
             thumbsUp.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Order order = orderList.get(position);
                     if (order.getRating() == 0) {
+                        thumbsUp.setColorFilter(context.getResources().getColor(R.color.lightBlue));
                         PHPRequest updateReq = new PHPRequest("https://lamp.ms.wits.ac.za/home/s2067058/");
                         ContentValues cv = new ContentValues();
                         cv.put("orderId",orderList.get(position).getOrderNumber());
@@ -105,6 +121,7 @@ public class OrderAdapterCustHistory extends RecyclerView.Adapter<OrderAdapterCu
                 public void onClick(View v) {
                     Order order = orderList.get(position);
                     if (order.getRating() == 0) {
+                        thumbsDown.setColorFilter(context.getResources().getColor(R.color.lightBlue));
                         PHPRequest updateReq = new PHPRequest("https://lamp.ms.wits.ac.za/home/s2067058/");
                         ContentValues cv = new ContentValues();
                         cv.put("orderId", orderList.get(position).getOrderNumber());
@@ -128,6 +145,8 @@ public class OrderAdapterCustHistory extends RecyclerView.Adapter<OrderAdapterCu
                     }
                 }
             });
+
+
         }
     }
 

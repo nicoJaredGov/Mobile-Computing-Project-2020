@@ -15,6 +15,7 @@ import com.example.project2020.R;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
@@ -53,6 +54,7 @@ public class AddOrderCustomerActivity extends AppCompatActivity {
     String restaurantChoice;
     int customerId;
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,19 +96,24 @@ public class AddOrderCustomerActivity extends AppCompatActivity {
         searchBar.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
                 (AddOrderCustomerActivity.this).adapter.getFilter().filter(charSequence.toString());
+                restaurantList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        String a = (String) parent.getAdapter().getItem(position);
+                        searchBar.setText(a);
+                    }
+                });
             }
 
             @Override
             public void afterTextChanged(Editable s) {
             }
         });
-
        restaurantList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
            @Override
            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

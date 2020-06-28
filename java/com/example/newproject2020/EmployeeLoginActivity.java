@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
@@ -33,9 +34,11 @@ public class EmployeeLoginActivity extends AppCompatActivity {
     String username, password;
     Integer passwordCounter;
     RegSharedPrefs regSharedPrefs;
+    SharedPrefs sharedPref;
     String firstName,lastName,employeeEmail,restaurant;
     int idNum;
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,7 +92,6 @@ public class EmployeeLoginActivity extends AppCompatActivity {
     public void processJSON(String r) throws JSONException {
         if(r.equals("NULL")) {
             mTextView.setText("Username invalid");
-            return;
         } else if(r.equals("WRONG")) {
             passwordCounter--;
             if (passwordCounter == 0) {
@@ -97,7 +99,6 @@ public class EmployeeLoginActivity extends AppCompatActivity {
             }
             String passwordCounterOutput = "You have " + passwordCounter.toString() + " attempts left.";
             mTextView.setText(passwordCounterOutput);
-            return;
         } else {
             JSONArray ja = new JSONArray(r);
             JSONObject jo = ja.getJSONObject(0);
@@ -108,6 +109,7 @@ public class EmployeeLoginActivity extends AppCompatActivity {
             idNum = jo.getInt("EMPLOYEE_ID");
             password = jo.getString("EMP_PASSWORD");
             regSharedPrefs.saveData(this,firstName,lastName,employeeEmail,password,idNum,restaurant);
+            sharedPref.saveData(this,"2",true);
 
             Intent intent = new Intent(this, EmployeeActivity.class);
             startActivity(intent);
@@ -117,7 +119,6 @@ public class EmployeeLoginActivity extends AppCompatActivity {
     }
 
     public void goBack(View view) {
-        Intent intent = new Intent(this, UserActivity.class);
-        startActivity(intent);
+        onBackPressed();
     }
 }

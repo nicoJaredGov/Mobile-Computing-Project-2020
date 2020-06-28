@@ -18,18 +18,7 @@
             android:id="@+id/CustomerToolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:titleTextColor="@color/black" >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="cursive"
-                android:text="TrackMyOrder"
-                android:textColor="@color/black"
-                android:textSize="30sp"
-                android:textStyle="bold" />
-
-        </androidx.appcompat.widget.Toolbar>
+            app:titleTextColor="@color/black" />
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/customer_tab_layout"

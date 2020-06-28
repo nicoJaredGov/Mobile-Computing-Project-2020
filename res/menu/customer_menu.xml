@@ -4,12 +4,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/menu_settings"
-        android:icon="@drawable/ic_settings"
-        android:title="@string/settings"
-        app:showAsAction="never"/>
-
-    <item
         android:id="@+id/menu_logout"
         android:icon="@drawable/ic_reply"
         android:title="@string/log_out"

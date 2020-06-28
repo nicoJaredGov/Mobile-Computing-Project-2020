@@ -7,7 +7,8 @@
     android:background="@color/orange_theme"
     android:orientation="vertical"
     android:padding="30dp"
-    tools:context="com.example.newproject2020.CustomerLoginActivity">
+    tools:context="com.example.newproject2020.CustomerLoginActivity"
+    android:transitionName="transition_cust_btn">
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/CardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
         android:layout_marginBottom="4dp"
-        android:backgroundTint="@color/orange_theme">
+        android:backgroundTint="@color/orange_theme"
+        android:padding="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -53,38 +53,27 @@
                 android:layout_marginLeft="5dp" />
 
             <TextView
-            android:id="@+id/TextViewOrderTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
-            android:text="@string/time"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                android:layout_marginLeft="5dp" />
-
-
-            <LinearLayout
+                android:id="@+id/TextViewOrderTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center">
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/time"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                android:layout_marginLeft="5dp" />
 
-                <ImageView
-                    android:id="@+id/thumbsUp"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/ic_thumb_up"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginRight="10dp" />
+            <TextView
+                android:id="@+id/TextViewStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/rounded_corner"
+                android:textColor="@color/black"
+                android:text="@string/status"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:layout_marginLeft="5dp" />
 
-                <ImageView
-                    android:id="@+id/thumbsDown"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/ic_thumb_down"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="10dp" />
-
-            </LinearLayout>
 
         </LinearLayout>
 

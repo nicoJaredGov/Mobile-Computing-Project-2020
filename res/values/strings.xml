@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">New Project 2020</string>
+    <string name="app_name">TrackMyOrder</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="login">Login</string>
@@ -55,9 +55,16 @@
     <string name="employee_name">Employee name</string>
     <string name="time">Time</string>
     <string name="update">UPDATE</string>
-    <string name="enter_password">Enter password</string>
     <string name="add">add</string>
     <string name="_79">79%</string>
     <string name="_47">47</string>
     <string name="_183">183</string>
+    <string name="name">Name</string>
+    <string name="trackmyorder">TrackMyOrder</string>
+    <string name="enter_password">Enter password</string>
+    <string name="enter_email">Enter email</string>
+    <string name="todo">TODO</string>
+    <string name="account">Account</string>
+    <string name="employee">employee</string>
+    <string name="select_user">select user:</string>
 </resources>

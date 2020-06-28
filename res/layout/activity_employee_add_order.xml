@@ -40,9 +40,11 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
             android:layout_marginTop="20dp"
             android:hint="@string/customer_email"
             app:boxStrokeColor="@color/black"
+            app:boxStrokeWidth="2dp"
             app:boxStrokeWidthFocused="2dp"
             android:textColorHint="@color/blue_theme"
             app:startIconDrawable="@drawable/ic_mail_outline_black"
@@ -59,6 +61,7 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
@@ -66,6 +69,7 @@
             android:layout_marginTop="10dp"
             android:hint="@string/customer_name"
             app:boxStrokeColor="@color/blue_theme"
+            app:boxStrokeWidth="2dp"
             app:boxStrokeWidthFocused="2dp"
             android:textColorHint="@color/blue_theme"
             app:startIconDrawable="@drawable/ic_profile_white"

@@ -19,12 +19,11 @@ if($check){
     if($check_count['RESULT'] == '0'){
 	echo "Restaurant does not exist in database";
     } else {
-	$sql = "INSERT INTO ORDERS (TIME_CREATED, CUSTOMER_ID, RESTAURANT_NAME) VALUES (CURRENT_TIMESTAMP(),'$custId' ,'$restaurant')";
-	if(mysqli_query($link, $sql)){
-    		echo "TRUE";
-	} else{
-    		echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-	}
+	$stmt = $link->prepare("INSERT INTO ORDERS (TIME_CREATED, CUSTOMER_ID, RESTAURANT_NAME) VALUES (?,?,?)");
+	$date = date('Y-m-d h:i:s a', time());
+	$stmt->bind_param("sis", $date, $custId, $restaurant);
+	$stmt->execute();
+	echo "TRUE";
    }
 } else{
     echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
