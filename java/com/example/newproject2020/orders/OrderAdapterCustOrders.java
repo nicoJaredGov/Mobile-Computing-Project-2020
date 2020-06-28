@@ -60,7 +60,7 @@ public class OrderAdapterCustOrders extends RecyclerView.Adapter<OrderAdapterCus
             if (empName.startsWith("null null")){
                 empNameTextView.setText("waiting");
             } else {
-                empNameTextView.setText(empName);
+                empNameTextView.setText("Staff: " + empName);
             }
 
             orderTime.setText(String.valueOf(orderList.get(position).getTimeCreated()));

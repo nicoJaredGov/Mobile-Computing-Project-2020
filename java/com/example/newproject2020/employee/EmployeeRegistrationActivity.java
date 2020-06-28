@@ -64,7 +64,7 @@ public class EmployeeRegistrationActivity extends AppCompatActivity {
         confirmField = findViewById(R.id.confirmEditText);
         restaurantField = findViewById(R.id.restaurantEditText);
 
-        Window window = this.getWindow();
+       Window window = this.getWindow();
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 

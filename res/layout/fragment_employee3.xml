@@ -10,24 +10,11 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RecyclerViewEmp1"
         android:layout_width="match_parent"
-        android:layout_height="562dp"
+        android:layout_height="428dp"
         android:padding="20dp"
         tools:listitem="@layout/cardview_emp_history">
 
-
     </androidx.recyclerview.widget.RecyclerView>
-
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:id="@+id/containerLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/ThemeOverlay.MaterialComponents.Dark"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -60,7 +47,8 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginEnd="10dp"
                 android:src="@drawable/ic_thumb_up"
-                android:tint="@color/blue_theme" />
+                android:tint="@color/blue_theme"
+                android:layout_marginRight="10dp" />
 
             <TextView
                 android:id="@+id/ratingUpvotesText"
@@ -68,14 +56,15 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginEnd="80dp"
-                android:text="@string/_183"
-                android:textColor="@color/blue_theme" />
+                android:text=""
+                android:textColor="@color/blue_theme"
+                android:layout_marginRight="80dp" />
 
             <TextView
                 android:id="@+id/ratingPercent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/_79"
+                android:text=""
                 android:textColor="@color/blue_theme"
                 android:textSize="25sp" />
 
@@ -86,8 +75,9 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="80dp"
                 android:gravity="end"
-                android:text="@string/_47"
-                android:textColor="@color/blue_theme" />
+                android:text=""
+                android:textColor="@color/blue_theme"
+                android:layout_marginLeft="80dp" />
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -95,7 +85,8 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="10dp"
                 android:src="@drawable/ic_thumb_down"
-                android:tint="@color/blue_theme" />
+                android:tint="@color/blue_theme"
+                android:layout_marginLeft="10dp" />
 
         </LinearLayout>
 

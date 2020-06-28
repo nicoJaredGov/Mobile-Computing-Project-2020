@@ -66,9 +66,9 @@ public class EmployeeActivity extends AppCompatActivity {
                 tabLayout.setupWithViewPager(viewPager);
 
                 EmployeeActivity.ViewPagerAdapter viewPagerAdapter = new EmployeeActivity.ViewPagerAdapter(getSupportFragmentManager(), 0);
-                viewPagerAdapter.addFragment(fragment1, "Current Orders");
-                viewPagerAdapter.addFragment(fragment2, "All Orders");
-                viewPagerAdapter.addFragment(fragment3, "Order History");
+                viewPagerAdapter.addFragment(fragment1, "Current");
+                viewPagerAdapter.addFragment(fragment2, "All");
+                viewPagerAdapter.addFragment(fragment3, "History");
                 viewPager.setAdapter(viewPagerAdapter);
                 handler.postDelayed(refresh, 120000);
             }

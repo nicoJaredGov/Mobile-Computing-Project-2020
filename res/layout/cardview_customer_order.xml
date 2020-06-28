@@ -37,7 +37,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/restaurant"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                     android:textColor="#000000" />
 
             </LinearLayout>
@@ -49,7 +49,8 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
                 android:text="@string/employee_name"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                android:layout_marginLeft="5dp" />
 
             <TextView
                 android:id="@+id/TextViewOrderTime"
@@ -58,7 +59,8 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
                 android:text="@string/time"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                android:layout_marginLeft="5dp" />
 
             <TextView
                 android:id="@+id/TextViewStatus"
@@ -66,10 +68,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
-                android:background="@drawable/rounded_corner"
                 android:textColor="@color/black"
                 android:text="@string/status"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:layout_marginLeft="5dp" />
 
 
         </LinearLayout>
