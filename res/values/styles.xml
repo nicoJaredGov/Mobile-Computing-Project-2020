@@ -1,11 +1,14 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">#FF4A5A61</item>
-        <item name="colorPrimaryDark">@color/black</item>
+        <item name="colorPrimary">@color/orange_theme</item>
+        <item name="colorPrimaryDark">@color/cardview_dark_background</item>
         <item name="colorAccent">#039DDA</item>
+        <item name="actionMenuTextColor">@color/cardview_dark_background</item>
+        <item name="android:actionMenuTextColor">@color/cardview_dark_background</item>
+        <item name="itemBackground">@color/cardview_dark_background</item>
     </style>
 
     <style name="AppTheme.NoActionBar">

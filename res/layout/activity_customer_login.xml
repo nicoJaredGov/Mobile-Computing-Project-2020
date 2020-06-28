@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/orange_theme"
     android:orientation="vertical"
     android:padding="30dp"
-    android:background="@color/white"
     tools:context="com.example.newproject2020.CustomerLoginActivity">
 
     <LinearLayout
@@ -28,12 +28,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="0dp"
+            android:fontFamily="@font/muli_bold"
             android:padding="20dp"
             android:text="@string/login"
             android:textAllCaps="true"
             android:textColor="#000000"
-            android:textSize="40sp"
-            android:transitionName="transition_register_title_text" />
+            android:textSize="40sp" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/UsernameInput"
@@ -47,7 +47,11 @@
             app:boxStrokeWidthFocused="2dp"
             app:hintTextColor="#000000"
             app:startIconDrawable="@drawable/ic_profile_white"
-            app:startIconTint="#000000">
+            app:startIconTint="#000000"
+            app:boxCornerRadiusBottomEnd="25dp"
+            app:boxCornerRadiusBottomStart="25dp"
+            app:boxCornerRadiusTopEnd="25dp"
+            app:boxCornerRadiusTopStart="25dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/usernameInput"
@@ -64,7 +68,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter password"
+            android:hint="@string/enter_password"
             android:textColorHint="#000000"
             app:boxStrokeColor="#000000"
             app:boxStrokeWidthFocused="2dp"
@@ -72,7 +76,11 @@
             app:passwordToggleEnabled="true"
             app:passwordToggleTint="#000000"
             app:startIconDrawable="@drawable/ic_password_white"
-            app:startIconTint="#000000">
+            app:startIconTint="#000000"
+            app:boxCornerRadiusBottomEnd="25dp"
+            app:boxCornerRadiusBottomStart="25dp"
+            app:boxCornerRadiusTopEnd="25dp"
+            app:boxCornerRadiusTopStart="25dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/passwordInput"
@@ -90,27 +98,30 @@
             android:layout_height="wrap_content"
             android:gravity="center" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/nextBtn"
+            style=""
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginTop="20dp"
             android:onClick="nextOnClick"
-            android:text="next"
-            android:textColor="@color/white"
-            app:backgroundTint="@color/black" />
+            android:text="@string/next"
+            android:textColor="@color/orange_theme"
+            app:backgroundTint="@color/black"
+            app:cornerRadius="19dp"
+            app:elevation="0dp" />
 
-        <Button
+        <TextView
             android:id="@+id/registerBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/white"
+            android:layout_marginTop="7dp"
+            android:gravity="center"
             android:onClick="registerOnClick"
-            android:text="register"
+            android:text="@string/register"
+            android:textAllCaps="true"
             android:textColor="@color/black"
-            android:transitionName="transition_register_next_button"
-            app:backgroundTint="#00FFFFFF"
-            app:elevation="0dp" />
+            android:textStyle="bold" />
 
     </LinearLayout>
 

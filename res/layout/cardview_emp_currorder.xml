@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/CardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:layout_marginBottom="4dp">
+        android:layout_marginBottom="4dp"
+        android:backgroundTint="@color/blue_theme"
+        android:padding="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -20,8 +22,8 @@
                 android:id="@+id/TextViewOrderNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:text="Order number"
+                android:layout_marginStart="5dp"
+                android:text="@string/order_number"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:textColor="#000000" />
 
@@ -29,27 +31,28 @@
                 android:id="@+id/TextViewCustomerName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
-                android:text="Customer name"
+                android:text="@string/customer_name"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
 
             <TextView
-            android:id="@+id/TextViewOrderTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
-            android:text="Time"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+                android:id="@+id/TextViewOrderTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/time"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
 
             <TextView
                 android:id="@+id/TextViewStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
-                android:text="Status"
+                android:background="@drawable/rounded_corner"
+                android:text="@string/status"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
 
@@ -59,14 +62,15 @@
                 android:layout_gravity="center">
 
                 <com.google.android.material.button.MaterialButton
-                android:id="@+id/updateBtn"
-                android:layout_width="150dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="2dp"
-                android:background="#000000"
-                android:onClick="user_button_click"
-                android:text="UPDATE"
-                android:textColor="@color/white" />
+                    android:id="@+id/updateBtn"
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="2dp"
+                    android:backgroundTint="@color/black"
+                    android:onClick="user_button_click"
+                    android:text="@string/update"
+                    android:textColor="@color/blue_theme"
+                    app:cornerRadius="15dp" />
 
             </LinearLayout>
 

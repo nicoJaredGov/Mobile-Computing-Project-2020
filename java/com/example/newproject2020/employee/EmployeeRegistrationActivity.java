@@ -1,13 +1,18 @@
 package com.example.newproject2020.employee;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.app.ActivityOptions;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Pair;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -40,6 +45,7 @@ public class EmployeeRegistrationActivity extends AppCompatActivity {
     String employeeEmail, password, confirmPassword, restaurant;
     String firstName, lastName;
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +63,14 @@ public class EmployeeRegistrationActivity extends AppCompatActivity {
         passwordField = findViewById(R.id.passwordEditText);
         confirmField = findViewById(R.id.confirmEditText);
         restaurantField = findViewById(R.id.restaurantEditText);
+
+        Window window = this.getWindow();
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.setStatusBarColor(ContextCompat.getColor(this,R.color.blue_dark));
+        }
 
     }
 
