@@ -30,7 +30,7 @@
                     android:layout_weight="1"
                     android:text="@string/order_number"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                    android:textColor="#000000" />
+                    android:textColor="@color/black" />
 
                 <TextView
                     android:id="@+id/TextViewRestaurant"
@@ -38,7 +38,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/restaurant"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                    android:textColor="#000000" />
+                    android:textColor="@color/black" />
 
             </LinearLayout>
 
@@ -67,9 +67,9 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/rounded_corner"
-                android:textColor="@color/black"
                 android:text="@string/status"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:textColor="@color/black" />
 
 
         </LinearLayout>

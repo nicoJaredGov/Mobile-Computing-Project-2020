@@ -1,58 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.newproject2020.customer.CustomerActivity">
+    android:background="@color/cardview_dark_background"
+    android:orientation="vertical"
+    android:padding="30dp"
+    tools:context="com.example.newproject2020.customer.CustomerSettingsActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
+    <ImageView
+        android:id="@+id/r_back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="backOnClick"
+        android:padding="5dp"
+        android:src="@drawable/ic_back_button_black"
+        android:tint="@color/orange_theme"/>
+
+    <TextView
+        android:id="@+id/login_title_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:theme="@style/ThemeOverlay.AppCompat.Light"
-        app:liftOnScroll="true">
+        android:fontFamily="@font/muli_bold"
+        android:padding="20dp"
+        android:text="@string/create_order"
+        android:textAllCaps="true"
+        android:textColor="@color/orange_theme"
+        android:textSize="30sp" />
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/CustomerToolbar"
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="@string/search_restaurants"
+        app:boxStrokeColor="@color/orange_theme"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="2dp"
+        app:hintTextColor="@color/orange_theme"
+        app:startIconDrawable="@drawable/ic_action_action_search"
+        app:startIconTint="@color/orange_theme"
+        android:textColorHint="@color/orange_theme">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/restaurant_search_filter"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize" />
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/orange_theme">
 
-        <LinearLayout
+        </com.google.android.material.textfield.TextInputEditText>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ListView
+        android:id="@+id/restaurantListView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:cacheColorHint="@color/orange_theme">
+
+    </ListView>
+
+    <LinearLayout
+        android:id="@+id/LinearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/confirmBtn"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:padding="20dp">
+            android:layout_height="40dp"
+            android:layout_marginTop="2dp"
+            android:background="#000000"
+            android:backgroundTint="@color/orange_theme"
+            android:onClick="confirm_button_click"
+            android:text="@string/ok"
+            android:textColor="@color/cardview_dark_background"
+            app:cornerRadius="0dp" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:text="Welcome to settings" />
+    </LinearLayout>
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/customer_account_settings_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/black"
-                android:onClick="customer_change_account_settings_btn_click"
-                android:text="Change account details"
-                android:textColor="@color/white" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Your username is" />
-
-            <TextView
-                android:id="@+id/customer_username_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
-
-    </com.google.android.material.appbar.AppBarLayout>
-
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</LinearLayout>
