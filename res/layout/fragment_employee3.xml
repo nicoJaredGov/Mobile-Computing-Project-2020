@@ -33,7 +33,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:background="@color/white"
+        android:background="@color/cardview_dark_background"
         android:orientation="vertical">
 
         <ProgressBar
@@ -46,7 +46,7 @@
             android:layout_marginRight="20dp"
             android:layout_marginBottom="10dp"
             android:progress="79"
-            android:progressTint="@color/black" />
+            android:progressTint="@color/blue_theme" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -58,24 +58,25 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginRight="10dp"
-                android:src="@drawable/ic_thumb_up" />
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/ic_thumb_up"
+                android:tint="@color/blue_theme" />
 
             <TextView
                 android:id="@+id/ratingUpvotesText"
                 android:layout_width="30dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginRight="80dp"
-                android:text="183"
-                android:textColor="@color/black" />
+                android:layout_marginEnd="80dp"
+                android:text="@string/_183"
+                android:textColor="@color/blue_theme" />
 
             <TextView
                 android:id="@+id/ratingPercent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="79%"
-                android:textColor="@color/black"
+                android:text="@string/_79"
+                android:textColor="@color/blue_theme"
                 android:textSize="25sp" />
 
             <TextView
@@ -83,17 +84,18 @@
                 android:layout_width="30dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="80dp"
+                android:layout_marginStart="80dp"
                 android:gravity="end"
-                android:text="47"
-                android:textColor="@color/black" />
+                android:text="@string/_47"
+                android:textColor="@color/blue_theme" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="10dp"
-                android:src="@drawable/ic_thumb_down" />
+                android:layout_marginStart="10dp"
+                android:src="@drawable/ic_thumb_down"
+                android:tint="@color/blue_theme" />
 
         </LinearLayout>
 

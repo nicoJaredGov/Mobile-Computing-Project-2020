@@ -8,7 +8,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:layout_marginBottom="4dp">
+        android:layout_marginBottom="4dp"
+        android:backgroundTint="@color/orange_theme">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -24,10 +25,10 @@
 
                 <TextView
                     android:id="@+id/TextViewOrderNumber"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Order number"
+                    android:text="@string/order_number"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                     android:textColor="#000000" />
 
@@ -35,7 +36,7 @@
                     android:id="@+id/TextViewRestaurant"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Restaurant"
+                    android:text="@string/restaurant"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                     android:textColor="#000000" />
 
@@ -45,18 +46,18 @@
                 android:id="@+id/TextViewEmployeeName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
-                android:text="Employee name"
+                android:text="@string/employee_name"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
 
             <TextView
             android:id="@+id/TextViewOrderTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
-            android:text="Time"
+            android:text="@string/time"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
 
 
@@ -70,14 +71,14 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:src="@drawable/ic_thumb_up"
-                    android:layout_marginRight="10dp" />
+                    android:layout_marginEnd="10dp" />
 
                 <ImageView
                     android:id="@+id/thumbsDown"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:src="@drawable/ic_thumb_down"
-                    android:layout_marginLeft="10dp"/>
+                    android:layout_marginStart="10dp"/>
 
             </LinearLayout>
 

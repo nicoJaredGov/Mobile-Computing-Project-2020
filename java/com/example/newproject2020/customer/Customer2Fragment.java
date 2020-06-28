@@ -92,7 +92,6 @@ public class Customer2Fragment extends Fragment {
             }
         });
 
-
         return listItemsView;
     }
 }

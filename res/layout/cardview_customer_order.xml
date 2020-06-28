@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/CardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:layout_marginBottom="4dp">
+        android:layout_marginBottom="4dp"
+        android:backgroundTint="@color/orange_theme"
+        android:padding="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -24,10 +25,10 @@
 
                 <TextView
                     android:id="@+id/TextViewOrderNumber"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Order number"
+                    android:text="@string/order_number"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                     android:textColor="#000000" />
 
@@ -35,7 +36,7 @@
                     android:id="@+id/TextViewRestaurant"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Restaurant"
+                    android:text="@string/restaurant"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                     android:textColor="#000000" />
 
@@ -45,27 +46,29 @@
                 android:id="@+id/TextViewEmployeeName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
-                android:text="Employee name"
+                android:text="@string/employee_name"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
 
             <TextView
-            android:id="@+id/TextViewOrderTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
-            android:text="Time"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+                android:id="@+id/TextViewOrderTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/time"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
 
             <TextView
                 android:id="@+id/TextViewStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
-                android:text="Status"
+                android:background="@drawable/rounded_corner"
+                android:textColor="@color/black"
+                android:text="@string/status"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
 

@@ -4,6 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/cardview_dark_background"
+    android:orientation="vertical"
+    android:padding="30dp"
     tools:context="com.example.newproject2020.orders.AddOrderEmployeeActivity">
 
 
@@ -11,8 +14,7 @@
         android:id="@+id/order_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="20dp">
+        android:orientation="vertical">
 
         <ImageView
             android:id="@+id/r_back_button"
@@ -21,46 +23,83 @@
             android:onClick="backOnClick"
             android:padding="5dp"
             android:src="@drawable/ic_back_button_black"
-            android:transitionName="transition_registration_back_button" />
+            android:tint="@color/blue_theme"/>
 
         <TextView
             android:id="@+id/login_title_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/muli_bold"
             android:padding="20dp"
-            android:text="create order"
+            android:text="@string/create_order"
             android:textAllCaps="true"
-            android:textColor="#000000"
-            android:textSize="40sp"
-            android:transitionName="transition_register_title_text" />
+            android:textColor="@color/blue_theme"
+            android:textSize="30sp" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/custEmailInput"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Customer Email" />
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/custNameInput"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:hint="Customer Name" />
+            android:hint="@string/customer_email"
+            app:boxStrokeColor="@color/black"
+            app:boxStrokeWidthFocused="2dp"
+            android:textColorHint="@color/blue_theme"
+            app:startIconDrawable="@drawable/ic_mail_outline_black"
+            app:startIconTint="@color/blue_theme"
+            app:boxCornerRadiusBottomEnd="25dp"
+            app:boxCornerRadiusBottomStart="25dp"
+            app:boxCornerRadiusTopEnd="25dp"
+            app:boxCornerRadiusTopStart="25dp">
 
-        <Button
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/custEmailInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="@string/customer_name"
+            app:boxStrokeColor="@color/blue_theme"
+            app:boxStrokeWidthFocused="2dp"
+            android:textColorHint="@color/blue_theme"
+            app:startIconDrawable="@drawable/ic_profile_white"
+            app:startIconTint="@color/blue_theme"
+            app:boxCornerRadiusBottomEnd="25dp"
+            app:boxCornerRadiusBottomStart="25dp"
+            app:boxCornerRadiusTopEnd="25dp"
+            app:boxCornerRadiusTopStart="25dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/custNameInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/blue_theme" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/AddOrderButton"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginTop="20dp"
-            android:onClick="onClick_add_order"
+            android:backgroundTint="@color/blue_theme"
             android:gravity="center"
-            android:text= "create Order" />
+            android:onClick="onClick_add_order"
+            android:text="@string/create_order"
+            app:cornerRadius="19dp"
+            android:textColor="@color/cardview_dark_background"/>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/order_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center" />
 
     </LinearLayout>
 </LinearLayout>

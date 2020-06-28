@@ -31,4 +31,33 @@
     <string name="attachment_summary_on">Automatically download attachments for incoming emails
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="search_restaurants">Search restaurants</string>
+    <string name="create_order">create order</string>
+    <string name="ok">ok</string>
+    <string name="customer_name">Customer Name</string>
+    <string name="customer_email">Customer Email</string>
+    <string name="all_orders">All Orders</string>
+    <string name="order_history">Order History</string>
+    <string name="current_orders">Current Orders</string>
+    <string name="customer">customer</string>
+    <string name="next">next</string>
+    <string name="log_out">Log Out</string>
+    <string name="settings">Settings</string>
+    <string name="status">Status</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="password">Password</string>
+    <string name="employee_email">Employee email</string>
+    <string name="restaurant_name">Restaurant name</string>
+    <string name="surname">Surname</string>
+    <string name="first_name">First name</string>
+    <string name="order_number">Order number</string>
+    <string name="restaurant">Restaurant</string>
+    <string name="employee_name">Employee name</string>
+    <string name="time">Time</string>
+    <string name="update">UPDATE</string>
+    <string name="enter_password">Enter password</string>
+    <string name="add">add</string>
+    <string name="_79">79%</string>
+    <string name="_47">47</string>
+    <string name="_183">183</string>
 </resources>

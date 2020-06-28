@@ -9,7 +9,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:background="@color/blue_theme"
         android:theme="@style/ThemeOverlay.AppCompat.Light"
         app:liftOnScroll="true">
 
@@ -22,19 +22,24 @@
             android:id="@+id/employee_tab_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white">
+            android:background="@color/blue_theme"
+            app:tabIndicatorColor="@color/black"
+            app:tabTextColor="@color/black">
+
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Current Orders"/>
+                android:text="@string/current_orders" />
+
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="All Orders"/>
+                android:text="@string/all_orders" />
+
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Order History"/>
+                android:text="@string/order_history" />
 
 
         </com.google.android.material.tabs.TabLayout>

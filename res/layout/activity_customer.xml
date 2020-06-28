@@ -10,20 +10,22 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:background="@color/orange_theme"
         android:theme="@style/ThemeOverlay.AppCompat.Light"
         app:liftOnScroll="true">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/CustomerToolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize" />
+            android:layout_height="?attr/actionBarSize"
+            app:titleTextColor="@color/black" />
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/customer_tab_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white">
+            android:background="@color/orange_theme"
+            app:tabTextColor="@color/black">
 
         </com.google.android.material.tabs.TabLayout>
 

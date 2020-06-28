@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="white">#FFFFFF</color>
-    <color name="colorPrimaryDark">#00548C</color>
+    <color name="colorPrimaryDark">#424242</color>
     <color name="colorAccent">#039DDA</color>
     <color name="black">#000000</color>
-    <color name="theme_color">#000000</color>
+    <color name="orange_theme">#FFA94C</color>
+    <color name="blue_theme">#94DAFF</color>
+    <color name="orange_dark">#EC9D47</color>
+    <color name="blue_dark">#4EC1FF</color>
 </resources>
