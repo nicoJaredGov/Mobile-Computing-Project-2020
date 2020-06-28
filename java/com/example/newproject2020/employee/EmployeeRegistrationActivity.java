@@ -14,9 +14,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.newproject2020.CustomerLoginActivity;
+import com.example.newproject2020.EmployeeLoginActivity;
 import com.example.newproject2020.PHPRequest;
 import com.example.newproject2020.RegSharedPrefs;
 import com.example.newproject2020.RequestHandler;
+import com.example.newproject2020.SharedPrefs;
 import com.example.newproject2020.TestActivity;
 import com.example.project2020.R;
 
@@ -32,8 +34,9 @@ public class EmployeeRegistrationActivity extends AppCompatActivity {
     TextView registerTitleText;
     TextView empRegTextView;
 
-    RegSharedPrefs regSharedPref;
     EditText firstNameField, lastNameField, empEmailField, passwordField, confirmField, restaurantField;
+    RegSharedPrefs regSharedPref;
+    SharedPrefs sharedPref;
     String employeeEmail, password, confirmPassword, restaurant;
     String firstName, lastName;
 
@@ -100,8 +103,9 @@ public class EmployeeRegistrationActivity extends AppCompatActivity {
         JSONArray ja = new JSONArray(response);
         JSONObject jo = ja.getJSONObject(0);
         regSharedPref.saveData(this,firstName,lastName,employeeEmail,jo.getString("EMP_PASSWORD"),jo.getInt("EMPLOYEE_ID"),restaurant);
+        sharedPref.saveData(this,"2",true);
 
-        Intent intent = new Intent(getApplicationContext(), EmployeeActivity.class);
+        Intent intent = new Intent(getApplicationContext(), TestActivity.class);
         startActivity(intent);
         finish();
     }
@@ -114,7 +118,7 @@ public class EmployeeRegistrationActivity extends AppCompatActivity {
     }*/
 
     public void emp_reg_back_btn_click(View view) {
-        Intent intent = new Intent(this, CustomerLoginActivity.class);
+        Intent intent = new Intent(this, EmployeeLoginActivity.class);
         startActivity(intent);
     }
 }

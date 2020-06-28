@@ -5,16 +5,14 @@ import android.content.SharedPreferences;
 
 public class SharedPrefs {
     public static final String SHARED_PREFS = "sharedPrefs";
+    public static final String USER_TYPE = "userType";
+    public static final String LOGGED_IN = "loggedIn";
 
-    public static void saveData(Context c, String settingName, String settingValue){
+    public static void saveData(Context c, String userT, boolean log){
         SharedPreferences sharedPreferences = c.getSharedPreferences(SHARED_PREFS,Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(settingName,settingValue);
+        editor.putString(USER_TYPE,userT);
+        editor.putBoolean(LOGGED_IN,log);
         editor.apply();
-    }
-
-    public static String loadData(Context c, String settingName, String defaultValue){
-        SharedPreferences sharedPreferences = c.getSharedPreferences(SHARED_PREFS,Context.MODE_PRIVATE);
-        return sharedPreferences.getString(settingName,defaultValue);
     }
 }

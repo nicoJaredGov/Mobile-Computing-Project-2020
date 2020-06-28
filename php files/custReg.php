@@ -29,20 +29,16 @@ if($check){
     if($check_count['RESULT'] != '0'){
 	echo "FALSE";
     } else{
-	$sql2 = "INSERT INTO CUSTOMERS (CUSTOMER_EMAIL,FNAME, LNAME, PASSWORD) VALUES ('$email','$fname', '$lname', '$pass')";
-	if(mysqli_query($link, $sql2)){
-    		//
-		if ($result = mysqli_query($link,"SELECT CUSTOMER_ID, PASSWORD FROM CUSTOMERS ORDER BY CUSTOMER_ID DESC LIMIT 1")){
-			while ($row=$result->fetch_assoc()){
-				$output[] = $row;
-			}
-		}
-		echo json_encode($output);
-		//
+	$stmt = $link->prepare("INSERT INTO CUSTOMERS (CUSTOMER_EMAIL,FNAME, LNAME, PASSWORD) VALUES (?,?,?,?)");
+	$stmt->bind_param("ssss", $email, $fname, $lname, $pass);
+	$stmt->execute();
 
-	} else{
-    		echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+	if ($result = mysqli_query($link,"SELECT CUSTOMER_ID, PASSWORD FROM CUSTOMERS ORDER BY CUSTOMER_ID DESC LIMIT 1")){
+		while ($row=$result->fetch_assoc()){
+			$output[] = $row;
+		}
 	}
+	echo json_encode($output);
     }
 
 } else{

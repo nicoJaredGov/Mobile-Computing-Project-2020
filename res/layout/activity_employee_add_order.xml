@@ -38,7 +38,8 @@
             android:id="@+id/custEmailInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Customer Email" />
+            android:hint="Customer Email"
+            android:inputType="textEmailAddress" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/custNameInput"

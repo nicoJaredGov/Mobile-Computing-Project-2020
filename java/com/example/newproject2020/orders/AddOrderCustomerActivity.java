@@ -82,19 +82,24 @@ public class AddOrderCustomerActivity extends AppCompatActivity {
         searchBar.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
                 (AddOrderCustomerActivity.this).adapter.getFilter().filter(charSequence.toString());
+                restaurantList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        String a = (String) parent.getAdapter().getItem(position);
+                        searchBar.setText(a);
+                    }
+                });
             }
 
             @Override
             public void afterTextChanged(Editable s) {
             }
         });
-
        restaurantList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
            @Override
            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

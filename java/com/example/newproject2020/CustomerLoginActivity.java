@@ -32,6 +32,7 @@ public class CustomerLoginActivity extends AppCompatActivity {
     String username, password;
     Integer passwordCounter;
     RegSharedPrefs regSharedPrefs;
+    SharedPrefs sharedPref;
     String firstName, lastName, customerEmail;
     int idNum;
 
@@ -99,6 +100,7 @@ public class CustomerLoginActivity extends AppCompatActivity {
             idNum = jo.getInt("CUSTOMER_ID");
             password = jo.getString("PASSWORD");
             regSharedPrefs.saveData(this,firstName,lastName,customerEmail,password,idNum,"");
+            sharedPref.saveData(this,"1",true);
 
             Intent intent = new Intent(this, CustomerActivity.class);
             startActivity(intent);

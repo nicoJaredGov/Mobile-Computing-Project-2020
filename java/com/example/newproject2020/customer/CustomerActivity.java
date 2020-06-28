@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -13,6 +12,7 @@ import androidx.viewpager.widget.ViewPager;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -38,32 +38,36 @@ public class CustomerActivity extends AppCompatActivity {
     private Customer1Fragment fragment1;
     private Customer2Fragment fragment2;
 
-    private FloatingActionButton addOrderButton;
-    private TextView testview;
+    Handler handler = new Handler();
+    Runnable refresh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer);
 
-        toolbar = findViewById(R.id.CustomerToolbar);
-        setSupportActionBar(toolbar);
+        refresh = new Runnable() {
+            public void run() {
+                toolbar = findViewById(R.id.CustomerToolbar);
+                setSupportActionBar(toolbar);
 
-        viewPager = findViewById(R.id.customer_view_pager);
-        tabLayout = findViewById(R.id.customer_tab_layout);
+                viewPager = findViewById(R.id.customer_view_pager);
+                tabLayout = findViewById(R.id.customer_tab_layout);
 
-        fragment1 = new Customer1Fragment();
-        fragment2 = new Customer2Fragment();
+                fragment1 = new Customer1Fragment();
+                fragment2 = new Customer2Fragment();
 
-        tabLayout.setupWithViewPager(viewPager);
+                tabLayout.setupWithViewPager(viewPager);
 
-        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), 0);
-        viewPagerAdapter.addFragment(fragment1, "Ongoing");
-        viewPagerAdapter.addFragment(fragment2, "History");
-        viewPager.setAdapter(viewPagerAdapter);
+                ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), 0);
+                viewPagerAdapter.addFragment(fragment1, "Ongoing");
+                viewPagerAdapter.addFragment(fragment2, "History");
+                viewPager.setAdapter(viewPagerAdapter);
 
-        addOrderButton = findViewById(R.id.customerFAB);
-        testview = findViewById(R.id.customerFAB);
+                handler.postDelayed(refresh, 90000);
+            }
+        };
+        handler.post(refresh);
     }
 
     @Override
@@ -104,10 +108,6 @@ public class CustomerActivity extends AppCompatActivity {
 
     public void customer_change_account_settings_btn_click(View view) {
 
-    }
-
-    public void customer_add_order_button(View view) {
-        testview.setText("clicked");
     }
 
     private static class ViewPagerAdapter extends FragmentPagerAdapter {

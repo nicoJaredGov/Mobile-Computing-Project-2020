@@ -14,22 +14,28 @@ $empId = $_REQUEST["empId"];
 $status = $_REQUEST["status"]; //0 - n/a, 1 = ready, 2 = collected, 3 = thumbs up, 4 = thumbs down
 
 if($status == 0){
-	$sql = "UPDATE ORDERS SET EMPLOYEE_ID = '$empId' WHERE ORDER_ID = '$orderId'";
+	$stmt = $link->prepare("UPDATE ORDERS SET EMPLOYEE_ID = ?  WHERE ORDER_ID = ?");
+	$stmt->bind_param("ii",$empId,$orderId);
+	$stmt->execute();
 } elseif($status == 1){
-	$sql = "UPDATE ORDERS SET ORDER_STATUS = 'ready' WHERE ORDER_ID = '$orderId'";
+	$stmt = $link->prepare("UPDATE ORDERS SET ORDER_STATUS = 'ready' WHERE ORDER_ID = ?");
+	$stmt->bind_param("i", $orderId);
+	$stmt->execute();
 } elseif($status == 2){
-	$sql = "UPDATE ORDERS SET ORDER_STATUS = 'collected', TIME_COLLECTED = CURRENT_TIMESTAMP() WHERE ORDER_ID = '$orderId'";
+	$stmt = $link->prepare("UPDATE ORDERS SET ORDER_STATUS = 'collected', TIME_COLLECTED = ? WHERE ORDER_ID = ?");
+	$date = date('Y-m-d h:i:s a', time());
+	$stmt->bind_param("si", $date, $orderId);
+	$stmt->execute();
 } elseif($status == 3){
-	$sql = "UPDATE ORDERS SET RATING = 1 WHERE ORDER_ID = '$orderId'";
+	$stmt = $link->prepare("UPDATE ORDERS SET RATING = 1 WHERE ORDER_ID = ?");
+	$stmt->bind_param("i", $orderId);
+	$stmt->execute();
 } else{
-	$sql = "UPDATE ORDERS SET RATING = -1 WHERE ORDER_ID = '$orderId'";
+	$stmt = $link->prepare("UPDATE ORDERS SET RATING = -1 WHERE ORDER_ID = ?");
+	$stmt->bind_param("i", $orderId);
+	$stmt->execute();
 }
 	
-if(mysqli_query($link, $sql)){
-    echo "TRUE";
-} else{
-    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-}
- 
+echo "TRUE"; 
 mysqli_close($link);
 ?>

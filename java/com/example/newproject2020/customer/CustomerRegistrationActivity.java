@@ -17,6 +17,7 @@ import com.example.newproject2020.CustomerLoginActivity;
 import com.example.newproject2020.PHPRequest;
 import com.example.newproject2020.RegSharedPrefs;
 import com.example.newproject2020.RequestHandler;
+import com.example.newproject2020.SharedPrefs;
 import com.example.newproject2020.TestActivity;
 import com.example.project2020.R;
 
@@ -33,6 +34,7 @@ public class CustomerRegistrationActivity extends AppCompatActivity {
     TextView cusRegTextView;
 
     RegSharedPrefs regSharedPref;
+    SharedPrefs sharedPref;
     EditText firstNameField, lastNameField, emailField, passwordField, confirmField;
     String firstName, lastName, email, password, confirmPassword, restaurant;
     int idNum;
@@ -107,6 +109,7 @@ public class CustomerRegistrationActivity extends AppCompatActivity {
         idNum = jo.getInt("CUSTOMER_ID");
         password = jo.getString("PASSWORD");
         regSharedPref.saveData(this,firstName,lastName,email,password,idNum,restaurant);
+        sharedPref.saveData(this,"1",true);
         Intent intent = new Intent(this, CustomerActivity.class);
         startActivity(intent);
         finish();

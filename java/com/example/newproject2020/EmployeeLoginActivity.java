@@ -29,6 +29,7 @@ public class EmployeeLoginActivity extends AppCompatActivity {
     String username, password;
     Integer passwordCounter;
     RegSharedPrefs regSharedPrefs;
+    SharedPrefs sharedPref;
     String firstName,lastName,employeeEmail,restaurant;
     int idNum;
 
@@ -96,6 +97,7 @@ public class EmployeeLoginActivity extends AppCompatActivity {
             idNum = jo.getInt("EMPLOYEE_ID");
             password = jo.getString("EMP_PASSWORD");
             regSharedPrefs.saveData(this,firstName,lastName,employeeEmail,password,idNum,restaurant);
+            sharedPref.saveData(this,"2",true);
 
             Intent intent = new Intent(this, EmployeeActivity.class);
             startActivity(intent);

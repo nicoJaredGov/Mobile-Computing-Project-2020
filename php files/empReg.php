@@ -30,15 +30,18 @@ if($check){
     if($check_count['RESULT'] != '0'){
 	echo "FALSE";
     } else{
-	$sql2 = "INSERT INTO EMPLOYEES (EMP_EMAIL,EMP_FNAME,EMP_LNAME,EMP_PASSWORD,RESTAURANT_NAME) VALUES ('$empEmail','$fname', '$lname', '$pass','$restaurant')";
-	if(mysqli_query($link, $sql2)){
+	$stmt = $link->prepare("INSERT INTO EMPLOYEES (EMP_EMAIL,EMP_FNAME,EMP_LNAME,EMP_PASSWORD,RESTAURANT_NAME) VALUES (?,?,?,?,?)");
+	$stmt->bind_param("sssss", $empEmail, $fname, $lname, $pass, $restaurant);
+	$stmt->execute();
+
     		$sql3 = "SELECT COUNT(*) AS RESULT, RESTAURANT_ID FROM RESTAURANTS WHERE RESTAURANT_NAME = '$restaurant'";
 		$check2 = mysqli_query($link, $sql3);
 		if($check2){
     			$check_count2 = mysqli_fetch_array($check2);
     			if(!($check_count2['RESULT'] != '0')){
-    				$sql4 = "INSERT INTO RESTAURANTS (RESTAURANT_NAME) VALUES ('$restaurant')";
-				if(mysqli_query($link, $sql4)){
+				$stmt1 = $link->prepare("INSERT INTO RESTAURANTS (RESTAURANT_NAME) VALUES (?)");
+				$stmt1->bind_param("s", $restaurant);
+				$stmt1->execute();
 					//
 					if ($result = mysqli_query($link,"SELECT EMPLOYEE_ID, EMP_PASSWORD FROM EMPLOYEES ORDER BY EMPLOYEE_ID DESC LIMIT 1")){
 						while ($row=$result->fetch_assoc()){
@@ -47,9 +50,6 @@ if($check){
 					}
 					echo json_encode($output);
 					//
-				} else{
-    					echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-				}
     			} else{
 				//
 				if ($result = mysqli_query($link,"SELECT EMPLOYEE_ID, EMP_PASSWORD FROM EMPLOYEES ORDER BY EMPLOYEE_ID DESC LIMIT 1")){
@@ -63,10 +63,6 @@ if($check){
 		} else{
     			echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
 		}
-
-	} else{
-    		echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-	}
     }
 
 } else{
