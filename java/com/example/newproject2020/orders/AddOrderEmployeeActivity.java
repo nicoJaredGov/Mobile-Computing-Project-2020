@@ -83,6 +83,7 @@ public class AddOrderEmployeeActivity extends AppCompatActivity {
     public void processOrderResponse(){
         Intent intent = new Intent(this, EmployeeActivity.class);
         startActivity(intent);
+        finish();
     }
 
 }

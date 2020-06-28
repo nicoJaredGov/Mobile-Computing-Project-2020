@@ -77,6 +77,7 @@ public class Customer1Fragment extends Fragment {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getActivity(), AddOrderCustomerActivity.class));
+                requireActivity().finish();
             }
         });
 

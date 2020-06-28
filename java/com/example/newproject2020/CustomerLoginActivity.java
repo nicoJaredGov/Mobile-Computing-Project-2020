@@ -103,7 +103,6 @@ public class CustomerLoginActivity extends AppCompatActivity {
             Intent intent = new Intent(this, CustomerActivity.class);
             startActivity(intent);
             finish();
-
         }
 
     }

@@ -53,13 +53,14 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:onClick="onClick_add_order"
+            android:gravity="center"
             android:text= "create Order" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/order_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Test text" />
+            android:layout_gravity="center"/>
 
     </LinearLayout>
 </LinearLayout>

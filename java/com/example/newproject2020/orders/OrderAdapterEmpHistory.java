@@ -56,7 +56,7 @@ public class OrderAdapterEmpHistory extends RecyclerView.Adapter<OrderAdapterEmp
         public void bindHolder(int position) {
             orderNumber.setText(String.valueOf(orderList.get(position).getOrderNumber()));
             custName.setText(orderList.get(position).getCustomer());
-            orderTime.setText(String.valueOf(orderList.get(position).getTimeCreated()));
+            orderTime.setText(String.valueOf(orderList.get(position).getTimeCollected()));
             orderStatus.setText(orderList.get(position).getStatus());
         }
     }

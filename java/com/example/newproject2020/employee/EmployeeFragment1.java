@@ -2,6 +2,7 @@ package com.example.newproject2020.employee;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,12 +13,14 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.newproject2020.orders.AddOrderEmployeeActivity;
 import com.example.newproject2020.orders.Order;
 import com.example.newproject2020.orders.OrderAdapter;
 import com.example.newproject2020.PHPRequest;
 import com.example.newproject2020.RegSharedPrefs;
 import com.example.newproject2020.RequestHandler;
 import com.example.project2020.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,6 +37,7 @@ public class EmployeeFragment1 extends Fragment {
     RecyclerView.LayoutManager layoutManager;
     OrderAdapter adapter;
     View listItemsView;
+    FloatingActionButton fab;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -66,6 +70,15 @@ public class EmployeeFragment1 extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         listItemsView = inflater.inflate(R.layout.fragment_employee1, container, false);
+
+        fab = (FloatingActionButton) listItemsView.findViewById(R.id.employeeFAB1);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), AddOrderEmployeeActivity.class));
+                requireActivity().finish();
+            }
+        });
 
         sharedPreferences = getActivity().getSharedPreferences(RegSharedPrefs.SHARED_PREFS, Context.MODE_PRIVATE);
         employeeId = sharedPreferences.getInt(RegSharedPrefs.ID_NUM,0);

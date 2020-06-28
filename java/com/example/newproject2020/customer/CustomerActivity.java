@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,6 +19,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.newproject2020.RegSharedPrefs;
+import com.example.newproject2020.SharedPrefs;
 import com.example.newproject2020.UserActivity;
 import com.example.project2020.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -90,8 +93,13 @@ public class CustomerActivity extends AppCompatActivity {
     }
 
     public void openLogoutActivity() {
+        SharedPreferences registration = getSharedPreferences(RegSharedPrefs.SHARED_PREFS,MODE_PRIVATE);
+        registration.edit().clear().apply();
+        SharedPreferences user = getSharedPreferences(SharedPrefs.SHARED_PREFS,MODE_PRIVATE);
+        user.edit().clear().apply();
         Intent intent = new Intent(this, UserActivity.class);
         startActivity(intent);
+        finish();
     }
 
     public void customer_change_account_settings_btn_click(View view) {

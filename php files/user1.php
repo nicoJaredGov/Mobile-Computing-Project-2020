@@ -6,12 +6,22 @@ $link = mysqli_connect("127.0.0.1", $username, $password, $database);
 $output = array();
 
 $user = $_REQUEST["user"];
-if ($result = mysqli_query($link,"SELECT * from EMPLOYEES where EMP_EMAIL='$user'")){
-        while ($row=$result->fetch_assoc()){
-                $output[] = $row;
-        }
-	echo json_encode($output);
-} else{
+$password = $_REQUEST["password"];
+
+$sql = "SELECT * from EMPLOYEES where EMP_EMAIL='$user'";
+if ($result = mysqli_query($link,$sql)){
+	while ($row=$result->fetch_assoc()){
+			$output[] = $row;
+		}
+	if ($output == NULL){
+		echo "NULL";
+	} elseif (password_verify($password, $output[0]["EMP_PASSWORD"])) {
+		echo json_encode($output);
+	} else {
+    		echo "WRONG";
+	} 
+
+} else {
 	echo "FALSE";
 }
 mysqli_close($link);

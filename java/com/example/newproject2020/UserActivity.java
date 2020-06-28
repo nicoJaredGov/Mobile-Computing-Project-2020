@@ -24,18 +24,17 @@ public class UserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
 
-        /*String userTypeLoaded = sharedPref.loadData(this,userTypeSaved,"");
+        String userTypeLoaded = sharedPref.loadData(this,userTypeSaved,"");
         if (!userTypeLoaded.isEmpty()){
             Intent i;
-            if (userTypeLoaded == "1") {
+            if (userTypeLoaded.equals("1")) {
                 i = new Intent(this, CustomerActivity.class);
-            }
-            else{
+            } else {
                 i = new Intent(this, EmployeeActivity.class);
             }
             startActivity(i);
             finish();
-        }*/
+        }
     }
 
     public void callCustomerLogin(View view) {

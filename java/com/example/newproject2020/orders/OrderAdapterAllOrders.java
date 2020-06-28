@@ -77,10 +77,11 @@ public class OrderAdapterAllOrders extends RecyclerView.Adapter<OrderAdapterAllO
                     ContentValues cv = new ContentValues();
                     cv.put("orderId",orderList.get(position).getOrderNumber());
                     cv.put("empId",employeeId);
+                    cv.put("status",0);
 
                     updateReq.doRequest((Activity) context, "updateOrder.php", cv, new RequestHandler() {
                         @Override
-                        public void processResponse(String response) throws JSONException {
+                        public void processResponse(String response) {
                             if(response.equals("TRUE")){
                                 Intent intent = new Intent(context.getApplicationContext(),context.getClass());
                                 context.startActivity(intent);
@@ -90,8 +91,6 @@ public class OrderAdapterAllOrders extends RecyclerView.Adapter<OrderAdapterAllO
                             }
                         }
                     });
-
-
 
                 }
             });

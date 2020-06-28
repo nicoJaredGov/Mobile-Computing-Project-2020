@@ -66,14 +66,16 @@
                 android:layout_gravity="center">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/thumbsUp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:src="@drawable/ic_thumb_up"
-                    android:layout_marginRight="10dp"/>
+                    android:layout_marginRight="10dp" />
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/thumbsDown"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:src="@drawable/ic_thumb_down"
                     android:layout_marginLeft="10dp"/>
 

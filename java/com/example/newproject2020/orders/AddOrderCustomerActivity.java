@@ -139,29 +139,4 @@ public class AddOrderCustomerActivity extends AppCompatActivity {
         finish();
     }
 
-    /*public class MyAdapter extends ArrayAdapter<String> implements Filterable {
-
-        ArrayList<String> restaurantNames;
-
-        public MyAdapter(Context c, ArrayList<String> restaurant) {
-            super(c, 0, restaurant);
-            this.restaurantNames = restaurant;
-        }
-
-        @NonNull
-        @Override
-        public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-
-            if (convertView == null) {
-                convertView = LayoutInflater.from(getContext()).inflate(R.layout.restaurant, parent, false);
-            }
-
-            TextView restaurantTextview = (TextView) convertView.findViewById(R.id.restaurant_text_view);
-            restaurantTextview.setText(restaurantNames.get(position));
-
-            return convertView;
-        }
-
-    }*/
-
 }

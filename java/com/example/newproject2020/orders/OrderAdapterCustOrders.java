@@ -54,7 +54,7 @@ public class OrderAdapterCustOrders extends RecyclerView.Adapter<OrderAdapterCus
             restaurantName = itemView.findViewById(R.id.TextViewRestaurant);
         }
 
-        public void bindHolder(int position){
+        public void bindHolder(final int position){
             orderNumber.setText(String.valueOf(orderList.get(position).getOrderNumber()));
             empName = orderList.get(position).getEmployee();
             if (empName.startsWith("null null")){
@@ -66,6 +66,8 @@ public class OrderAdapterCustOrders extends RecyclerView.Adapter<OrderAdapterCus
             orderTime.setText(String.valueOf(orderList.get(position).getTimeCreated()));
             orderStatus.setText(orderList.get(position).getStatus());
             restaurantName.setText(orderList.get(position).getRestaurant());
+
+
         }
     }
 
