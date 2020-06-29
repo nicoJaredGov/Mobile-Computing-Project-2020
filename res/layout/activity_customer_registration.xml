@@ -186,11 +186,19 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <TextView
+            android:id="@+id/customerRegTextView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom|center"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/red"/>
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/nextBtn"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="5dp"
             android:backgroundTint="@color/black"
             android:onClick="callRegisterNextScreen"
             android:text="@string/next"
@@ -198,11 +206,7 @@
             android:transitionName="transition_cust_login_next_btn"
             app:cornerRadius="19dp" />
 
-        <TextView
-            android:id="@+id/customerRegTextView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="bottom|center" />
+
 
 
     </LinearLayout>
