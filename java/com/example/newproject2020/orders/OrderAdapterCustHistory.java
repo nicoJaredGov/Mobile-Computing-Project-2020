@@ -79,10 +79,10 @@ public class OrderAdapterCustHistory extends RecyclerView.Adapter<OrderAdapterCu
 
             switch (orderList.get(position).getRating()){
                 case 1:
-                    thumbsUp.setColorFilter(context.getResources().getColor(R.color.lightBlue));
+                    thumbsUp.setColorFilter(context.getResources().getColor(R.color.blue_dark));
                     break;
                 case -1:
-                    thumbsDown.setColorFilter(context.getResources().getColor(R.color.lightBlue));
+                    thumbsDown.setColorFilter(context.getResources().getColor(R.color.blue_dark));
             }
 
             thumbsUp.setOnClickListener(new View.OnClickListener() {

@@ -16,13 +16,13 @@
         android:contentDescription="@string/todo"
         android:onClick="customer_registration_back_btn_click"
         android:padding="5dp"
-        android:src="@drawable/ic_back_button_black" />
+        android:src="@drawable/ic_back_button_black"
+        android:transitionName="transition_login_back_button"/>
 
     <TextView
         android:id="@+id/register_title_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
         android:fontFamily="@font/muli_bold"
         android:padding="20dp"
         android:text="@string/register"
@@ -195,7 +195,8 @@
             android:onClick="callRegisterNextScreen"
             android:text="@string/next"
             android:textColor="@color/orange_theme"
-            app:cornerRadius="19dp" />
+            app:cornerRadius="19dp"
+            android:transitionName="transition_cust_login_next_btn"/>
 
         <TextView
             android:id="@+id/customerRegTextView"

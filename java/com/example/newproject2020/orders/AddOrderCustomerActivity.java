@@ -126,7 +126,6 @@ public class AddOrderCustomerActivity extends AppCompatActivity {
     public void backOnClick(View view) {
         Intent intent = new Intent(this, CustomerActivity.class);
         startActivity(intent);
-        finish();
     }
 
     public void confirm_button_click(View view){

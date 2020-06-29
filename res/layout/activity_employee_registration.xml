@@ -225,6 +225,7 @@
                 android:onClick="callRegisterNextScreen"
                 android:text="@string/next"
                 android:textColor="@color/blue_theme"
+                android:transitionName="transition_register_next_button"
                 app:cornerRadius="19dp" />
 
             <TextView
