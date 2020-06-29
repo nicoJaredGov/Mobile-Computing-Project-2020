@@ -43,7 +43,7 @@
             android:inputType="textEmailAddress"
             android:layout_marginTop="20dp"
             android:hint="@string/customer_email"
-            app:boxStrokeColor="@color/black"
+            app:boxStrokeColor="@color/blue_theme"
             app:boxStrokeWidth="2dp"
             app:boxStrokeWidthFocused="2dp"
             android:textColorHint="@color/blue_theme"

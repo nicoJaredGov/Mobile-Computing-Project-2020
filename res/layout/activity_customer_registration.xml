@@ -17,7 +17,7 @@
         android:onClick="customer_registration_back_btn_click"
         android:padding="5dp"
         android:src="@drawable/ic_back_button_black"
-        android:transitionName="transition_login_back_button"/>
+        android:transitionName="transition_login_back_button" />
 
     <TextView
         android:id="@+id/register_title_text"
@@ -155,48 +155,48 @@
 
             </com.google.android.material.textfield.TextInputEditText>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/confirmPasswordInput"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/confirmPasswordInput"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/confirm_password"
+            android:textColorHint="@color/black"
+            app:boxCornerRadiusBottomEnd="25dp"
+            app:boxCornerRadiusBottomStart="25dp"
+            app:boxCornerRadiusTopEnd="25dp"
+            app:boxCornerRadiusTopStart="25dp"
+            app:boxStrokeColor="@color/black"
+            app:boxStrokeWidthFocused="2dp"
+            app:hintTextColor="@color/black"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/black"
+            app:startIconDrawable="@drawable/ic_password_white"
+            app:startIconTint="@color/black">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/confirmEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/confirm_password"
-                android:textColorHint="@color/black"
-                app:boxCornerRadiusBottomEnd="25dp"
-                app:boxCornerRadiusBottomStart="25dp"
-                app:boxCornerRadiusTopEnd="25dp"
-                app:boxCornerRadiusTopStart="25dp"
-                app:boxStrokeColor="@color/black"
-                app:boxStrokeWidthFocused="2dp"
-                app:hintTextColor="@color/black"
-                app:passwordToggleEnabled="true"
-                app:passwordToggleTint="@color/black"
-                app:startIconDrawable="@drawable/ic_password_white"
-                app:startIconTint="@color/black">
+                android:inputType="textPassword">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/confirmEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPassword">
-
-                </com.google.android.material.textfield.TextInputEditText>
-
-            </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.textfield.TextInputEditText>
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/nextBtn"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginTop="20dp"
             android:backgroundTint="@color/black"
             android:onClick="callRegisterNextScreen"
             android:text="@string/next"
             android:textColor="@color/orange_theme"
-            app:cornerRadius="19dp"
-            android:transitionName="transition_cust_login_next_btn"/>
+            android:transitionName="transition_cust_login_next_btn"
+            app:cornerRadius="19dp" />
 
         <TextView
             android:id="@+id/customerRegTextView"

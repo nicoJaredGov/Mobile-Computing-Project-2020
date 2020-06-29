@@ -74,15 +74,14 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/confirmBtn"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
             android:layout_marginTop="2dp"
-            android:background="#000000"
             android:backgroundTint="@color/orange_theme"
             android:onClick="confirm_button_click"
             android:text="@string/ok"
             android:textColor="@color/cardview_dark_background"
-            app:cornerRadius="0dp" />
+            app:cornerRadius="19dp" />
 
     </LinearLayout>
 

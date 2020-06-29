@@ -91,14 +91,15 @@
         android:id="@+id/mTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center" />
+        android:gravity="center"
+        android:layout_marginTop="5dp"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/nextBtn"
         style=""
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:onClick="nextOnClick"
         android:text="@string/next"
         android:textColor="@color/orange_theme"
@@ -111,7 +112,7 @@
         android:id="@+id/registerBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="10dp"
         android:gravity="center"
         android:onClick="registerOnClick"
         android:text="@string/register"

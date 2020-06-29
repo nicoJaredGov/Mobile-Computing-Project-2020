@@ -18,7 +18,6 @@
         app:backgroundTint="#FFFFFF"
         app:elevation="10dp"
         app:rippleColor="#000000"
-        android:onClick="customer_add_order_button"
         tools:ignore="OnClick" />
 
     <androidx.recyclerview.widget.RecyclerView

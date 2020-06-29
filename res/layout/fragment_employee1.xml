@@ -26,7 +26,6 @@
         android:src="@drawable/ic_add"
         app:backgroundTint="@color/white"
         app:elevation="10dp"
-        android:onClick="customer_add_order_button"
         tools:ignore="OnClick" />
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
