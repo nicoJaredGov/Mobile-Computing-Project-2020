@@ -10,7 +10,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RecyclerViewEmp1"
         android:layout_width="match_parent"
-        android:layout_height="428dp"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="96dp"
         android:padding="20dp"
         tools:listitem="@layout/cardview_emp_history">
 

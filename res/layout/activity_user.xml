@@ -58,9 +58,7 @@
             android:onClick="callCustomerLogin"
             android:text="@string/customer"
             android:textColor="@color/cardview_dark_background"
-            android:transitionName="transition_cust_btn"
-            app:cornerRadius="19dp"
-            app:elevation="20dp" />
+            app:cornerRadius="19dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/user_employee_button"
@@ -72,9 +70,7 @@
             android:onClick="callEmployeeLogin"
             android:text="@string/employee"
             android:textColor="@color/cardview_dark_background"
-            android:transitionName="transition_emp_btn"
-            app:cornerRadius="19dp"
-            app:elevation="20dp" />
+            app:cornerRadius="19dp" />
 
     </LinearLayout>
 

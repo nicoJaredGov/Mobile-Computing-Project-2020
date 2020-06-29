@@ -5,10 +5,10 @@
     <color name="colorAccent">#039DDA</color>
     <color name="black">#000000</color>
     <color name="theme_color">#000000</color>
-    <color name="lightBlue">#249BC3</color>
+    <color name="orange_light">#FFC78A</color>
     <color name="orange_theme">#FFA94C</color>
-    <color name="blue_theme">#94DAFF</color>
     <color name="orange_dark">#EC9D47</color>
-    <color name="blue_dark">#4BABDD</color>
->>>>>>> cbc4af131be1164e9fe9f99e1bd566feee862a99
+    <color name="lightBlue">#C2F0FF</color>
+    <color name="blue_theme">#94DAFF</color>
+    <color name="blue_dark">#63B6E1</color>
 </resources>

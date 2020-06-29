@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
-        android:backgroundTint="@color/blue_theme"
+        android:backgroundTint="@color/lightBlue"
         android:padding="10dp">
 
         <LinearLayout
@@ -73,7 +73,7 @@
                     android:backgroundTint="@color/black"
                     android:onClick="user_button_click"
                     android:text="@string/update"
-                    android:textColor="@color/blue_theme"
+                    android:textColor="@color/lightBlue"
                     app:cornerRadius="15dp" />
 
             </LinearLayout>

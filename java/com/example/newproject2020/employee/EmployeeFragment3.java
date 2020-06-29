@@ -30,17 +30,11 @@ import java.util.ArrayList;
 
 public class EmployeeFragment3 extends Fragment {
 
-    SharedPreferences sharedPreferences;
-    String employeeName, restaurant;
-    int employeeId;
-    RecyclerView recyclerView;
-    RecyclerView.LayoutManager layoutManager;
-    OrderAdapterEmpHistory adapter;
-    View listItemsView;
-    ProgressBar ratingBar;
-    TextView upvotesTextView;
-    TextView downvotesTextView;
-    TextView overallRating;
+    private String employeeName, restaurant;
+    private RecyclerView recyclerView;
+    private RecyclerView.LayoutManager layoutManager;
+    private OrderAdapterEmpHistory adapter;
+    private View listItemsView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -71,10 +65,10 @@ public class EmployeeFragment3 extends Fragment {
             else if(rating==-1){downvotes++;}
         }
 
-        ratingBar = listItemsView.findViewById(R.id.ratingBar);
-        upvotesTextView = listItemsView.findViewById(R.id.ratingUpvotesText);
-        downvotesTextView = listItemsView.findViewById(R.id.ratingDownvotesText);
-        overallRating = listItemsView.findViewById(R.id.ratingPercent);
+        ProgressBar ratingBar = listItemsView.findViewById(R.id.ratingBar);
+        TextView upvotesTextView = listItemsView.findViewById(R.id.ratingUpvotesText);
+        TextView downvotesTextView = listItemsView.findViewById(R.id.ratingDownvotesText);
+        TextView overallRating = listItemsView.findViewById(R.id.ratingPercent);
 
         upvotesTextView.setText(String.valueOf((int) upvotes));
         downvotesTextView.setText(String.valueOf((int) downvotes));
@@ -96,8 +90,8 @@ public class EmployeeFragment3 extends Fragment {
         // Inflate the layout for this fragment
         listItemsView = inflater.inflate(R.layout.fragment_employee3, container, false);
 
-        sharedPreferences = getActivity().getSharedPreferences(RegSharedPrefs.SHARED_PREFS, Context.MODE_PRIVATE);
-        employeeId = sharedPreferences.getInt(RegSharedPrefs.ID_NUM, 0);
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(RegSharedPrefs.SHARED_PREFS, Context.MODE_PRIVATE);
+        int employeeId = sharedPreferences.getInt(RegSharedPrefs.ID_NUM, 0);
         employeeName = sharedPreferences.getString(RegSharedPrefs.FNAME, "")
                 + sharedPreferences.getString(RegSharedPrefs.LNAME, "");
         restaurant = sharedPreferences.getString(RegSharedPrefs.RESTAURANT, "");

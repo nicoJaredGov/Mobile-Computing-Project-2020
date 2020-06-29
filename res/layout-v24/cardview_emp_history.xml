@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
-        android:backgroundTint="@color/blue_theme"
+        android:backgroundTint="@color/lightBlue"
         android:padding="10dp">
 
         <LinearLayout
