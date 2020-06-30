@@ -9,7 +9,9 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Pair;
+import android.util.Patterns;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -87,6 +89,10 @@ public class EmployeeRegistrationActivity extends AppCompatActivity {
             empRegTextView.setText("Fill in all details");
             return;
         }
+        if(!TextUtils.isEmpty(employeeEmail) && !Patterns.EMAIL_ADDRESS.matcher(employeeEmail).matches()){
+            empRegTextView.setText("Invalid email");
+            return;
+        }
         if(!password.equals(confirmPassword)){
             empRegTextView.setText("Confirmed password not matching");
             return;
@@ -119,7 +125,7 @@ public class EmployeeRegistrationActivity extends AppCompatActivity {
         regSharedPref.saveData(this,firstName,lastName,employeeEmail,jo.getString("EMP_PASSWORD"),jo.getInt("EMPLOYEE_ID"),restaurant);
         sharedPref.saveData(this,"2",true);
 
-        Intent intent = new Intent(getApplicationContext(), TestActivity.class);
+        Intent intent = new Intent(getApplicationContext(), EmployeeActivity.class);
         startActivity(intent);
         finish();
     }

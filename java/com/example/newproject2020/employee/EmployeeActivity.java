@@ -66,7 +66,7 @@ public class EmployeeActivity extends AppCompatActivity {
 
                 EmployeeActivity.ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), 0);
                 viewPagerAdapter.addFragment(fragment1, "Current");
-                viewPagerAdapter.addFragment(fragment2, "All");
+                viewPagerAdapter.addFragment(fragment2, "New");
                 viewPagerAdapter.addFragment(fragment3, "History");
                 viewPager.setAdapter(viewPagerAdapter);
                 handler.postDelayed(refresh, 120000);
@@ -142,5 +142,11 @@ public class EmployeeActivity extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             return fragmentTitle.get(position);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        finishAffinity();
+        System.exit(0);
     }
 }

@@ -29,7 +29,7 @@ import org.json.JSONException;
 public class AddOrderEmployeeActivity extends AppCompatActivity {
 
     EditText customerNameInput, customerEmailInput;
-    String custName, custEmail, restaurant;
+    String  custEmail, restaurant;
     int employeeId;
     Button mButton;
     TextView mTextView;
@@ -39,7 +39,6 @@ public class AddOrderEmployeeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_employee_add_order);
 
-        customerNameInput = findViewById(R.id.custNameInput);
         customerEmailInput = findViewById(R.id.custEmailInput);
         mButton = findViewById(R.id.AddOrderButton);
         mTextView = findViewById(R.id.order_text_view);
@@ -61,10 +60,8 @@ public class AddOrderEmployeeActivity extends AppCompatActivity {
     }
 
     public void onClick_add_order(View order_view) {
-        custName = customerNameInput.getText().toString();
         custEmail = customerEmailInput.getText().toString();
 
-        if(custName.isEmpty()) custName = "N/A";
         if(custEmail.isEmpty()){
             mTextView.setText("Customer email is missing");
             return;

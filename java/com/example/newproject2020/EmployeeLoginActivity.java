@@ -6,7 +6,9 @@ import android.content.Intent;
 import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Pair;
+import android.util.Patterns;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -106,7 +108,7 @@ public class EmployeeLoginActivity extends AppCompatActivity {
 
     public void processJSON(String r) throws JSONException {
         if (r.equals("NULL")) {
-            mTextView.setText("Username invalid");
+            mTextView.setText("Email not found");
         } else if (r.equals("WRONG")) {
             passwordCounter--;
             if (passwordCounter == 0) {

@@ -58,7 +58,8 @@
                 android:id="@+id/custEmailInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/blue_theme"/>
+                android:inputType="textEmailAddress"
+                android:textColor="@color/blue_theme" />
 
         </com.google.android.material.textfield.TextInputLayout>
 

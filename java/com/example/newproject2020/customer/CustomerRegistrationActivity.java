@@ -8,7 +8,9 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Pair;
+import android.util.Patterns;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -78,6 +80,10 @@ public class CustomerRegistrationActivity extends AppCompatActivity {
 
         if(firstName.isEmpty() || lastName.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()){
             cusRegTextView.setText("Fill in all details");
+            return;
+        }
+        if(!TextUtils.isEmpty(email) && !Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+            cusRegTextView.setText("Invalid email");
             return;
         }
         if(!password.equals(confirmPassword)){
